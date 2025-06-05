@@ -1,0 +1,6 @@
+{
+  "parent": "cesmptweaks:block/template/cross_crop_3",
+  "textures": {
+    "crop": "minecraft:block/cactus_side"
+  }
+}

@@ -1,0 +1,80 @@
+package net.tjkraft.cesmptweaks.event.custom;
+
+import com.mojang.datafixers.util.Pair;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Cow;
+import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.animal.goat.Goat;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
+
+@Mod.EventBusSubscriber(modid = CreateEconomySMPTweaks.MOD_ID)
+public class Events {
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void foodEaten(LivingEntityUseItemEvent.Finish event) {
+        ItemStack item = event.getItem();
+        LivingEntity entity = event.getEntity();
+        if (item.getItem().isEdible()) {
+            FoodProperties foodProperties = item.getItem().getFoodProperties(item, entity);
+            if (foodProperties != null && !foodProperties.getEffects().isEmpty()) {
+                for (Pair<MobEffectInstance, Float> pair : foodProperties.getEffects()) {
+                    MobEffectInstance effect = pair.getFirst();
+                    entity.removeEffect(effect.getEffect());
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void entityMilked(PlayerInteractEvent.EntityInteract event) {
+        Entity target = event.getTarget();
+        if (!(target instanceof LivingEntity living)) return;
+        if (event.getItemStack().getItem() != Items.BUCKET) return;
+
+        if (!(living instanceof Cow || living instanceof Goat)) return;
+        CompoundTag tag = living.getPersistentData();
+        if (tag.getBoolean("HasBeenMilked")) {
+            if (!event.getEntity().level().isClientSide) {
+                event.getEntity().displayClientMessage(Component.translatable("cesmptweaks.no_milk"), true);
+            }
+            event.setCanceled(true);
+        } else {
+            tag.putBoolean("HasBeenMilked", true);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onSheared(PlayerInteractEvent.EntityInteractSpecific event) {
+        if (!(event.getTarget() instanceof Sheep sheep)) return;
+        if (!event.getItemStack().getItem().equals(Items.SHEARS)) return;
+
+        if (!sheep.isSheared()) return;
+        CompoundTag tag = sheep.getPersistentData();
+        tag.putBoolean("NoRegrowth", true);
+    }
+
+    @SubscribeEvent
+    public static void onLivingTick(LivingEvent.LivingTickEvent event) {
+        if (!(event.getEntity() instanceof Sheep sheep)) return;
+
+        CompoundTag tag = sheep.getPersistentData();
+        if (tag.getBoolean("NoRegrowth")) {
+            if (!sheep.isSheared()) {
+                sheep.setSheared(true);
+            }
+        }
+    }
+}

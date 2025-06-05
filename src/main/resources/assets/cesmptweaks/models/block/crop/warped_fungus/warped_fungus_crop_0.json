@@ -1,0 +1,6 @@
+{
+  "parent": "cesmptweaks:block/template/cross_mushroom_fungus_crop_0",
+  "textures": {
+    "mushroom_fungus": "minecraft:block/warped_fungus"
+  }
+}

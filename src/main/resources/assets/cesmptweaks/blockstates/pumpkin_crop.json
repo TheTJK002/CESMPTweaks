@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "cesmptweaks:block/template/stem_crop_0"
+    },
+    "age=1": {
+      "model": "cesmptweaks:block/template/stem_crop_1"
+    },
+    "age=2": {
+      "model": "cesmptweaks:block/template/stem_crop_2"
+    },
+    "age=3": {
+      "model": "cesmptweaks:block/crop/pumpkin/pumpkin_crop_3"
+    },
+    "age=4": {
+      "model": "cesmptweaks:block/crop/pumpkin/pumpkin_crop_4"
+    }
+  }
+}

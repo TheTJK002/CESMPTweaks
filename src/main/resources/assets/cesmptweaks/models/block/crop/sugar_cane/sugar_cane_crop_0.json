@@ -1,0 +1,6 @@
+{
+  "parent": "cesmptweaks:block/template/cross_crop_0",
+  "textures": {
+    "crop": "minecraft:block/sugar_cane"
+  }
+}

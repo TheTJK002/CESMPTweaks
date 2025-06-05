@@ -1,0 +1,24 @@
+{
+  "values": [
+    "cesmptweaks:cactus_seeds",
+    "cesmptweaks:sugar_cane_seeds",
+    "cesmptweaks:sweet_berry_seeds",
+    "cesmptweaks:bamboo_seeds",
+    "cesmptweaks:carrot_seeds",
+    "cesmptweaks:potato_seeds",
+    "cesmptweaks:kelp_seeds",
+    "cesmptweaks:cocoa_seeds",
+    "cesmptweaks:brown_mushroom_seeds",
+    "cesmptweaks:red_mushroom_seeds",
+    "cesmptweaks:warped_fungus_seeds",
+    "cesmptweaks:crimson_fungus_seeds",
+    {
+      "id": "cesmptweaks:onion_seeds",
+      "required": false
+    },
+    {
+      "id": "cesmptweaks:rice_seeds",
+      "required": false
+    }
+  ]
+}

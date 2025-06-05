@@ -1,0 +1,54 @@
+{
+  "creativetab.cesmptweaks": "Create Economy SMP Tweaks",
+
+  "item.cesmptweaks.bamboo_seeds": "Bamboo Seeds",
+  "item.cesmptweaks.cactus_seeds": "Cactus Seeds",
+  "item.cesmptweaks.carrot_seeds": "Carrot Seeds",
+  "item.cesmptweaks.potato_seeds": "Potato Seeds",
+  "item.cesmptweaks.sugar_cane_seeds": "Sugar Cane Seeds",
+  "item.cesmptweaks.kelp_seeds": "Kelp Seeds",
+  "item.cesmptweaks.cocoa_seeds": "Cocoa Seeds",
+  "item.cesmptweaks.brown_mushroom_seeds": "Brown Mushroom Seeds",
+  "item.cesmptweaks.red_mushroom_seeds": "Red Mushroom Seeds",
+  "item.cesmptweaks.warped_fungus_seeds": "Warped Fungus Seeds",
+  "item.cesmptweaks.crimson_fungus_seeds": "Crimson Fungus Seeds",
+  "item.cesmptweaks.nether_wart_seeds": "Nether Wart Seeds",
+  "item.cesmptweaks.sweet_berry_seeds": "Sweet Berry Seeds",
+  "item.cesmptweaks.onion_seeds": "Onion Seeds",
+  "item.cesmptweaks.rice_seeds": "Rice Seeds",
+
+  "item.cesmptweaks.animal_offer": "Animal Offer",
+
+  "item.cesmptweaks.key": "Key",
+  "item.cesmptweaks.nether_key": "Nether Key",
+  "item.cesmptweaks.end_key": "End Key",
+  "item.cesmptweaks.aether_key": "Aether Key",
+  "item.cesmptweaks.twilight_key": "Twilight Key",
+
+  "item.cesmptweaks.diamond_fragment": "Diamond Fragment",
+
+  "item.cesmptweaks.job_choice": "Job Choice",
+  "item.cesmptweaks.specialization_itamae": "Specialization: §6Itamae",
+  "item.cesmptweaks.specialization_sandwich_maker": "Specialization: §6Sandwich Maker",
+  "item.cesmptweaks.specialization_pasta_maker": "Specialization: §6Pasta Maker",
+  "item.cesmptweaks.specialization_pastry_chef": "Specialization: §6Pastry Chef",
+  "item.cesmptweaks.specialization_pizza_chef": "Specialization: §6Pizza Chef",
+  "item.cesmptweaks.specialization_builder": "Specialization: §6Builder",
+  "item.cesmptweaks.specialization_sculptor": "Specialization: §6Sculptor",
+  "item.cesmptweaks.specialization_decorator": "Specialization: §6Decorator",
+  "item.cesmptweaks.specialization_fisherman": "Specialization: §6Fisherman",
+
+  "item.cesmptweaks.specialization_itamae_active": "Specialization: §6Itamae §f(§aActive§f)",
+  "item.cesmptweaks.specialization_sandwich_maker_active": "Specialization: Sandwich §6Maker §f(§aActive§f)",
+  "item.cesmptweaks.specialization_pasta_maker_active": "Specialization: §6Pasta Maker §f(§aActive§f)",
+  "item.cesmptweaks.specialization_pastry_chef_active": "Specialization: §6Pastry Chef §f(§aActive§f)",
+  "item.cesmptweaks.specialization_pizza_chef_active": "Specialization: §6Pizza Chef §f(§aActive§f)",
+  "item.cesmptweaks.specialization_builder_active": "Specialization: §6Builder §f(§aActive§f)",
+  "item.cesmptweaks.specialization_sculptor_active": "Specialization: §6Sculptor §f(§aActive§f)",
+  "item.cesmptweaks.specialization_decorator_active": "Specialization: §6Decorator §f(§aActive§f)",
+  "item.cesmptweaks.specialization_fisherman_active": "Specialization: §6Fisherman §f(§aActive§f)",
+
+  "cesmptweaks.no_milk": "This animal has no more milk",
+  "cesmptweaks.no_place": "This block cannot be placed",
+  "cesmptweaks.no_give_role": "You can't specialize in this because you don't have the basic job"
+}

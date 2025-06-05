@@ -1,0 +1,8 @@
+{
+  "parent": "cesmptweaks:block/template/cross_crop_2_1",
+  "render_type": "cutout",
+  "textures": {
+    "cross": "cesmptweaks:block/bamboo_crop_3",
+    "cross_top": "cesmptweaks:block/bamboo_crop_4"
+  }
+}

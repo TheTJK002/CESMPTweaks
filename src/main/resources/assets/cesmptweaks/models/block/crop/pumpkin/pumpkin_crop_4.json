@@ -1,0 +1,7 @@
+{
+  "parent": "cesmptweaks:block/template/stem_crop_4",
+  "textures": {
+    "crop_top": "minecraft:block/pumpkin_top",
+    "crop_side": "minecraft:block/pumpkin_side"
+  }
+}
