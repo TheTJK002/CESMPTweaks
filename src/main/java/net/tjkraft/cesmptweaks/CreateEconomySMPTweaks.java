@@ -1,9 +1,6 @@
 package net.tjkraft.cesmptweaks;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
@@ -17,11 +14,8 @@ import net.tjkraft.cesmptweaks.compat.farmersdelight.CESMPTweaksFDCompat;
 import net.tjkraft.cesmptweaks.config.CESMPTweaksConfig;
 import net.tjkraft.cesmptweaks.item.CESMPTweaksCreativeTabs;
 import net.tjkraft.cesmptweaks.item.CESMPTweaksItems;
-import net.tjkraft.cesmptweaks.item.custom.FoodUniform;
 import net.tjkraft.cesmptweaks.network.CESMPTweaksNetwork;
 import org.slf4j.Logger;
-
-import java.lang.reflect.Field;
 
 @Mod(CreateEconomySMPTweaks.MOD_ID)
 public class CreateEconomySMPTweaks {
@@ -45,21 +39,7 @@ public class CreateEconomySMPTweaks {
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, CESMPTweaksConfig.SERVER_CONFIG);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
+    public void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(CESMPTweaksNetwork::register);
-        event.enqueueWork(() -> {
-            for (Item item : BuiltInRegistries.ITEM) {
-                if (item.isEdible()) {
-                    try {
-                        FoodProperties newFood = FoodUniform.FOOD_UNIFORM;
-                        Field foodField = Item.class.getDeclaredField("foodProperties");
-                        foodField.setAccessible(true);
-                        foodField.set(item, newFood);
-                    } catch (Exception e) {
-                        System.err.println("Nessun cibo è stato visto");
-                    }
-                }
-            }
-        });
     }
 }

@@ -1,17 +1,24 @@
 package net.tjkraft.cesmptweaks.event.custom;
 
+import com.alessandro.astages.util.AStagesUtil;
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.animal.goat.Goat;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -76,5 +83,19 @@ public class Events {
                 sheep.setSheared(true);
             }
         }
+    }
+
+    private static final TagKey<EntityType<?>> MOB_DROPS = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(CreateEconomySMPTweaks.MOD_ID, "mob_drops"));
+    private static final TagKey<EntityType<?>> ANIMAL_DROPS = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(CreateEconomySMPTweaks.MOD_ID, "animal_drops"));
+
+    @SubscribeEvent
+    public static void mobDropsAStages(LivingDropsEvent event) {
+        Entity entity = event.getEntity();
+        Entity killer = event.getSource().getEntity();
+
+        if (entity.getType().is(MOB_DROPS) && killer instanceof Player player)
+            if (!AStagesUtil.hasStage(player, "warrior") || AStagesUtil.hasStage(player, "wizard")) event.getDrops().clear();
+        if (entity.getType().is(ANIMAL_DROPS) && killer instanceof Player player)
+            if (!AStagesUtil.hasStage(player, "farmer")) event.getDrops().clear();
     }
 }

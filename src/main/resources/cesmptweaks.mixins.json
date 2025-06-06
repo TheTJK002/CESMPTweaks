@@ -6,7 +6,8 @@
   "refmap": "cesmptweaks.refmap.json",
   "mixins": [
     "ChickenMixin",
-    "AnimalMixin"
+    "AnimalMixin",
+    "TomatoVineBlockMixin"
   ],
   "client": [],
   "injectors": {

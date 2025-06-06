@@ -169,6 +169,9 @@ dependencies {
 
     //Astages
     implementation fg.deobf("curse.maven:astages-1120180:6440354")
+
+    //Apple Skin
+    runtimeOnly fg.deobf("curse.maven:appleskin-248787:4770828")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
