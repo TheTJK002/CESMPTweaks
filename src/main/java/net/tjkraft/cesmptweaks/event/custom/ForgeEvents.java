@@ -2,7 +2,6 @@ package net.tjkraft.cesmptweaks.event.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -10,6 +9,8 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.animal.SnowGolem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -19,7 +20,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-import net.minecraftforge.event.entity.player.ItemFishedEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
@@ -28,16 +28,12 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
-import net.tjkraft.cesmptweaks.item.CESMPTweaksItems;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 @Mod.EventBusSubscriber(modid = CreateEconomySMPTweaks.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ForgeEvents {
-
-    public static final TagKey<Item> BLACKLIST_CROPS = TagKey.create(Registries.ITEM, new ResourceLocation(CreateEconomySMPTweaks.MOD_ID, "blacklist_crops"));
 
     @SubscribeEvent
     public static void seedReplace(PlayerInteractEvent.RightClickBlock event) {
@@ -78,8 +74,6 @@ public class ForgeEvents {
                 event.setCancellationResult(InteractionResult.SUCCESS);
             }
         }
-        ItemStack stack = event.getItemStack();
-        if (stack.is(BLACKLIST_CROPS)) event.setCanceled(true);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -119,6 +113,6 @@ public class ForgeEvents {
 
     @SubscribeEvent
     public static void noEXP(EntityJoinLevelEvent event) {
-        if (event.getEntity() instanceof ExperienceOrb) event.setCanceled(true);
+        if (event.getEntity() instanceof ExperienceOrb || event.getEntity() instanceof IronGolem) event.setCanceled(true);
     }
 }

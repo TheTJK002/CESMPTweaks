@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "cesmptweaks:item/inactive/specialization_pasta_maker"
+    "layer0": "cesmptweaks:item/specialization/specialization_pasta_maker"
   }
 }

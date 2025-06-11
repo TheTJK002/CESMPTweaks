@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "cesmptweaks:item/crimson_fungus_seeds"
+    "layer0": "cesmptweaks:item/seeds/crimson_fungus_seeds"
   }
 }

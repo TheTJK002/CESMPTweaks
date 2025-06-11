@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "cesmptweaks:item/warped_fungus_seeds"
+    "layer0": "cesmptweaks:item/seeds/warped_fungus_seeds"
   }
 }

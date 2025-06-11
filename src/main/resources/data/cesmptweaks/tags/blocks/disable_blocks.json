@@ -3,6 +3,15 @@
   "values": [
     "minecraft:cake",
     "minecraft:pumpkin",
-    "minecraft:melon"
+    "minecraft:melon",
+    "minecraft:bamboo_sapling",
+    "minecraft:cactus",
+    "minecraft:sugar_cane",
+    "minecraft:kelp",
+    "minecraft:nether_wart",
+    "minecraft:carrots",
+    "minecraft:potatoes",
+    "minecraft:sweet_berry_bush",
+    "minecraft:cocoa"
   ]
 }

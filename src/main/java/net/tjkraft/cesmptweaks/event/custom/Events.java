@@ -22,6 +22,7 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -88,14 +89,27 @@ public class Events {
     private static final TagKey<EntityType<?>> MOB_DROPS = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(CreateEconomySMPTweaks.MOD_ID, "mob_drops"));
     private static final TagKey<EntityType<?>> ANIMAL_DROPS = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(CreateEconomySMPTweaks.MOD_ID, "animal_drops"));
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void mobDropsAStages(LivingDropsEvent event) {
         Entity entity = event.getEntity();
         Entity killer = event.getSource().getEntity();
 
+        if(!(killer instanceof Player)) event.getDrops().clear();
+
         if (entity.getType().is(MOB_DROPS) && killer instanceof Player player)
-            if (!AStagesUtil.hasStage(player, "warrior") || AStagesUtil.hasStage(player, "wizard")) event.getDrops().clear();
+            if (!AStagesUtil.hasStage(player, "warrior")) event.getDrops().clear();
         if (entity.getType().is(ANIMAL_DROPS) && killer instanceof Player player)
             if (!AStagesUtil.hasStage(player, "farmer")) event.getDrops().clear();
+    }
+
+    @SubscribeEvent
+    public static void removeFuel(FurnaceFuelBurnTimeEvent event) {
+        ItemStack stack = event.getItemStack();
+
+        if (stack.getItem() == Items.COAL) {
+            event.setBurnTime(400);
+        } else if (stack.getItem() == Items.COAL_BLOCK) {
+            event.setBurnTime(3600);
+        } else event.setBurnTime(0);
     }
 }

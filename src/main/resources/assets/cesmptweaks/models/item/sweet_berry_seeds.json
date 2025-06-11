@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "cesmptweaks:item/sweet_berry_seeds"
+    "layer0": "cesmptweaks:item/seeds/sweet_berry_seeds"
   }
 }

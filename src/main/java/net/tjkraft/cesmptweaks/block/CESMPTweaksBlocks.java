@@ -20,6 +20,9 @@ public class CESMPTweaksBlocks {
 
     //Crops
     public static final RegistryObject<Block> CACTUS_CROP = registerBlock("cactus_crop", () -> new CactusCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
+    public static final RegistryObject<Block> COCOA_CROP = registerBlock("cocoa_crop", () -> new CocoaCrop(BlockBehaviour.Properties.copy(Blocks.COCOA).instabreak()));
+    public static final RegistryObject<Block> CARROT_CROP = registerBlock("carrot_crop", () -> new CarrotCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
+    public static final RegistryObject<Block> POTATO_CROP = registerBlock("potato_crop", () -> new PotatoCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
     public static final RegistryObject<Block> SUGAR_CANE_CROP = registerBlock("sugar_cane_crop", () -> new SugarCaneCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
     public static final RegistryObject<Block> SWEET_BERRY_CROP = registerBlock("sweet_berry_crop", () -> new SweetBerryCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
     public static final RegistryObject<Block> BAMBOO_CROP = registerBlock("bamboo_crop", () -> new BambooCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT)));

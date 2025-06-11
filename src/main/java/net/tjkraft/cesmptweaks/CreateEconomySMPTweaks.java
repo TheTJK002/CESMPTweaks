@@ -1,17 +1,24 @@
 package net.tjkraft.cesmptweaks;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
 import net.tjkraft.cesmptweaks.compat.farmersdelight.CESMPTweaksFDCompat;
-import net.tjkraft.cesmptweaks.config.CESMPTweaksConfig;
+import net.tjkraft.cesmptweaks.config.CESMPTweaksClientConfig;
+import net.tjkraft.cesmptweaks.config.CESMPTweaksServerConfig;
 import net.tjkraft.cesmptweaks.item.CESMPTweaksCreativeTabs;
 import net.tjkraft.cesmptweaks.item.CESMPTweaksItems;
 import net.tjkraft.cesmptweaks.network.CESMPTweaksNetwork;
@@ -36,10 +43,24 @@ public class CreateEconomySMPTweaks {
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, CESMPTweaksConfig.SERVER_CONFIG);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CESMPTweaksClientConfig.CLIENT_CONFIG);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, CESMPTweaksServerConfig.SERVER_CONFIG);
     }
 
     public void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(CESMPTweaksNetwork::register);
+    }
+
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.BAMBOO_CROP.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.CARROT_CROP.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.COCOA_CROP.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.POTATO_CROP.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.NETHER_WART_CROP.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.SWEET_BERRY_CROP.get(), RenderType.cutout());
+        }
     }
 }

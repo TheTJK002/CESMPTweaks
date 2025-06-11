@@ -1,0 +1,9 @@
+{
+	"replace": false,
+	"values": [
+		"cesmptweaks:bamboo_crop",
+		"cesmptweaks:sugar_cane_crop",
+		"cesmptweaks:cactus_crop",
+		"cesmptweaks:cocoa_crop"
+	]
+}

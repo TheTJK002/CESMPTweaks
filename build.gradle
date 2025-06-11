@@ -172,6 +172,10 @@ dependencies {
 
     //Apple Skin
     runtimeOnly fg.deobf("curse.maven:appleskin-248787:4770828")
+
+    //Serene Seasons
+    implementation fg.deobf("curse.maven:glitchcore-955399:5787839")
+    implementation fg.deobf("curse.maven:serene-seasons-291874:6398227")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

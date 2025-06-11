@@ -18,14 +18,13 @@
   "item.cesmptweaks.rice_seeds": "Rice Seeds",
 
   "item.cesmptweaks.animal_offer": "Animal Offer",
+  "item.cesmptweaks.diamond_fragment": "Diamond Fragment",
 
   "item.cesmptweaks.key": "Key",
   "item.cesmptweaks.nether_key": "Nether Key",
   "item.cesmptweaks.end_key": "End Key",
   "item.cesmptweaks.aether_key": "Aether Key",
   "item.cesmptweaks.twilight_key": "Twilight Key",
-
-  "item.cesmptweaks.diamond_fragment": "Diamond Fragment",
 
   "item.cesmptweaks.job_choice": "Job Choice",
   "item.cesmptweaks.specialization_itamae": "Specialization: §6Itamae",
@@ -39,7 +38,7 @@
   "item.cesmptweaks.specialization_fisherman": "Specialization: §6Fisherman",
 
   "item.cesmptweaks.specialization_itamae_active": "Specialization: §6Itamae §f(§aActive§f)",
-  "item.cesmptweaks.specialization_sandwich_maker_active": "Specialization: Sandwich §6Maker §f(§aActive§f)",
+  "item.cesmptweaks.specialization_sandwich_maker_active": "Specialization: §6Sandwich Maker §f(§aActive§f)",
   "item.cesmptweaks.specialization_pasta_maker_active": "Specialization: §6Pasta Maker §f(§aActive§f)",
   "item.cesmptweaks.specialization_pastry_chef_active": "Specialization: §6Pastry Chef §f(§aActive§f)",
   "item.cesmptweaks.specialization_pizza_chef_active": "Specialization: §6Pizza Chef §f(§aActive§f)",
@@ -48,7 +47,17 @@
   "item.cesmptweaks.specialization_decorator_active": "Specialization: §6Decorator §f(§aActive§f)",
   "item.cesmptweaks.specialization_fisherman_active": "Specialization: §6Fisherman §f(§aActive§f)",
 
+  "item.cesmptweaks.apple_juice": "Apple Juice",
+  "item.cesmptweaks.beetroot_juice": "Beetroot Juice",
+  "item.cesmptweaks.carrot_juice": "Carrot Juice",
+  "item.cesmptweaks.glow_berry_juice": "Glow Berry Juice",
+  "item.cesmptweaks.melon_juice": "Melon Juice",
+  "item.cesmptweaks.pumpkin_juice": "Pumpkin Juice",
+  "item.cesmptweaks.sweet_berry_juice": "Sweet Berry Juice",
+
   "cesmptweaks.no_milk": "This animal has no more milk",
   "cesmptweaks.no_place": "This block cannot be placed",
-  "cesmptweaks.no_give_role": "You can't specialize in this because you don't have the basic job"
+  "cesmptweaks.no_give_role": "You can't specialize in this because you don't have the basic job",
+  "cesmptweaks.no_more_specialization": "You cannot have more than one specialization",
+  "cesmptweaks.you_already_have_it": "You already have this specialization"
 }

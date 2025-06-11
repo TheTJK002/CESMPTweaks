@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "cesmptweaks:item/sugar_canes_seeds"
+    "layer0": "cesmptweaks:item/seeds/sugar_cane_seeds"
   }
 }

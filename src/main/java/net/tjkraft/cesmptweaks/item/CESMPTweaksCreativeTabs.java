@@ -37,8 +37,17 @@ public class CESMPTweaksCreativeTabs {
                     pOutput.accept(CESMPTweaksFDCompat.RICE_SEEDS.get());
                 }
                 //Items
-                //Animal Offer
                 pOutput.accept(CESMPTweaksItems.ANIMAL_OFFER.get());
+                pOutput.accept(CESMPTweaksItems.DIAMOND_FRAGMENT.get());
+
+                //Juices
+                pOutput.accept(CESMPTweaksItems.APPLE_JUICE.get());
+                pOutput.accept(CESMPTweaksItems.BEETROOT_JUICE.get());
+                pOutput.accept(CESMPTweaksItems.CARROT_JUICE.get());
+                pOutput.accept(CESMPTweaksItems.GLOW_BERRY_JUICE.get());
+                pOutput.accept(CESMPTweaksItems.MELON_JUICE.get());
+                pOutput.accept(CESMPTweaksItems.PUMPKIN_JUICE.get());
+                pOutput.accept(CESMPTweaksItems.SWEET_BERRY_JUICE.get());
 
                 //Key
                 pOutput.accept(CESMPTweaksItems.KEY.get());
@@ -46,7 +55,6 @@ public class CESMPTweaksCreativeTabs {
                 pOutput.accept(CESMPTweaksItems.END_KEY.get());
                 pOutput.accept(CESMPTweaksItems.AETHER_KEY.get());
                 pOutput.accept(CESMPTweaksItems.TWILIGHT_KEY.get());
-                pOutput.accept(CESMPTweaksItems.DIAMOND_FRAGMENT.get());
 
                 //Job
                 pOutput.accept(CESMPTweaksItems.JOB_CHOICE.get());

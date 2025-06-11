@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "cesmptweaks:item/inactive/specialization_pastry_chef"
+    "layer0": "cesmptweaks:item/specialization/specialization_pastry_chef"
   }
 }

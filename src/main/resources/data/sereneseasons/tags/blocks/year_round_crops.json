@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "cesmptweaks:brown_mushroom_crop",
+    "cesmptweaks:red_mushroom_crop",
+    "cesmptweaks:crimson_fungus_crop",
+    "cesmptweaks:warped_fungus_crop",
+    "cesmptweaks:nether_wart_crop"
+  ]
+}

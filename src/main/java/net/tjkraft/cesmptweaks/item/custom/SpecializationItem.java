@@ -10,31 +10,44 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class SpecializationItem extends Item {
-    public final String role;
-    public final String newRole;
+import java.util.List;
 
-    public SpecializationItem(Properties pProperties, String role, String newRole) {
+public class SpecializationItem extends Item {
+    public final String roleBase;
+    public final String newRole;
+    public final List<String> listRole;
+
+    public SpecializationItem(Properties pProperties, String role, String newRole, List<String> listRole) {
         super(pProperties);
-        this.role = role;
+        this.roleBase = role;
         this.newRole = newRole;
+        this.listRole = listRole;
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack stack = pPlayer.getItemInHand(pUsedHand);
         MinecraftServer server = pLevel.getServer();
-        if(!pLevel.isClientSide()) {
-            if (server != null) {
-                if (AStagesUtil.hasStage(pPlayer, role)) {
-                    server.getCommands().performPrefixedCommand(
-                            server.createCommandSourceStack(),
-                            "astages add " + pPlayer.getName().getString() + " " + newRole
-                    );
-                    stack.shrink(1);
-                } else pPlayer.displayClientMessage(Component.translatable("cesmptweaks.no_give_role", role), true);
+
+        if (!pLevel.isClientSide() && server != null) {
+
+            for (String stage : listRole) {
+                if (AStagesUtil.hasStage(pPlayer, stage)) {
+                    pPlayer.displayClientMessage(Component.translatable("cesmptweaks.no_more_specialization", stage), true);
+                    return InteractionResultHolder.fail(stack);
+                }
+            }
+            if (AStagesUtil.hasStage(pPlayer, newRole)) {
+                pPlayer.displayClientMessage(Component.translatable("cesmptweaks.you_already_have_it", newRole), true);
+                return InteractionResultHolder.fail(stack);
+            }
+            if (AStagesUtil.hasStage(pPlayer, roleBase)) {
+                server.getCommands().performPrefixedCommand(server.createCommandSourceStack(), "astages add " + pPlayer.getName().getString() + " " + newRole);
+                stack.shrink(1);
+            } else {
+                pPlayer.displayClientMessage(Component.translatable("cesmptweaks.no_give_role", roleBase), true);
             }
         }
-        return InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand));
+        return InteractionResultHolder.success(stack);
     }
 }

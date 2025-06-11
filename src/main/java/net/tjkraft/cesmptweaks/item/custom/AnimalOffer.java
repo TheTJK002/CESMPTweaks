@@ -13,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.tjkraft.cesmptweaks.config.CESMPTweaksConfig;
+import net.tjkraft.cesmptweaks.config.CESMPTweaksServerConfig;
 
 import java.util.Random;
 
@@ -35,7 +35,7 @@ public class AnimalOffer extends Item {
                 spawnAnimal(level, pos, type);
             }
 
-            if (random.nextFloat(1.0f) <= CESMPTweaksConfig.HORSE_SPAWN_CHANCE.get()) {
+            if (random.nextFloat(1.0f) <= CESMPTweaksServerConfig.HORSE_SPAWN_CHANCE.get()) {
                 EntityType<?> horseType = switch (random.nextInt(3)) {
                     case 0 -> EntityType.HORSE;
                     case 1 -> EntityType.DONKEY;
@@ -49,7 +49,7 @@ public class AnimalOffer extends Item {
             level.playSound(null, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, player.getSoundSource(), 1.0F, 1.0F);
         }
         if(!player.isCreative()) stack.shrink(1);
-        if(!player.isCreative()) player.getCooldowns().addCooldown(this, CESMPTweaksConfig.BAIT_COOLDOWN_TICKS.get());
+        if(!player.isCreative()) player.getCooldowns().addCooldown(this, CESMPTweaksServerConfig.BAIT_COOLDOWN_TICKS.get());
         return InteractionResult.SUCCESS;
     }
 
