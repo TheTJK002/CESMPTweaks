@@ -46,7 +46,10 @@ public class CactusCrop extends CropBlock {
     @Override
     public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
         BlockState soil = worldIn.getBlockState(pos.below());
-        return soil.is(Blocks.SAND);
+        BlockState above = worldIn.getBlockState(pos.above());
+        boolean isAboveAir = above.isAir();
+
+        return soil.is(Blocks.SAND) && isAboveAir;
     }
 
     @Override

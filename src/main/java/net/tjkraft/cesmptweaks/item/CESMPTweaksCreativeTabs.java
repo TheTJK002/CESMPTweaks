@@ -34,7 +34,7 @@ public class CESMPTweaksCreativeTabs {
                 pOutput.accept(CESMPTweaksItems.SWEET_BERRY_SEEDS.get());
                 if(ModList.get().isLoaded("farmersdelight")) {
                     pOutput.accept(CESMPTweaksFDCompat.ONION_SEEDS.get());
-                    pOutput.accept(CESMPTweaksFDCompat.RICE_SEEDS.get());
+                    pOutput.accept(net.tjkraft.cesmptweaks.compat.farmersdelight.CESMPTweaksFDCompat.RICE_SEEDS.get());
                 }
                 //Items
                 pOutput.accept(CESMPTweaksItems.ANIMAL_OFFER.get());
@@ -72,6 +72,11 @@ public class CESMPTweaksCreativeTabs {
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_SCULPTOR.get());
                 //Farmer
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_FISHERMAN.get());
+                //Wizard
+                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_WIZARD_WARRIOR.get());
+                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_WIZARD_HEALER.get());
+                //Miner
+                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_OBTAINING_BLOCKS.get());
 
                 //Specializations - Active
                 //Cook
@@ -86,6 +91,11 @@ public class CESMPTweaksCreativeTabs {
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_SCULPTOR_ACTIVE.get());
                 //Farmer
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_FISHERMAN_ACTIVE.get());
+                //Wizard
+                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_WIZARD_WARRIOR_ACTIVE.get());
+                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_WIZARD_HEALER_ACTIVE.get());
+                //Miner
+                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_OBTAINING_BLOCKS_ACTIVE.get());
             })
             .build());
 

@@ -1,0 +1,7 @@
+{
+  "parent": "cesmptweaks:block/template/cross_2",
+  "textures": {
+    "cross": "farmersdelight:block/rice_supporting",
+    "cross_2": "farmersdelight:block/rice_panicles_stage0"
+  }
+}

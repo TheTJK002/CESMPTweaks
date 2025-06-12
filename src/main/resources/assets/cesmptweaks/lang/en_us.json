@@ -59,5 +59,6 @@
   "cesmptweaks.no_place": "This block cannot be placed",
   "cesmptweaks.no_give_role": "You can't specialize in this because you don't have the basic job",
   "cesmptweaks.no_more_specialization": "You cannot have more than one specialization",
-  "cesmptweaks.you_already_have_it": "You already have this specialization"
+  "cesmptweaks.you_already_have_it": "You already have this specialization",
+  "cesmptweaks.one_specialization": "You can choose only ONE specialization"
 }

@@ -3,6 +3,7 @@ package net.tjkraft.cesmptweaks.block.custom.crop;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,6 +30,14 @@ public class BambooCrop extends CropBlock {
 
     public BambooCrop(Properties pProperties) {
         super(pProperties);
+    }
+
+    @Override
+    public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
+        BlockState above = world.getBlockState(pos.above());
+        boolean isAboveAir = above.isAir();
+
+        return isAboveAir;
     }
 
     @Override

@@ -154,7 +154,7 @@ dependencies {
     //Delight
     implementation fg.deobf("curse.maven:farmers-delight-398521:6154802")
     runtimeOnly fg.deobf("curse.maven:crabbers-delight-892827:6351568")
-    runtimeOnly fg.deobf("curse.maven:cultural-delights-574622:6420879")
+    implementation fg.deobf("curse.maven:cultural-delights-574622:6420879")
 
     //KubeJS
     runtimeOnly fg.deobf("curse.maven:architectury-api-419699:5137938")

@@ -33,6 +33,7 @@ public class CESMPTweaksBlocks {
     public static final RegistryObject<Block> NETHER_WART_CROP = registerBlock("nether_wart_crop", () -> new NetherWartCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
     public static final RegistryObject<Block> MELON_CROP = registerBlock("melon_crop", () -> new MelonCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
     public static final RegistryObject<Block> PUMPKIN_CROP = registerBlock("pumpkin_crop", () -> new PumpkinCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
+    public static final RegistryObject<Block> KELP_CROP = registerBlock("kelp_crop", () -> new KelpCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
 
     public static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

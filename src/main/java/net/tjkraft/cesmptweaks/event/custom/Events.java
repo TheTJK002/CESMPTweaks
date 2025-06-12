@@ -94,12 +94,16 @@ public class Events {
         Entity entity = event.getEntity();
         Entity killer = event.getSource().getEntity();
 
-        if(!(killer instanceof Player)) event.getDrops().clear();
+        if (!(killer instanceof Player)) event.getDrops().clear();
 
-        if (entity.getType().is(MOB_DROPS) && killer instanceof Player player)
-            if (!AStagesUtil.hasStage(player, "warrior")) event.getDrops().clear();
-        if (entity.getType().is(ANIMAL_DROPS) && killer instanceof Player player)
+        if (entity.getType().is(MOB_DROPS) && killer instanceof Player player) {
+            boolean isWarrior = AStagesUtil.hasStage(player, "warrior");
+            boolean isWizardWarrior = AStagesUtil.hasStage(player, "wizard_warrior");
+            if (!isWarrior && !isWizardWarrior) event.getDrops().clear();
+        }
+        if (entity.getType().is(ANIMAL_DROPS) && killer instanceof Player player) {
             if (!AStagesUtil.hasStage(player, "farmer")) event.getDrops().clear();
+        }
     }
 
     @SubscribeEvent

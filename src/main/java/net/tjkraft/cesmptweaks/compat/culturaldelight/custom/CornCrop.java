@@ -1,5 +1,6 @@
-package net.tjkraft.cesmptweaks.block.custom.crop;
+package net.tjkraft.cesmptweaks.compat.culturaldelight.custom;
 
+import com.baisylia.culturaldelights.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
@@ -10,11 +11,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.tjkraft.cesmptweaks.item.CESMPTweaksItems;
+import net.tjkraft.cesmptweaks.compat.culturaldelight.CESMPTweaksCDCompat;
+import net.tjkraft.cesmptweaks.compat.farmersdelight.CESMPTweaksFDCompat;
 
-public class SugarCaneCrop extends CropBlock {
+public class CornCrop extends CropBlock {
     public static final int MAX_AGE = 7;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
@@ -28,7 +31,7 @@ public class SugarCaneCrop extends CropBlock {
             Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)
     };
 
-    public SugarCaneCrop(Properties pProperties) {
+    public CornCrop(Properties pProperties) {
         super(pProperties);
     }
 
@@ -42,7 +45,7 @@ public class SugarCaneCrop extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return CESMPTweaksItems.SUGAR_CANE_SEEDS.get();
+        return ModItems.CORN_KERNELS.get();
     }
 
     @Override

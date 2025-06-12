@@ -1,0 +1,7 @@
+{
+  "parent": "cesmptweaks:block/template/aqua_crop_2_1",
+  "textures": {
+    "aqua_crop": "minecraft:block/kelp_plant",
+    "aqua_crop_top": "#aqua_crop"
+  }
+}

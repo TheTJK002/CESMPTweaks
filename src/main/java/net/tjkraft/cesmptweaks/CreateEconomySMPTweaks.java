@@ -1,7 +1,6 @@
 package net.tjkraft.cesmptweaks;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
@@ -16,6 +15,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
+import net.tjkraft.cesmptweaks.compat.culturaldelight.CESMPTweaksCDCompat;
 import net.tjkraft.cesmptweaks.compat.farmersdelight.CESMPTweaksFDCompat;
 import net.tjkraft.cesmptweaks.config.CESMPTweaksClientConfig;
 import net.tjkraft.cesmptweaks.config.CESMPTweaksServerConfig;
@@ -37,6 +37,10 @@ public class CreateEconomySMPTweaks {
         CESMPTweaksItems.ITEMS.register(modEventBus);
         if (ModList.get().isLoaded("farmersdelight")) {
             CESMPTweaksFDCompat.ITEMS_FD.register(modEventBus);
+            CESMPTweaksFDCompat.BLOCKS_FD.register(modEventBus);
+        }
+        if (ModList.get().isLoaded("culturaldelights")) {
+            CESMPTweaksCDCompat.BLOCKS_CD.register(modEventBus);
         }
         CESMPTweaksBlocks.BLOCKS.register(modEventBus);
 
@@ -61,6 +65,9 @@ public class CreateEconomySMPTweaks {
             ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.POTATO_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.NETHER_WART_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.SWEET_BERRY_CROP.get(), RenderType.cutout());
+            if (ModList.get().isLoaded("culturaldelights")) {
+                ItemBlockRenderTypes.setRenderLayer(CESMPTweaksCDCompat.CORN_CROP.get(), RenderType.cutout());
+            }
         }
     }
 }

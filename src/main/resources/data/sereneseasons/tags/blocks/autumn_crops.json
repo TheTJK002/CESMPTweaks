@@ -1,6 +1,8 @@
 {
 	"replace": false,
 	"values": [
-		"cesmptweaks:carrot_crop"
+		"cesmptweaks:carrot_crop",
+		"cesmptweaks:onion_crop",
+		"cesmptweaks:rice_crop"
 	]
 }

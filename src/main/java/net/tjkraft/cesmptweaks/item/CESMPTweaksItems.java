@@ -26,7 +26,7 @@ public class CESMPTweaksItems {
     public static final RegistryObject<Item> BAMBOO_SEEDS = ITEMS.register("bamboo_seeds", () -> new ItemNameBlockItem(CESMPTweaksBlocks.BAMBOO_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> CARROT_SEEDS = ITEMS.register("carrot_seeds", () -> new ItemNameBlockItem(CESMPTweaksBlocks.CARROT_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> POTATO_SEEDS = ITEMS.register("potato_seeds", () -> new ItemNameBlockItem(CESMPTweaksBlocks.POTATO_CROP.get(), new Item.Properties()));
-    public static final RegistryObject<Item> KELP_SEEDS = ITEMS.register("kelp_seeds", () -> new ItemNameBlockItem(Blocks.KELP, new Item.Properties()));
+    public static final RegistryObject<Item> KELP_SEEDS = ITEMS.register("kelp_seeds", () -> new ItemNameBlockItem(CESMPTweaksBlocks.KELP_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> COCOA_SEEDS = ITEMS.register("cocoa_seeds", () -> new ItemNameBlockItem(CESMPTweaksBlocks.COCOA_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> BROWN_MUSHROOM_SEEDS = ITEMS.register("brown_mushroom_seeds", () -> new ItemNameBlockItem(CESMPTweaksBlocks.BROWN_MUSHROOM_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> RED_MUSHROOM_SEEDS = ITEMS.register("red_mushroom_seeds", () -> new ItemNameBlockItem(CESMPTweaksBlocks.RED_MUSHROOM_CROP.get(), new Item.Properties()));
@@ -48,6 +48,11 @@ public class CESMPTweaksItems {
     public static final RegistryObject<Item> SPECIALIZATION_DECORATOR = ITEMS.register("specialization_decorator", () -> new Item(new Item.Properties().stacksTo(1)));
     //Farmer
     public static final RegistryObject<Item> SPECIALIZATION_FISHERMAN = ITEMS.register("specialization_fisherman", () -> new Item(new Item.Properties().stacksTo(1)));
+    //Wizard
+    public static final RegistryObject<Item> SPECIALIZATION_WIZARD_WARRIOR = ITEMS.register("specialization_wizard_warrior", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SPECIALIZATION_WIZARD_HEALER = ITEMS.register("specialization_wizard_healer", () -> new Item(new Item.Properties().stacksTo(1)));
+            //Miner
+    public static final RegistryObject<Item> SPECIALIZATION_OBTAINING_BLOCKS = ITEMS.register("specialization_obtaining_blocks", () -> new Item(new Item.Properties().stacksTo(1)));
 
     //Specializations - Active
     //Cook
@@ -62,13 +67,18 @@ public class CESMPTweaksItems {
     public static final RegistryObject<Item> SPECIALIZATION_DECORATOR_ACTIVE = ITEMS.register("specialization_decorator_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "carpenter", "decorator", List.of("builder", "sculptor")));
     //Farmer
     public static final RegistryObject<Item> SPECIALIZATION_FISHERMAN_ACTIVE = ITEMS.register("specialization_fisherman_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "farmer", "fisherman", Collections.singletonList("")));
+    //Wizard
+    public static final RegistryObject<Item> SPECIALIZATION_WIZARD_WARRIOR_ACTIVE = ITEMS.register("specialization_wizard_warrior_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "wizard", "wizard_warrior", Collections.singletonList("wizard_healer")));
+    public static final RegistryObject<Item> SPECIALIZATION_WIZARD_HEALER_ACTIVE = ITEMS.register("specialization_wizard_healer_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "wizard", "wizard_healer", Collections.singletonList("wizard_warrior")));
+    //Miner
+    public static final RegistryObject<Item> SPECIALIZATION_OBTAINING_BLOCKS_ACTIVE = ITEMS.register("specialization_obtaining_blocks_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "miner", "obtaining_blocks", Collections.singletonList("")));
 
     //Key
-    public static final RegistryObject<Item> KEY = ITEMS.register("key", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> NETHER_KEY = ITEMS.register("nether_key", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> END_KEY = ITEMS.register("end_key", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> AETHER_KEY = ITEMS.register("aether_key", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> TWILIGHT_KEY = ITEMS.register("twilight_key", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> KEY = ITEMS.register("key", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> NETHER_KEY = ITEMS.register("nether_key", () -> new Item(new Item.Properties().stacksTo(4)));
+    public static final RegistryObject<Item> END_KEY = ITEMS.register("end_key", () -> new Item(new Item.Properties().stacksTo(4)));
+    public static final RegistryObject<Item> AETHER_KEY = ITEMS.register("aether_key", () -> new Item(new Item.Properties().stacksTo(4)));
+    public static final RegistryObject<Item> TWILIGHT_KEY = ITEMS.register("twilight_key", () -> new Item(new Item.Properties().stacksTo(4)));
 
     //Juices
     public static final RegistryObject<Item> APPLE_JUICE = ITEMS.register("apple_juice", () -> new Item(new Item.Properties().food(Foods.APPLE)));

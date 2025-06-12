@@ -1,5 +1,6 @@
 package net.tjkraft.cesmptweaks.event.custom;
 
+import com.baisylia.culturaldelights.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -10,7 +11,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.animal.IronGolem;
-import net.minecraft.world.entity.animal.SnowGolem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -25,9 +25,11 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
+import net.tjkraft.cesmptweaks.compat.culturaldelight.CESMPTweaksCDCompat;
 
 import java.util.List;
 
@@ -72,6 +74,24 @@ public class ForgeEvents {
                 }
                 event.setCanceled(true);
                 event.setCancellationResult(InteractionResult.SUCCESS);
+            }
+        }
+
+        if (ModList.get().isLoaded("culturaldelights")) {
+            if (itemStack.getItem() == ModItems.CORN_KERNELS.get()) {
+                BlockPos placePos = level.getBlockState(pos).canBeReplaced() ? pos : pos.relative(face);
+
+                if (player.mayUseItemAt(placePos, face, itemStack) && level.getBlockState(placePos.below()).canSustainPlant(level, placePos.below(), Direction.UP, (BushBlock) Blocks.WHEAT)) {
+                    if (!level.isClientSide) {
+                        level.setBlock(placePos, CESMPTweaksCDCompat.CORN_CROP.get().defaultBlockState(), 3);
+
+                        if (!player.isCreative()) {
+                            itemStack.shrink(1);
+                        }
+                    }
+                    event.setCanceled(true);
+                    event.setCancellationResult(InteractionResult.SUCCESS);
+                }
             }
         }
     }
