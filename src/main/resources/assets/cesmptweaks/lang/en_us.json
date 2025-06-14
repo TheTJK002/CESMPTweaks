@@ -36,6 +36,9 @@
   "item.cesmptweaks.specialization_sculptor": "Specialization: §6Sculptor",
   "item.cesmptweaks.specialization_decorator": "Specialization: §6Decorator",
   "item.cesmptweaks.specialization_fisherman": "Specialization: §6Fisherman",
+  "item.cesmptweaks.specialization_wizard_warrior": "Specialization: §6Wizard Warrior",
+  "item.cesmptweaks.specialization_wizard_healer": "Specialization: §6Wizard Healer",
+  "item.cesmptweaks.specialization_obtaining_blocks": "Specialization: §6Obtaining Blocks",
 
   "item.cesmptweaks.specialization_itamae_active": "Specialization: §6Itamae §f(§aActive§f)",
   "item.cesmptweaks.specialization_sandwich_maker_active": "Specialization: §6Sandwich Maker §f(§aActive§f)",
@@ -46,6 +49,9 @@
   "item.cesmptweaks.specialization_sculptor_active": "Specialization: §6Sculptor §f(§aActive§f)",
   "item.cesmptweaks.specialization_decorator_active": "Specialization: §6Decorator §f(§aActive§f)",
   "item.cesmptweaks.specialization_fisherman_active": "Specialization: §6Fisherman §f(§aActive§f)",
+  "item.cesmptweaks.specialization_wizard_warrior_active": "Specialization: §6Wizard Warrior §f(§aActive§f)",
+  "item.cesmptweaks.specialization_wizard_healer_active": "Specialization: §6Wizard Healer §f(§aActive§f)",
+  "item.cesmptweaks.specialization_obtaining_blocks_active": "Specialization: §6Obtaining Blocks §f(§aActive§f)",
 
   "item.cesmptweaks.apple_juice": "Apple Juice",
   "item.cesmptweaks.beetroot_juice": "Beetroot Juice",
@@ -60,5 +66,13 @@
   "cesmptweaks.no_give_role": "You can't specialize in this because you don't have the basic job",
   "cesmptweaks.no_more_specialization": "You cannot have more than one specialization",
   "cesmptweaks.you_already_have_it": "You already have this specialization",
-  "cesmptweaks.one_specialization": "You can choose only ONE specialization"
+
+  "jobChoice.cesmptweaks.engineer": "Engineer",
+  "jobChoice.cesmptweaks.warrior": "Warrior",
+  "jobChoice.cesmptweaks.wizard": "Wizard",
+  "jobChoice.cesmptweaks.carpenter": "Carpenter",
+  "jobChoice.cesmptweaks.farmer": "Farmer",
+  "jobChoice.cesmptweaks.cook": "Cook",
+  "jobChoice.cesmptweaks.blacksmith": "Blacksmith",
+  "jobChoice.cesmptweaks.collector": "Collector"
 }

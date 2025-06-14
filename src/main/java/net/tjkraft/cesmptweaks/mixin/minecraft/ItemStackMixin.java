@@ -1,4 +1,4 @@
-package net.tjkraft.cesmptweaks.mixin;
+package net.tjkraft.cesmptweaks.mixin.minecraft;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;

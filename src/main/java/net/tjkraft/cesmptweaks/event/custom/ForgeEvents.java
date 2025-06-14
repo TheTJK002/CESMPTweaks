@@ -11,6 +11,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -23,6 +24,7 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -133,6 +135,9 @@ public class ForgeEvents {
 
     @SubscribeEvent
     public static void noEXP(EntityJoinLevelEvent event) {
-        if (event.getEntity() instanceof ExperienceOrb || event.getEntity() instanceof IronGolem) event.setCanceled(true);
+        if (event.getEntity() instanceof ExperienceOrb) event.setCanceled(true);
+        if (event.getEntity() instanceof WitherBoss || event.getEntity() instanceof IronGolem) {
+            event.setResult(Event.Result.DENY);
+        }
     }
 }

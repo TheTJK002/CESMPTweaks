@@ -41,7 +41,7 @@ public class GiveRolePacket {
                 case 4 -> "/astages add " + name + " farmer";
                 case 5 -> "/astages add " + name + " cook";
                 case 6 -> "/astages add " + name + " blacksmith";
-                case 7 -> "/astages add " + name + " miner";
+                case 7 -> "/astages add " + name + " collector";
                 default -> null;
             };
 

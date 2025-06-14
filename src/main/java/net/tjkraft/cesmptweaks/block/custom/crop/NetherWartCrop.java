@@ -29,6 +29,12 @@ public class NetherWartCrop extends CropBlock {
     }
 
     @Override
+    public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
+        BlockState soil = worldIn.getBlockState(pos.below());
+        return soil.is(Blocks.SOUL_SAND);
+    }
+
+    @Override
     protected ItemLike getBaseSeedId() {
         return CESMPTweaksItems.NETHER_WART_SEEDS.get();
     }
@@ -36,12 +42,6 @@ public class NetherWartCrop extends CropBlock {
     @Override
     protected IntegerProperty getAgeProperty() {
         return AGE;
-    }
-
-    @Override
-    public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
-        BlockState soil = worldIn.getBlockState(pos.below());
-        return soil.is(Blocks.SOUL_SAND);
     }
 
     @Override

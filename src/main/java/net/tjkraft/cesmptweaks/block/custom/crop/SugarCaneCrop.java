@@ -5,6 +5,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -35,9 +36,10 @@ public class SugarCaneCrop extends CropBlock {
     @Override
     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
         BlockState above = world.getBlockState(pos.above());
+        BlockState soil = world.getBlockState(pos.below());
         boolean isAboveAir = above.isAir();
 
-        return isAboveAir;
+        return isAboveAir && soil.is(Blocks.FARMLAND);
     }
 
     @Override

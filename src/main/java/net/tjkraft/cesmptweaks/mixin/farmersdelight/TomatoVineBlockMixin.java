@@ -1,4 +1,4 @@
-package net.tjkraft.cesmptweaks.mixin;
+package net.tjkraft.cesmptweaks.mixin.farmersdelight;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;

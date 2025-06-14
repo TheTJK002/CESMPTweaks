@@ -71,7 +71,7 @@ public class CESMPTweaksItems {
     public static final RegistryObject<Item> SPECIALIZATION_WIZARD_WARRIOR_ACTIVE = ITEMS.register("specialization_wizard_warrior_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "wizard", "wizard_warrior", Collections.singletonList("wizard_healer")));
     public static final RegistryObject<Item> SPECIALIZATION_WIZARD_HEALER_ACTIVE = ITEMS.register("specialization_wizard_healer_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "wizard", "wizard_healer", Collections.singletonList("wizard_warrior")));
     //Miner
-    public static final RegistryObject<Item> SPECIALIZATION_OBTAINING_BLOCKS_ACTIVE = ITEMS.register("specialization_obtaining_blocks_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "miner", "obtaining_blocks", Collections.singletonList("")));
+    public static final RegistryObject<Item> SPECIALIZATION_OBTAINING_BLOCKS_ACTIVE = ITEMS.register("specialization_obtaining_blocks_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "collector", "obtaining_blocks", Collections.singletonList("")));
 
     //Key
     public static final RegistryObject<Item> KEY = ITEMS.register("key", () -> new Item(new Item.Properties()));

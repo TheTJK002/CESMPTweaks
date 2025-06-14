@@ -1,4 +1,4 @@
-package net.tjkraft.cesmptweaks.mixin;
+package net.tjkraft.cesmptweaks.mixin.minecraft;
 
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;

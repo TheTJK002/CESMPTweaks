@@ -5,11 +5,11 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "cesmptweaks.refmap.json",
   "mixins": [
-    "ChickenMixin",
-    "AnimalMixin",
-    "TomatoVineBlockMixin",
-    "ItemMixin",
-    "ItemStackMixin"
+    "minecraft.ChickenMixin",
+    "minecraft.AnimalMixin",
+    "farmersdelight.TomatoVineBlockMixin",
+    "minecraft.ItemMixin",
+    "minecraft.ItemStackMixin"
   ],
   "client": [],
   "injectors": {

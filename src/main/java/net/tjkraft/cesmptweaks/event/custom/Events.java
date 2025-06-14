@@ -44,9 +44,18 @@ public class Events {
                 }
             }
         }
+
+        if(!(entity instanceof Player player)) return;
+        if(!item.isEdible()) return;
+
+        float currentHealth = player.getHealth();
+        float maxHealth = player.getMaxHealth();
+
+        float newHealth = Math.min(currentHealth + 1.0f, maxHealth);
+        player.setHealth(newHealth);
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void entityMilked(PlayerInteractEvent.EntityInteract event) {
         Entity target = event.getTarget();
         if (!(target instanceof LivingEntity living)) return;
@@ -64,7 +73,7 @@ public class Events {
         }
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onSheared(PlayerInteractEvent.EntityInteractSpecific event) {
         if (!(event.getTarget() instanceof Sheep sheep)) return;
         if (!event.getItemStack().getItem().equals(Items.SHEARS)) return;
@@ -74,7 +83,7 @@ public class Events {
         tag.putBoolean("NoRegrowth", true);
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onLivingTick(LivingEvent.LivingTickEvent event) {
         if (!(event.getEntity() instanceof Sheep sheep)) return;
 

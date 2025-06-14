@@ -65,6 +65,7 @@ public class CreateEconomySMPTweaks {
             ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.POTATO_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.NETHER_WART_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.SWEET_BERRY_CROP.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.KELP_CROP.get(), RenderType.cutout());
             if (ModList.get().isLoaded("culturaldelights")) {
                 ItemBlockRenderTypes.setRenderLayer(CESMPTweaksCDCompat.CORN_CROP.get(), RenderType.cutout());
             }

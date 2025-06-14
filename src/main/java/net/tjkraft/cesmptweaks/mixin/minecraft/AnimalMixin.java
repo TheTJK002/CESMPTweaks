@@ -1,4 +1,4 @@
-package net.tjkraft.cesmptweaks.mixin;
+package net.tjkraft.cesmptweaks.mixin.minecraft;
 
 import net.minecraft.world.entity.animal.Animal;
 import org.spongepowered.asm.mixin.Mixin;

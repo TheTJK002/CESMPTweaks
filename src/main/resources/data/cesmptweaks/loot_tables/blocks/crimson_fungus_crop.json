@@ -13,6 +13,25 @@
           "block": "cesmptweaks:crimson_fungus_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
+            "age": "0"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cesmptweaks:crimson_fungus_seeds"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "cesmptweaks:crimson_fungus_crop",
+          "condition": "minecraft:block_state_property",
+          "properties": {
             "age": "2"
           }
         }

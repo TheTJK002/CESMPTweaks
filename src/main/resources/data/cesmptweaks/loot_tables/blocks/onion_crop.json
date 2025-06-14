@@ -13,6 +13,25 @@
           "block": "cesmptweaks:onion_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
+            "age": "0"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cesmptweaks:onion_seeds"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "cesmptweaks:onion_crop",
+          "condition": "minecraft:block_state_property",
+          "properties": {
             "age": "3"
           }
         }
@@ -31,7 +50,7 @@
               }
             }
           ],
-          "name": "farmersdelight:sweet_berries"
+          "name": "farmersdelight:onion"
         }
       ],
       "rolls": 1.0

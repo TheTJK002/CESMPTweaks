@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cesmptweaks:item/active/specialization_wizard_healer_active"
+  }
+}

@@ -29,6 +29,12 @@ public class CrimsonFungusCrop extends CropBlock {
     }
 
     @Override
+    public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
+        BlockState soil = worldIn.getBlockState(pos.below());
+        return soil.is(Blocks.CRIMSON_NYLIUM) || soil.is(Blocks.WARPED_NYLIUM);
+    }
+
+    @Override
     protected ItemLike getBaseSeedId() {
         return CESMPTweaksItems.CRIMSON_FUNGUS_SEEDS.get();
     }
@@ -36,12 +42,6 @@ public class CrimsonFungusCrop extends CropBlock {
     @Override
     protected IntegerProperty getAgeProperty() {
         return AGE;
-    }
-
-    @Override
-    public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
-        BlockState soil = worldIn.getBlockState(pos.below());
-        return soil.is(Blocks.CRIMSON_NYLIUM) || soil.is(Blocks.WARPED_NYLIUM);
     }
 
     @Override
