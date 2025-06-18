@@ -133,11 +133,8 @@ public class ForgeEvents {
         }
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void noEXP(EntityJoinLevelEvent event) {
         if (event.getEntity() instanceof ExperienceOrb) event.setCanceled(true);
-        if (event.getEntity() instanceof WitherBoss || event.getEntity() instanceof IronGolem) {
-            event.setResult(Event.Result.DENY);
-        }
     }
 }
