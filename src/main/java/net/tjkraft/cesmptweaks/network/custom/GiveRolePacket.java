@@ -1,6 +1,5 @@
-package net.tjkraft.cesmptweaks.network;
+package net.tjkraft.cesmptweaks.network.custom;
 
-import com.google.common.base.Supplier;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;

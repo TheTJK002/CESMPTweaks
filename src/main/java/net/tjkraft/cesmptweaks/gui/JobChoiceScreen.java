@@ -7,12 +7,15 @@ import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.network.CESMPTweaksNetwork;
-import net.tjkraft.cesmptweaks.network.GiveRolePacket;
+import net.tjkraft.cesmptweaks.network.custom.GiveRolePacket;
 
 import java.util.Locale;
 
+@OnlyIn(Dist.CLIENT)
 public class JobChoiceScreen extends Screen {
     private final static ResourceLocation GUI = new ResourceLocation(CreateEconomySMPTweaks.MOD_ID, "textures/gui/choose_your_job_gui.png");
     private final int imageWidth = 140;

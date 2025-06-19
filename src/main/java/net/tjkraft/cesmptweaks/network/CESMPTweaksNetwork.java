@@ -5,11 +5,14 @@ import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
+import net.tjkraft.cesmptweaks.network.custom.GiveRolePacket;
+import net.tjkraft.cesmptweaks.network.custom.JobChoicePacket;
 
 public class CESMPTweaksNetwork {
     public static SimpleChannel INSTANCE;
 
     private static int packetId = 0;
+
     private static int id() {
         return packetId++;
     }
@@ -28,5 +31,10 @@ public class CESMPTweaksNetwork {
                 .encoder(GiveRolePacket::toBytes)
                 .consumerMainThread(GiveRolePacket::handle)
                 .add();
+
+        net.registerMessage(packetId++,
+                JobChoicePacket.class,
+                JobChoicePacket::encode,
+                JobChoicePacket::decode, JobChoicePacket::handle);
     }
 }
