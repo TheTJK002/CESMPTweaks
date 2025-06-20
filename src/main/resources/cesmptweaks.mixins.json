@@ -7,9 +7,10 @@
   "mixins": [
     "minecraft.ChickenMixin",
     "minecraft.AnimalMixin",
-    "farmersdelight.TomatoVineBlockMixin",
     "minecraft.ItemMixin",
-    "minecraft.ItemStackMixin"
+    "minecraft.ItemStackMixin",
+    "minecraft.WitherSkullBlockMixin",
+    "farmersdelight.TomatoVineBlockMixin"
   ],
   "client": [],
   "injectors": {

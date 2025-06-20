@@ -15,7 +15,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.config.CESMPTweaksClientConfig;
 import sereneseasons.api.season.SeasonHelper;
-import sereneseasons.init.ModConfig;
 import sereneseasons.season.SeasonTime;
 
 @Mod.EventBusSubscriber(modid = CreateEconomySMPTweaks.MOD_ID, value = Dist.CLIENT)

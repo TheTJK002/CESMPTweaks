@@ -5,14 +5,20 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.animal.IronGolem;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -20,11 +26,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -32,6 +39,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
 import net.tjkraft.cesmptweaks.compat.culturaldelight.CESMPTweaksCDCompat;
+import net.tjkraft.cesmptweaks.config.CESMPTweaksServerConfig;
 
 import java.util.List;
 
@@ -136,5 +144,70 @@ public class ForgeEvents {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void noEXP(EntityJoinLevelEvent event) {
         if (event.getEntity() instanceof ExperienceOrb) event.setCanceled(true);
+    }
+
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END || event.player.level().isClientSide) return;
+
+        Player player = event.player;
+        FoodData foodData = player.getFoodData();
+
+        foodData.setSaturation(0);
+        foodData.setExhaustion(0);
+        foodData.setFoodLevel(foodData.getFoodLevel());
+
+        player.getAbilities().mayBuild = true;
+        player.setHealth(Math.min(player.getHealth(), player.getMaxHealth()));
+
+        HungerTickHandler.applyCustomHungerLogic(player);
+    }
+
+    @SubscribeEvent
+    public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
+        HungerTickHandler.onPlayerLogout(event.getEntity());
+    }
+
+    private static int tick = 0;
+
+    @SubscribeEvent
+    public static void serverEvents(TickEvent.ServerTickEvent event) {
+        ServerLevel level = event.getServer().getLevel(Level.OVERWORLD);
+        if (event.phase != TickEvent.Phase.END) return;
+        if (level.getDifficulty() == Difficulty.PEACEFUL) return;
+        if (!CESMPTweaksServerConfig.ENABLE_HORDE_EVENT.get()) return;
+
+        tick++;
+        if (tick >= CESMPTweaksServerConfig.HORDE_INTERVAL_TICKS.get()) {
+            tick = 0;
+            triggerHordeEvent(event.getServer());
+        }
+    }
+
+    private static void triggerHordeEvent(MinecraftServer server) {
+        List<ServerPlayer> players = server.getPlayerList().getPlayers();
+        if (players.isEmpty()) return;
+
+        ServerPlayer samplePlayer = players.get(0);
+        RandomSource random = samplePlayer.level().getRandom();
+        ServerPlayer target = players.get(random.nextInt(players.size()));
+        ServerLevel world = target.serverLevel();
+        BlockPos playerPos = target.blockPosition();
+        BlockPos spawnPos = playerPos.offset(random.nextInt(24) - 5, 0, random.nextInt(24) - 5);
+
+        int minMobs = CESMPTweaksServerConfig.MIN_MOBS.get();
+        int maxMobs = CESMPTweaksServerConfig.MAX_MOBS.get();
+        int count = minMobs + random.nextInt(maxMobs - minMobs + 1);
+
+        EntityType<?> type = switch (random.nextInt(3)) {
+            case 0 -> EntityType.ZOMBIE;
+            case 1 -> EntityType.SKELETON;
+            default -> EntityType.SPIDER;
+        };
+
+        for (int i = 0; i < count; i++) {
+            BlockPos spawn = spawnPos.offset(random.nextInt(10) + 5, 0, random.nextInt(10) + 5);
+            if (spawn != null) type.spawn(world, spawn, MobSpawnType.EVENT);
+        }
     }
 }

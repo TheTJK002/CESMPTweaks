@@ -3,7 +3,6 @@ package net.tjkraft.cesmptweaks.item;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -51,7 +50,7 @@ public class CESMPTweaksItems {
     //Wizard
     public static final RegistryObject<Item> SPECIALIZATION_WIZARD_WARRIOR = ITEMS.register("specialization_wizard_warrior", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SPECIALIZATION_WIZARD_HEALER = ITEMS.register("specialization_wizard_healer", () -> new Item(new Item.Properties().stacksTo(1)));
-            //Miner
+    //Miner
     public static final RegistryObject<Item> SPECIALIZATION_OBTAINING_BLOCKS = ITEMS.register("specialization_obtaining_blocks", () -> new Item(new Item.Properties().stacksTo(1)));
 
     //Specializations - Active
