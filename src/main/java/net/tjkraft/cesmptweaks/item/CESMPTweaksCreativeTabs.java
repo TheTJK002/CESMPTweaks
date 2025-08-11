@@ -2,11 +2,15 @@ package net.tjkraft.cesmptweaks.item;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.compat.farmersdelight.CESMPTweaksFDCompat;
@@ -32,9 +36,9 @@ public class CESMPTweaksCreativeTabs {
                 pOutput.accept(CESMPTweaksItems.NETHER_WART_SEEDS.get());
                 pOutput.accept(CESMPTweaksItems.SUGAR_CANE_SEEDS.get());
                 pOutput.accept(CESMPTweaksItems.SWEET_BERRY_SEEDS.get());
-                if(ModList.get().isLoaded("farmersdelight")) {
+                if (ModList.get().isLoaded("farmersdelight")) {
                     pOutput.accept(CESMPTweaksFDCompat.ONION_SEEDS.get());
-                    pOutput.accept(net.tjkraft.cesmptweaks.compat.farmersdelight.CESMPTweaksFDCompat.RICE_SEEDS.get());
+                    pOutput.accept(CESMPTweaksFDCompat.RICE_SEEDS.get());
                 }
                 //Items
                 pOutput.accept(CESMPTweaksItems.ANIMAL_OFFER.get());
@@ -99,4 +103,18 @@ public class CESMPTweaksCreativeTabs {
             })
             .build());
 
+    private static final TagKey<Item> NO_NUTRITION = TagKey.create(Registries.ITEM, new ResourceLocation(CreateEconomySMPTweaks.MOD_ID, "no_nutrition"));
+    public static final RegistryObject<CreativeModeTab> ALL_FOODS = CREATIVE_MODE_TAB.register("all_foods", () -> CreativeModeTab.builder()
+            .title(Component.translatable("creativetab.all_foods"))
+            .icon(() -> new ItemStack(Items.APPLE))
+            .displayItems((pParameters, pOutput) -> {
+                for (Item item : ForgeRegistries.ITEMS) {
+                    ItemStack stack = item.getDefaultInstance();
+                    if (item.isEdible() && !stack.is(NO_NUTRITION)) {
+                        pOutput.accept(item);
+                    }
+                }
+            })
+            .build()
+    );
 }

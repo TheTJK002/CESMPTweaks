@@ -3,8 +3,15 @@ package net.tjkraft.cesmptweaks;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -14,7 +21,9 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
+import net.tjkraft.cesmptweaks.command.ListStructuresCommand;
 import net.tjkraft.cesmptweaks.compat.culturaldelight.CESMPTweaksCDCompat;
 import net.tjkraft.cesmptweaks.compat.farmersdelight.CESMPTweaksFDCompat;
 import net.tjkraft.cesmptweaks.config.CESMPTweaksClientConfig;
@@ -32,7 +41,7 @@ public class CreateEconomySMPTweaks {
     public CreateEconomySMPTweaks() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        CESMPTweaksCreativeTabs.CREATIVE_MODE_TAB.register(modEventBus);
+        CESMPTweaksCreativeTabs.CREATIVE_MODE_TAB.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         CESMPTweaksItems.ITEMS.register(modEventBus);
         if (ModList.get().isLoaded("farmersdelight")) {
@@ -53,6 +62,11 @@ public class CreateEconomySMPTweaks {
 
     public void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(CESMPTweaksNetwork::register);
+    }
+
+    @SubscribeEvent
+    public void onRegisterCommands(RegisterCommandsEvent event) {
+        ListStructuresCommand.register(event.getDispatcher());
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

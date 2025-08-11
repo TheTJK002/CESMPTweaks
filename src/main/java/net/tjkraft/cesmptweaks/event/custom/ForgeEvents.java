@@ -167,47 +167,4 @@ public class ForgeEvents {
     public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
         HungerTickHandler.onPlayerLogout(event.getEntity());
     }
-
-    private static int tick = 0;
-
-    @SubscribeEvent
-    public static void serverEvents(TickEvent.ServerTickEvent event) {
-        ServerLevel level = event.getServer().getLevel(Level.OVERWORLD);
-        if (event.phase != TickEvent.Phase.END) return;
-        if (level.getDifficulty() == Difficulty.PEACEFUL) return;
-        if (!CESMPTweaksServerConfig.ENABLE_HORDE_EVENT.get()) return;
-
-        tick++;
-        if (tick >= CESMPTweaksServerConfig.HORDE_INTERVAL_TICKS.get()) {
-            tick = 0;
-            triggerHordeEvent(event.getServer());
-        }
-    }
-
-    private static void triggerHordeEvent(MinecraftServer server) {
-        List<ServerPlayer> players = server.getPlayerList().getPlayers();
-        if (players.isEmpty()) return;
-
-        ServerPlayer samplePlayer = players.get(0);
-        RandomSource random = samplePlayer.level().getRandom();
-        ServerPlayer target = players.get(random.nextInt(players.size()));
-        ServerLevel world = target.serverLevel();
-        BlockPos playerPos = target.blockPosition();
-        BlockPos spawnPos = playerPos.offset(random.nextInt(24) - 5, 0, random.nextInt(24) - 5);
-
-        int minMobs = CESMPTweaksServerConfig.MIN_MOBS.get();
-        int maxMobs = CESMPTweaksServerConfig.MAX_MOBS.get();
-        int count = minMobs + random.nextInt(maxMobs - minMobs + 1);
-
-        EntityType<?> type = switch (random.nextInt(3)) {
-            case 0 -> EntityType.ZOMBIE;
-            case 1 -> EntityType.SKELETON;
-            default -> EntityType.SPIDER;
-        };
-
-        for (int i = 0; i < count; i++) {
-            BlockPos spawn = spawnPos.offset(random.nextInt(10) + 5, 0, random.nextInt(10) + 5);
-            if (spawn != null) type.spawn(world, spawn, MobSpawnType.EVENT);
-        }
-    }
 }

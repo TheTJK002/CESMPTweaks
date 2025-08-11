@@ -2,16 +2,13 @@ package net.tjkraft.cesmptweaks.compat.farmersdelight.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -58,7 +55,7 @@ public class RiceCrop extends CropBlock implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public BlockState getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext context) {
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
         boolean isWater = fluidState.is(FluidTags.WATER);
         return this.defaultBlockState().setValue(WATERLOGGED, isWater);
