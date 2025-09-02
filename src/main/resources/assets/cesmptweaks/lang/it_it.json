@@ -62,11 +62,11 @@
   "item.cesmptweaks.pumpkin_juice": "Succo di zucca",
   "item.cesmptweaks.sweet_berry_juice": "Succo di bacca dolce",
 
-  "cesmptweaks.no_milk": "Questo animale non ha più latte",
-  "cesmptweaks.no_place": "Questo blocco non può essere piazzato",
-  "cesmptweaks.no_give_role": "Non puoi specializzarti perché non hai il lavoro base",
-  "cesmptweaks.no_more_specialization": "Non puoi avere più di una specializzazione",
-  "cesmptweaks.you_already_have_it": "Hai già questa specializzazione",
+  "msg.cesmptweaks.no_milk": "Questo animale non ha più latte",
+  "msg.cesmptweaks.no_place": "Questo blocco non può essere piazzato",
+  "msg.cesmptweaks.no_give_role": "Non puoi specializzarti perché non hai il lavoro base",
+  "msg.cesmptweaks.no_more_specialization": "Non puoi avere più di una specializzazione",
+  "msg.cesmptweaks.you_already_have_it": "Hai già questa specializzazione",
 
   "jobChoice.cesmptweaks.engineer": "Ingegnere",
   "jobChoice.cesmptweaks.warrior": "Guerriero",

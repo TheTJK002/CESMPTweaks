@@ -5,18 +5,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.Item;
@@ -39,7 +32,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
 import net.tjkraft.cesmptweaks.compat.culturaldelight.CESMPTweaksCDCompat;
-import net.tjkraft.cesmptweaks.config.CESMPTweaksServerConfig;
 
 import java.util.List;
 
@@ -136,7 +128,7 @@ public class ForgeEvents {
 
         Block block = event.getPlacedBlock().getBlock();
         if (block.builtInRegistryHolder().is(DISABLE_BLOCKS)) {
-            player.displayClientMessage(Component.translatable("cesmptweaks.no_place"), true);
+            player.displayClientMessage(Component.translatable("msg.cesmptweaks.no_place"), true);
             event.setCanceled(true);
         }
     }

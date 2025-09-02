@@ -76,9 +76,6 @@ public class CESMPTweaksCreativeTabs {
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_SCULPTOR.get());
                 //Farmer
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_FISHERMAN.get());
-                //Wizard
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_WIZARD_WARRIOR.get());
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_WIZARD_HEALER.get());
                 //Miner
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_OBTAINING_BLOCKS.get());
 
@@ -95,9 +92,6 @@ public class CESMPTweaksCreativeTabs {
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_SCULPTOR_ACTIVE.get());
                 //Farmer
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_FISHERMAN_ACTIVE.get());
-                //Wizard
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_WIZARD_WARRIOR_ACTIVE.get());
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_WIZARD_HEALER_ACTIVE.get());
                 //Miner
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_OBTAINING_BLOCKS_ACTIVE.get());
             })

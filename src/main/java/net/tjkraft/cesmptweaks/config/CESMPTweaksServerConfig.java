@@ -12,11 +12,6 @@ public class CESMPTweaksServerConfig {
 
     public static final ForgeConfigSpec.IntValue TICKS_PER_HUNGER_LOSS;
 
-    public static final ForgeConfigSpec.BooleanValue ENABLE_HORDE_EVENT;
-    public static final ForgeConfigSpec.IntValue HORDE_INTERVAL_TICKS;
-    public static final ForgeConfigSpec.IntValue MIN_MOBS;
-    public static final ForgeConfigSpec.IntValue MAX_MOBS;
-
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
 
@@ -44,24 +39,6 @@ public class CESMPTweaksServerConfig {
         TICKS_PER_HUNGER_LOSS = builder
                 .comment("Choose how much hunger should drop per tick (20 ticks = 1 second)")
                 .defineInRange("ticks_betweenHunger_loss", 9000, 0, 1728000);
-        builder.pop();
-
-        builder.push("Horde Settings");
-        ENABLE_HORDE_EVENT = builder
-                .comment("Enable/Disable the 'Horde Event'")
-                .define("enable_horde_event", true);
-
-        HORDE_INTERVAL_TICKS = builder
-                .comment("Interval in ticks between hordes (20 ticks = 1 second")
-                .defineInRange("horde_interval_ticks", 9000, 0, 1728000);
-
-        MIN_MOBS = builder
-                .comment("Minimum number of mobs to spawn in the Horde")
-                .defineInRange("min_mobs", 1, 1, 64);
-
-        MAX_MOBS = builder
-                .comment("Maximum number of mobs to spawn in the Horde")
-                .defineInRange("max_mobs", 5, 1, 64);
         builder.pop();
 
         SERVER_CONFIG = builder.build();

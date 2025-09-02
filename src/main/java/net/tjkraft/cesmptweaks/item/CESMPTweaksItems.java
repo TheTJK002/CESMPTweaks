@@ -10,6 +10,7 @@ import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
 import net.tjkraft.cesmptweaks.item.custom.AnimalOffer;
 import net.tjkraft.cesmptweaks.item.custom.JobChoice;
+import net.tjkraft.cesmptweaks.item.custom.SpecializationActiveItem;
 import net.tjkraft.cesmptweaks.item.custom.SpecializationItem;
 
 import java.util.Collections;
@@ -36,41 +37,35 @@ public class CESMPTweaksItems {
 
     //Specializations - Inactive
     //Cook
-    public static final RegistryObject<Item> SPECIALIZATION_ITAMAE = ITEMS.register("specialization_itamae", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> SPECIALIZATION_SANDWICH_MAKER = ITEMS.register("specialization_sandwich_maker", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> SPECIALIZATION_PASTA_MAKER = ITEMS.register("specialization_pasta_maker", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> SPECIALIZATION_PASTRY_CHEF = ITEMS.register("specialization_pastry_chef", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> SPECIALIZATION_PIZZA_CHEF = ITEMS.register("specialization_pizza_chef", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SPECIALIZATION_ITAMAE = ITEMS.register("specialization_itamae", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook"));
+    public static final RegistryObject<Item> SPECIALIZATION_SANDWICH_MAKER = ITEMS.register("specialization_sandwich_maker", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook"));
+    public static final RegistryObject<Item> SPECIALIZATION_PASTA_MAKER = ITEMS.register("specialization_pasta_maker", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook"));
+    public static final RegistryObject<Item> SPECIALIZATION_PASTRY_CHEF = ITEMS.register("specialization_pastry_chef", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook"));
+    public static final RegistryObject<Item> SPECIALIZATION_PIZZA_CHEF = ITEMS.register("specialization_pizza_chef", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook"));
     //Carpenter
-    public static final RegistryObject<Item> SPECIALIZATION_BUILDER = ITEMS.register("specialization_builder", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> SPECIALIZATION_SCULPTOR = ITEMS.register("specialization_sculptor", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> SPECIALIZATION_DECORATOR = ITEMS.register("specialization_decorator", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SPECIALIZATION_BUILDER = ITEMS.register("specialization_builder", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "carpenter"));
+    public static final RegistryObject<Item> SPECIALIZATION_SCULPTOR = ITEMS.register("specialization_sculptor", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "carpenter"));
+    public static final RegistryObject<Item> SPECIALIZATION_DECORATOR = ITEMS.register("specialization_decorator", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "carpenter"));
     //Farmer
-    public static final RegistryObject<Item> SPECIALIZATION_FISHERMAN = ITEMS.register("specialization_fisherman", () -> new Item(new Item.Properties().stacksTo(1)));
-    //Wizard
-    public static final RegistryObject<Item> SPECIALIZATION_WIZARD_WARRIOR = ITEMS.register("specialization_wizard_warrior", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> SPECIALIZATION_WIZARD_HEALER = ITEMS.register("specialization_wizard_healer", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SPECIALIZATION_FISHERMAN = ITEMS.register("specialization_fisherman", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "farmer"));
     //Miner
-    public static final RegistryObject<Item> SPECIALIZATION_OBTAINING_BLOCKS = ITEMS.register("specialization_obtaining_blocks", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SPECIALIZATION_OBTAINING_BLOCKS = ITEMS.register("specialization_obtaining_blocks", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "collector"));
 
     //Specializations - Active
     //Cook
-    public static final RegistryObject<Item> SPECIALIZATION_ITAMAE_ACTIVE = ITEMS.register("specialization_itamae_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook", "itamae", List.of("sandwich_maker", "pasta_maker", "pastry_chef", "pizza_chef")));
-    public static final RegistryObject<Item> SPECIALIZATION_SANDWICH_MAKER_ACTIVE = ITEMS.register("specialization_sandwich_maker_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook", "sandwich_maker", List.of("itamae", "pasta_maker", "pastry_chef", "pizza_chef")));
-    public static final RegistryObject<Item> SPECIALIZATION_PASTA_MAKER_ACTIVE = ITEMS.register("specialization_pasta_maker_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook", "pasta_maker", List.of("itamae", "sandwich_maker", "pastry_chef", "pizza_chef")));
-    public static final RegistryObject<Item> SPECIALIZATION_PASTRY_CHEF_ACTIVE = ITEMS.register("specialization_pastry_chef_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook", "pastry_chef", List.of("itamae", "sandwich_maker", "pasta_maker", "pizza_chef")));
-    public static final RegistryObject<Item> SPECIALIZATION_PIZZA_CHEF_ACTIVE = ITEMS.register("specialization_pizza_chef_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook", "pizza_chef", List.of("itamae", "sandwich_maker", "pasta_maker", "pastry_chef")));
+    public static final RegistryObject<Item> SPECIALIZATION_ITAMAE_ACTIVE = ITEMS.register("specialization_itamae_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "cook", "itamae", List.of("sandwich_maker", "pasta_maker", "pastry_chef", "pizza_chef")));
+    public static final RegistryObject<Item> SPECIALIZATION_SANDWICH_MAKER_ACTIVE = ITEMS.register("specialization_sandwich_maker_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "cook", "sandwich_maker", List.of("itamae", "pasta_maker", "pastry_chef", "pizza_chef")));
+    public static final RegistryObject<Item> SPECIALIZATION_PASTA_MAKER_ACTIVE = ITEMS.register("specialization_pasta_maker_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "cook", "pasta_maker", List.of("itamae", "sandwich_maker", "pastry_chef", "pizza_chef")));
+    public static final RegistryObject<Item> SPECIALIZATION_PASTRY_CHEF_ACTIVE = ITEMS.register("specialization_pastry_chef_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "cook", "pastry_chef", List.of("itamae", "sandwich_maker", "pasta_maker", "pizza_chef")));
+    public static final RegistryObject<Item> SPECIALIZATION_PIZZA_CHEF_ACTIVE = ITEMS.register("specialization_pizza_chef_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "cook", "pizza_chef", List.of("itamae", "sandwich_maker", "pasta_maker", "pastry_chef")));
     //Carpenter
-    public static final RegistryObject<Item> SPECIALIZATION_BUILDER_ACTIVE = ITEMS.register("specialization_builder_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "carpenter", "builder", List.of("sculptor", "decorator")));
-    public static final RegistryObject<Item> SPECIALIZATION_SCULPTOR_ACTIVE = ITEMS.register("specialization_sculptor_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "carpenter", "sculptor", List.of("builder", "decorator")));
-    public static final RegistryObject<Item> SPECIALIZATION_DECORATOR_ACTIVE = ITEMS.register("specialization_decorator_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "carpenter", "decorator", List.of("builder", "sculptor")));
+    public static final RegistryObject<Item> SPECIALIZATION_BUILDER_ACTIVE = ITEMS.register("specialization_builder_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "carpenter", "builder", List.of("sculptor", "decorator")));
+    public static final RegistryObject<Item> SPECIALIZATION_SCULPTOR_ACTIVE = ITEMS.register("specialization_sculptor_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "carpenter", "sculptor", List.of("builder", "decorator")));
+    public static final RegistryObject<Item> SPECIALIZATION_DECORATOR_ACTIVE = ITEMS.register("specialization_decorator_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "carpenter", "decorator", List.of("builder", "sculptor")));
     //Farmer
-    public static final RegistryObject<Item> SPECIALIZATION_FISHERMAN_ACTIVE = ITEMS.register("specialization_fisherman_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "farmer", "fisherman", Collections.singletonList("")));
-    //Wizard
-    public static final RegistryObject<Item> SPECIALIZATION_WIZARD_WARRIOR_ACTIVE = ITEMS.register("specialization_wizard_warrior_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "wizard", "wizard_warrior", Collections.singletonList("wizard_healer")));
-    public static final RegistryObject<Item> SPECIALIZATION_WIZARD_HEALER_ACTIVE = ITEMS.register("specialization_wizard_healer_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "wizard", "wizard_healer", Collections.singletonList("wizard_warrior")));
+    public static final RegistryObject<Item> SPECIALIZATION_FISHERMAN_ACTIVE = ITEMS.register("specialization_fisherman_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "farmer", "fisherman", Collections.singletonList("")));
     //Miner
-    public static final RegistryObject<Item> SPECIALIZATION_OBTAINING_BLOCKS_ACTIVE = ITEMS.register("specialization_obtaining_blocks_active", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "collector", "obtaining_blocks", Collections.singletonList("")));
+    public static final RegistryObject<Item> SPECIALIZATION_OBTAINING_BLOCKS_ACTIVE = ITEMS.register("specialization_obtaining_blocks_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "collector", "obtaining_blocks", Collections.singletonList("")));
 
     //Key
     public static final RegistryObject<Item> KEY = ITEMS.register("key", () -> new Item(new Item.Properties()));

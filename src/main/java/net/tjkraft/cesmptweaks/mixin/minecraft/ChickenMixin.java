@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(Chicken.class)
+@Mixin(value = Chicken.class)
 public abstract class ChickenMixin extends Animal {
     public float flap;
     public float flapSpeed;

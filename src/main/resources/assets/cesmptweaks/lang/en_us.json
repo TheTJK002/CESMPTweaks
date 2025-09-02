@@ -62,11 +62,12 @@
   "item.cesmptweaks.pumpkin_juice": "Pumpkin Juice",
   "item.cesmptweaks.sweet_berry_juice": "Sweet Berry Juice",
 
-  "cesmptweaks.no_milk": "This animal has no more milk",
-  "cesmptweaks.no_place": "This block cannot be placed",
-  "cesmptweaks.no_give_role": "You can't specialize in this because you don't have the basic job",
-  "cesmptweaks.no_more_specialization": "You cannot have more than one specialization",
-  "cesmptweaks.you_already_have_it": "You already have this specialization",
+  "msg.cesmptweaks.no_milk": "This animal has already been milked!",
+  "msg.cesmptweaks.no_place": "This block cannot be placed",
+  "msg.cesmptweaks.no_give_role": "You can't specialize in this because you don't have the basic job",
+  "msg.cesmptweaks.no_more_specialization": "You cannot have more than one specialization",
+  "msg.cesmptweaks.you_already_have_it": "You already have this specialization",
+  "msg.cesmptweaks.specialization_required_job": "§6Required Job: %s",
 
   "jobChoice.cesmptweaks.engineer": "Engineer",
   "jobChoice.cesmptweaks.warrior": "Warrior",
