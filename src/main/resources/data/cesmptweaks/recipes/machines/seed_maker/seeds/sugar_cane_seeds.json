@@ -1,0 +1,13 @@
+{
+  "type": "cesmptweaks:seed_maker",
+  "input": {
+    "item": "minecraft:sugar_cane"
+  },
+  "inputCount": 3,
+  "outputs": [
+    {
+      "item": "cesmptweaks:sugar_cane_seeds",
+      "count": 6
+    }
+  ]
+}

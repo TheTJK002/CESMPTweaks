@@ -1,0 +1,13 @@
+{
+  "type": "cesmptweaks:seed_maker",
+  "input": {
+    "item": "minecraft:wheat"
+  },
+  "inputCount": 3,
+  "outputs": [
+    {
+      "item": "minecraft:wheat_seeds",
+      "count": 6
+    }
+  ]
+}

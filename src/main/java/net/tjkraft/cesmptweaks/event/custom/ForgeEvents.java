@@ -1,13 +1,16 @@
 package net.tjkraft.cesmptweaks.event.custom;
 
-import com.baisylia.culturaldelights.item.ModItems;
+import com.alessandro.astages.util.AStagesUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Player;
@@ -15,10 +18,12 @@ import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -31,7 +36,8 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
-import net.tjkraft.cesmptweaks.compat.culturaldelight.CESMPTweaksCDCompat;
+import net.tjkraft.cesmptweaks.event.custom.util.HungerTickHandler;
+import net.tjkraft.cesmptweaks.event.custom.util.RespawnSavedData;
 
 import java.util.List;
 
@@ -78,24 +84,6 @@ public class ForgeEvents {
                 event.setCancellationResult(InteractionResult.SUCCESS);
             }
         }
-
-        if (ModList.get().isLoaded("culturaldelights")) {
-            if (itemStack.getItem() == ModItems.CORN_KERNELS.get()) {
-                BlockPos placePos = level.getBlockState(pos).canBeReplaced() ? pos : pos.relative(face);
-
-                if (player.mayUseItemAt(placePos, face, itemStack) && level.getBlockState(placePos.below()).canSustainPlant(level, placePos.below(), Direction.UP, (BushBlock) Blocks.WHEAT)) {
-                    if (!level.isClientSide) {
-                        level.setBlock(placePos, CESMPTweaksCDCompat.CORN_CROP.get().defaultBlockState(), 3);
-
-                        if (!player.isCreative()) {
-                            itemStack.shrink(1);
-                        }
-                    }
-                    event.setCanceled(true);
-                    event.setCancellationResult(InteractionResult.SUCCESS);
-                }
-            }
-        }
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -117,6 +105,7 @@ public class ForgeEvents {
     public static void onItemRightClick(PlayerInteractEvent.RightClickItem event) {
         ItemStack itemStack = event.getItemStack();
         Item item = itemStack.getItem();
+
         if (item.builtInRegistryHolder().is(DISABLE_ITEMS)) {
             event.setCanceled(true);
         }
@@ -158,5 +147,71 @@ public class ForgeEvents {
     @SubscribeEvent
     public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
         HungerTickHandler.onPlayerLogout(event.getEntity());
+    }
+
+    @SubscribeEvent
+    public static void interactBlock(PlayerInteractEvent.RightClickBlock event) {
+        BlockPos pos = event.getPos();
+        BlockState state = event.getLevel().getBlockState(pos);
+        ItemStack stack = event.getItemStack();
+
+        if(ModList.get().isLoaded("astages")) {
+            if(!AStagesUtil.hasStage(event.getEntity(), "wizard")) {
+                if(state.is(Blocks.CAULDRON) && stack.getItem() == Items.POTION && stack.hasTag()) {
+                    event.setCanceled(true);
+                }
+            }
+        }
+    }
+
+    //Ore Respawn
+    private static final TagKey<Block> FORGE_ORES = TagKey.create(Registries.BLOCK, new ResourceLocation("forge", "ores"));
+
+    @SubscribeEvent
+    public static void onBlockBreak(BlockEvent.BreakEvent event) {
+        Level level = (Level) event.getLevel();
+
+        if (level.isClientSide()) return;
+
+        BlockPos pos = event.getPos();
+        BlockState state = event.getState();
+
+        if (state.is(FORGE_ORES)) {
+            scheduleRespawn(level, pos, state, 12000);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onWorldTick(TickEvent.LevelTickEvent event) {
+        if (event.phase == TickEvent.Phase.END && !event.level.isClientSide()) {
+            if (event.level instanceof ServerLevel serverLevel) {
+                tick(serverLevel);
+            }
+        }
+    }
+
+    private static void scheduleRespawn(Level level, BlockPos pos, BlockState state, int ticks) {
+        if (!(level instanceof ServerLevel serverLevel)) return;
+
+        long respawnTime = serverLevel.getGameTime() + ticks;
+        RespawnData data = new RespawnData(pos.immutable(), state, respawnTime);
+
+        RespawnSavedData storage = RespawnSavedData.get(serverLevel);
+        storage.add(data);
+    }
+
+    private static void tick(ServerLevel level) {
+        RespawnSavedData storage = RespawnSavedData.get(level);
+
+        long time = level.getGameTime();
+        for (RespawnData data : storage.getRespawns().toArray(new RespawnData[0])) {
+            if (time >= data.respawnTime) {
+                level.setBlockAndUpdate(data.pos, data.state);
+                storage.remove(data);
+            }
+        }
+    }
+
+    public record RespawnData(BlockPos pos, BlockState state, long respawnTime) {
     }
 }

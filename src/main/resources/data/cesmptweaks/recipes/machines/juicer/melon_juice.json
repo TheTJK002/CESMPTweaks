@@ -1,0 +1,9 @@
+{
+  "type": "cesmptweaks:juicer",
+  "input": {
+    "item": "minecraft:melon_slice"
+  },
+  "output": {
+    "item": "cesmptweaks:melon_juice"
+  }
+}

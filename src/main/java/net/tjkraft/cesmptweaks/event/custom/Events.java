@@ -6,35 +6,38 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Cow;
-import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.animal.goat.Goat;
-import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.MerchantContainer;
-import net.minecraft.world.inventory.MerchantMenu;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.player.PlayerContainerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
+import net.tjkraft.cesmptweaks.mobEffect.CESMPTweaksMobEffects;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Mod.EventBusSubscriber(modid = CreateEconomySMPTweaks.MOD_ID)
@@ -94,16 +97,18 @@ public class Events {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void mobDropsAStages(LivingDropsEvent event) {
-        Entity entity = event.getEntity();
-        Entity killer = event.getSource().getEntity();
+        if (ModList.get().isLoaded("astages")) {
 
-        if (!(killer instanceof Player)) event.getDrops().clear();
+            Entity entity = event.getEntity();
+            Entity killer = event.getSource().getEntity();
 
-        if (entity.getType().is(MOB_DROPS) && killer instanceof Player player) {
-            boolean isWarrior = AStagesUtil.hasStage(player, "warrior");
-            if (!isWarrior) event.getDrops().clear();
+            if (!(killer instanceof Player)) event.getDrops().clear();
+
+            if (entity.getType().is(MOB_DROPS) && killer instanceof Player player) {
+                boolean isWarrior = AStagesUtil.hasStage(player, "warrior");
+                if (!isWarrior) event.getDrops().clear();
+            } else event.getDrops().clear();
         }
-
     }
 
     @SubscribeEvent
@@ -115,5 +120,58 @@ public class Events {
         } else if (stack.getItem() == Items.COAL_BLOCK) {
             event.setBurnTime(3600);
         } else event.setBurnTime(0);
+    }
+
+    @SubscribeEvent
+    public static void onLivingDeath(LivingDeathEvent event) {
+        if (event.getEntity().hasEffect(CESMPTweaksMobEffects.UNDYING.get())) {
+            event.setCanceled(true);
+
+            event.getEntity().setHealth(event.getEntity().getMaxHealth());
+
+            event.getEntity().removeEffect(CESMPTweaksMobEffects.UNDYING.get());
+            event.getEntity().level().broadcastEntityEvent(event.getEntity(), (byte) 35);
+        }
+    }
+
+    @SubscribeEvent
+    public static void cropBreak(BlockEvent.BreakEvent event) {
+        Level level = (Level) event.getLevel();
+        BlockState state = event.getState();
+
+        Block block = state.getBlock();
+        if (!(block instanceof CropBlock) && !(block instanceof BushBlock)) return;
+
+        if (!state.hasProperty(CropBlock.AGE)) return;
+
+        int age = state.getValue(CropBlock.AGE);
+        int maxAge;
+
+        if (block instanceof CropBlock crop) {
+            maxAge = crop.getMaxAge();
+        } else {
+            maxAge = Collections.max(state.getProperties().stream()
+                    .filter(p -> p.getName().equals("age"))
+                    .flatMap(p -> p.getPossibleValues().stream())
+                    .map(v -> (Integer) v).toList());
+        }
+
+        event.setCanceled(true);
+        level.removeBlock(event.getPos(), false);
+
+        if (!level.isClientSide) {
+            if (age == 0) {
+                ItemStack seed = block.asItem().getDefaultInstance();
+                Block.popResource(level, event.getPos(), seed);
+            } else if (age >= maxAge) {
+                List<ItemStack> vanillaDrops = Block.getDrops(state, (ServerLevel) level, event.getPos(), null);
+
+                for (ItemStack stack : vanillaDrops) {
+                    if (!(stack.getItem() instanceof BlockItem bi && (bi.getBlock() instanceof CropBlock || bi.getBlock() instanceof BushBlock))) {
+                        Block.popResource(level, event.getPos(), stack);
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,0 +1,13 @@
+{
+  "type": "cesmptweaks:seed_maker",
+  "input": {
+    "item": "minecraft:bamboo"
+  },
+  "inputCount": 3,
+  "outputs": [
+    {
+      "item": "cesmptweaks:bamboo_seeds",
+      "count": 6
+    }
+  ]
+}

@@ -1,10 +1,13 @@
 package net.tjkraft.cesmptweaks;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -16,19 +19,29 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
-import net.tjkraft.cesmptweaks.compat.culturaldelight.CESMPTweaksCDCompat;
+import net.tjkraft.cesmptweaks.block.custom.machines.ber.PotionCauldronBER;
+import net.tjkraft.cesmptweaks.blockTile.CESMPTweaksBlockTiles;
 import net.tjkraft.cesmptweaks.compat.farmersdelight.CESMPTweaksFDCompat;
 import net.tjkraft.cesmptweaks.config.CESMPTweaksClientConfig;
 import net.tjkraft.cesmptweaks.config.CESMPTweaksServerConfig;
+import net.tjkraft.cesmptweaks.gui.custom.CESMPTweaksGUI;
+import net.tjkraft.cesmptweaks.gui.custom.juicer.JuicerScreen;
+import net.tjkraft.cesmptweaks.gui.custom.oreMiner.OreMinerScreen;
+import net.tjkraft.cesmptweaks.gui.custom.seedMaker.SeedMakerScreen;
 import net.tjkraft.cesmptweaks.item.CESMPTweaksCreativeTabs;
 import net.tjkraft.cesmptweaks.item.CESMPTweaksItems;
+import net.tjkraft.cesmptweaks.mobEffect.CESMPTweaksMobEffects;
 import net.tjkraft.cesmptweaks.network.CESMPTweaksNetwork;
+import net.tjkraft.cesmptweaks.potion.custom.LongUndyingPotion;
+import net.tjkraft.cesmptweaks.potion.custom.UndyingPotion;
+import net.tjkraft.cesmptweaks.potion.CESMPTweaksPotions;
+import net.tjkraft.cesmptweaks.recipe.CESMPTweaksRecipes;
 import org.slf4j.Logger;
 
 @Mod(CreateEconomySMPTweaks.MOD_ID)
 public class CreateEconomySMPTweaks {
     public static final String MOD_ID = "cesmptweaks";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public CreateEconomySMPTweaks() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -36,14 +49,18 @@ public class CreateEconomySMPTweaks {
         CESMPTweaksCreativeTabs.CREATIVE_MODE_TAB.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         CESMPTweaksItems.ITEMS.register(modEventBus);
+        CESMPTweaksBlocks.BLOCKS.register(modEventBus);
+        CESMPTweaksBlockTiles.TILES.register(modEventBus);
+        CESMPTweaksGUI.MENUS.register(modEventBus);
+        CESMPTweaksRecipes.SERIALIZERS.register(modEventBus);
+        CESMPTweaksRecipes.RECIPE_TYPES.register(modEventBus);
+        CESMPTweaksMobEffects.MOB_EFFECTS.register(modEventBus);
+        CESMPTweaksPotions.POTIONS.register(modEventBus);
+
         if (ModList.get().isLoaded("farmersdelight")) {
             CESMPTweaksFDCompat.ITEMS_FD.register(modEventBus);
             CESMPTweaksFDCompat.BLOCKS_FD.register(modEventBus);
         }
-        if (ModList.get().isLoaded("culturaldelights")) {
-            CESMPTweaksCDCompat.BLOCKS_CD.register(modEventBus);
-        }
-        CESMPTweaksBlocks.BLOCKS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
@@ -54,6 +71,10 @@ public class CreateEconomySMPTweaks {
 
     public void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(CESMPTweaksNetwork::register);
+        event.enqueueWork(() -> {
+            BrewingRecipeRegistry.addRecipe(new UndyingPotion(null, null, null));
+            BrewingRecipeRegistry.addRecipe(new LongUndyingPotion(null, null, null));
+        });
     }
 
     @SubscribeEvent
@@ -64,6 +85,7 @@ public class CreateEconomySMPTweaks {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            //Render Type
             ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.BAMBOO_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.CARROT_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.COCOA_CROP.get(), RenderType.cutout());
@@ -71,9 +93,16 @@ public class CreateEconomySMPTweaks {
             ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.NETHER_WART_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.SWEET_BERRY_CROP.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.KELP_CROP.get(), RenderType.cutout());
-            if (ModList.get().isLoaded("culturaldelights")) {
-                ItemBlockRenderTypes.setRenderLayer(CESMPTweaksCDCompat.CORN_CROP.get(), RenderType.cutout());
-            }
+            ItemBlockRenderTypes.setRenderLayer(CESMPTweaksBlocks.JUICER.get(), RenderType.translucent());
+
+            //GUI
+            MenuScreens.register(CESMPTweaksGUI.JUICER_GUI.get(), JuicerScreen::new);
+            MenuScreens.register(CESMPTweaksGUI.SEED_MAKER_GUI.get(), SeedMakerScreen::new);
+            MenuScreens.register(CESMPTweaksGUI.ORE_MINER_GUI.get(), OreMinerScreen::new);
+
+            //Block Entity Render
+            BlockEntityRenderers.register(CESMPTweaksBlockTiles.POTION_CAULDRON_BE.get(), PotionCauldronBER::new);
+
         }
     }
 }

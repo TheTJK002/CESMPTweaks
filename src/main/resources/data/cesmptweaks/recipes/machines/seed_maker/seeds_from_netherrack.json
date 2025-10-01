@@ -1,0 +1,20 @@
+{
+  "type": "cesmptweaks:seed_maker",
+  "input": {
+    "item": "minecraft:warped_roots"
+  },
+  "outputs": [
+    {
+      "item": "cesmptweaks:nether_wart_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "cesmptweaks:crimson_fungus_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "cesmptweaks:warped_fungus_seeds",
+      "chance": 0.5
+    }
+  ]
+}

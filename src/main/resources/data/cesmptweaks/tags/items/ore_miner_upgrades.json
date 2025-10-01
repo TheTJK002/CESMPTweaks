@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "cesmptweaks:overworld_upgrade",
+    "cesmptweaks:nether_upgrade",
+    "cesmptweaks:end_upgrade",
+    "cesmptweaks:aether_upgrade"
+  ]
+}

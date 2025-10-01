@@ -42,7 +42,6 @@ public class CESMPTweaksCreativeTabs {
                 }
                 //Items
                 pOutput.accept(CESMPTweaksItems.ANIMAL_OFFER.get());
-                pOutput.accept(CESMPTweaksItems.DIAMOND_FRAGMENT.get());
 
                 //Juices
                 pOutput.accept(CESMPTweaksItems.APPLE_JUICE.get());
@@ -70,14 +69,6 @@ public class CESMPTweaksCreativeTabs {
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_PASTA_MAKER.get());
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_PASTRY_CHEF.get());
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_PIZZA_CHEF.get());
-                //Carpenter
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_BUILDER.get());
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_DECORATOR.get());
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_SCULPTOR.get());
-                //Farmer
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_FISHERMAN.get());
-                //Miner
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_OBTAINING_BLOCKS.get());
 
                 //Specializations - Active
                 //Cook
@@ -86,14 +77,6 @@ public class CESMPTweaksCreativeTabs {
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_PASTA_MAKER_ACTIVE.get());
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_PASTRY_CHEF_ACTIVE.get());
                 pOutput.accept(CESMPTweaksItems.SPECIALIZATION_PIZZA_CHEF_ACTIVE.get());
-                //Carpenter
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_BUILDER_ACTIVE.get());
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_DECORATOR_ACTIVE.get());
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_SCULPTOR_ACTIVE.get());
-                //Farmer
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_FISHERMAN_ACTIVE.get());
-                //Miner
-                pOutput.accept(CESMPTweaksItems.SPECIALIZATION_OBTAINING_BLOCKS_ACTIVE.get());
             })
             .build());
 

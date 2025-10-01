@@ -1,0 +1,9 @@
+{
+  "type": "cesmptweaks:juicer",
+  "input": {
+    "item": "minecraft:glow_berries"
+  },
+  "output": {
+    "item": "cesmptweaks:glow_berry_juice"
+  }
+}

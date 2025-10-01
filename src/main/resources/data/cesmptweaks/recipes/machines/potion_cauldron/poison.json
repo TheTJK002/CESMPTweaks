@@ -1,0 +1,16 @@
+{
+  "type": "cesmptweaks:potion_cauldron",
+  "input": {
+    "item": "minecraft:spider_eye"
+  },
+  "fluid_input": {
+    "fluid": "create:potion",
+    "amount": 500,
+    "nbt": "{Potion:\"minecraft:awkward\"}"
+  },
+  "fluid_output": {
+    "fluid": "create:potion",
+    "amount": 500,
+    "nbt": "{Potion:\"minecraft:poison\"}"
+  }
+}

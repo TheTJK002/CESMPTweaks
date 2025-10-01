@@ -1,0 +1,15 @@
+{
+  "type": "cesmptweaks:potion_cauldron",
+  "input": {
+    "item": "minecraft:nether_wart"
+  },
+  "fluid_input": {
+    "fluid": "minecraft:water",
+    "amount": 500
+  },
+  "fluid_output": {
+    "fluid": "create:potion",
+    "amount": 500,
+    "nbt": "{Potion:\"minecraft:awkward\"}"
+  }
+}

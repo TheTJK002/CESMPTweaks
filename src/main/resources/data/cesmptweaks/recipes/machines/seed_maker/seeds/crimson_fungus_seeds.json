@@ -1,0 +1,13 @@
+{
+  "type": "cesmptweaks:seed_maker",
+  "input": {
+    "item": "minecraft:crimson_fungus"
+  },
+  "inputCount": 3,
+  "outputs": [
+    {
+      "item": "cesmptweaks:crimson_fungus_seeds",
+      "count": 6
+    }
+  ]
+}

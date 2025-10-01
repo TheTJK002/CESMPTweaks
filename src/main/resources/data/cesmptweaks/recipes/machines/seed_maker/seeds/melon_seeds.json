@@ -1,0 +1,13 @@
+{
+  "type": "cesmptweaks:seed_maker",
+  "input": {
+    "item": "minecraft:melon"
+  },
+  "inputCount": 3,
+  "outputs": [
+    {
+      "item": "minecraft:melon_seeds",
+      "count": 6
+    }
+  ]
+}

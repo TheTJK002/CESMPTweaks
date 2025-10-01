@@ -6,6 +6,7 @@
   "refmap": "cesmptweaks.refmap.json",
   "mixins": [
     "minecraft.AnimalMixin",
+    "minecraft.SheepMixin",
     "minecraft.ChickenMixin",
     "minecraft.ItemMixin",
     "minecraft.ItemStackMixin",

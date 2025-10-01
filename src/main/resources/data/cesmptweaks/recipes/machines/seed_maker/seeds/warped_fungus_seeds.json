@@ -1,0 +1,13 @@
+{
+  "type": "cesmptweaks:seed_maker",
+  "input": {
+    "item": "minecraft:warped_fungus"
+  },
+  "inputCount": 3,
+  "outputs": [
+    {
+      "item": "cesmptweaks:warped_fungus_seeds",
+      "count": 6
+    }
+  ]
+}

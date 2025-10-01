@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "cesmptweaks:block/machines/juicer"
+    },
+    "facing=east": {
+      "model": "cesmptweaks:block/machines/juicer",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "cesmptweaks:block/machines/juicer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "cesmptweaks:block/machines/juicer",
+      "y": 270
+    }
+  }
+}

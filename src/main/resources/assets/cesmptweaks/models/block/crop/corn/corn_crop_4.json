@@ -1,7 +1,0 @@
-{
-  "parent": "cesmptweaks:block/template/cross_2",
-  "textures": {
-    "cross": "culturaldelights:block/corn_supporting",
-    "cross_2": "culturaldelights:block/corn_upper_stage0"
-  }
-}

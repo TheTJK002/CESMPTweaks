@@ -34,7 +34,6 @@ public class CESMPTweaksItems {
     public static final RegistryObject<Item> CRIMSON_FUNGUS_SEEDS = ITEMS.register("crimson_fungus_seeds", () -> new ItemNameBlockItem(CESMPTweaksBlocks.CRIMSON_FUNGUS_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> NETHER_WART_SEEDS = ITEMS.register("nether_wart_seeds", () -> new ItemNameBlockItem(CESMPTweaksBlocks.NETHER_WART_CROP.get(), new Item.Properties()));
 
-
     //Specializations - Inactive
     //Cook
     public static final RegistryObject<Item> SPECIALIZATION_ITAMAE = ITEMS.register("specialization_itamae", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook"));
@@ -42,14 +41,6 @@ public class CESMPTweaksItems {
     public static final RegistryObject<Item> SPECIALIZATION_PASTA_MAKER = ITEMS.register("specialization_pasta_maker", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook"));
     public static final RegistryObject<Item> SPECIALIZATION_PASTRY_CHEF = ITEMS.register("specialization_pastry_chef", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook"));
     public static final RegistryObject<Item> SPECIALIZATION_PIZZA_CHEF = ITEMS.register("specialization_pizza_chef", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "cook"));
-    //Carpenter
-    public static final RegistryObject<Item> SPECIALIZATION_BUILDER = ITEMS.register("specialization_builder", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "carpenter"));
-    public static final RegistryObject<Item> SPECIALIZATION_SCULPTOR = ITEMS.register("specialization_sculptor", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "carpenter"));
-    public static final RegistryObject<Item> SPECIALIZATION_DECORATOR = ITEMS.register("specialization_decorator", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "carpenter"));
-    //Farmer
-    public static final RegistryObject<Item> SPECIALIZATION_FISHERMAN = ITEMS.register("specialization_fisherman", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "farmer"));
-    //Miner
-    public static final RegistryObject<Item> SPECIALIZATION_OBTAINING_BLOCKS = ITEMS.register("specialization_obtaining_blocks", () -> new SpecializationItem(new Item.Properties().stacksTo(1), "collector"));
 
     //Specializations - Active
     //Cook
@@ -58,14 +49,6 @@ public class CESMPTweaksItems {
     public static final RegistryObject<Item> SPECIALIZATION_PASTA_MAKER_ACTIVE = ITEMS.register("specialization_pasta_maker_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "cook", "pasta_maker", List.of("itamae", "sandwich_maker", "pastry_chef", "pizza_chef")));
     public static final RegistryObject<Item> SPECIALIZATION_PASTRY_CHEF_ACTIVE = ITEMS.register("specialization_pastry_chef_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "cook", "pastry_chef", List.of("itamae", "sandwich_maker", "pasta_maker", "pizza_chef")));
     public static final RegistryObject<Item> SPECIALIZATION_PIZZA_CHEF_ACTIVE = ITEMS.register("specialization_pizza_chef_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "cook", "pizza_chef", List.of("itamae", "sandwich_maker", "pasta_maker", "pastry_chef")));
-    //Carpenter
-    public static final RegistryObject<Item> SPECIALIZATION_BUILDER_ACTIVE = ITEMS.register("specialization_builder_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "carpenter", "builder", List.of("sculptor", "decorator")));
-    public static final RegistryObject<Item> SPECIALIZATION_SCULPTOR_ACTIVE = ITEMS.register("specialization_sculptor_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "carpenter", "sculptor", List.of("builder", "decorator")));
-    public static final RegistryObject<Item> SPECIALIZATION_DECORATOR_ACTIVE = ITEMS.register("specialization_decorator_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "carpenter", "decorator", List.of("builder", "sculptor")));
-    //Farmer
-    public static final RegistryObject<Item> SPECIALIZATION_FISHERMAN_ACTIVE = ITEMS.register("specialization_fisherman_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "farmer", "fisherman", Collections.singletonList("")));
-    //Miner
-    public static final RegistryObject<Item> SPECIALIZATION_OBTAINING_BLOCKS_ACTIVE = ITEMS.register("specialization_obtaining_blocks_active", () -> new SpecializationActiveItem(new Item.Properties().stacksTo(1), "collector", "obtaining_blocks", Collections.singletonList("")));
 
     //Key
     public static final RegistryObject<Item> KEY = ITEMS.register("key", () -> new Item(new Item.Properties()));
@@ -85,6 +68,18 @@ public class CESMPTweaksItems {
 
     //Items
     public static final RegistryObject<Item> ANIMAL_OFFER = ITEMS.register("animal_offer", () -> new AnimalOffer(new Item.Properties()));
-    public static final RegistryObject<Item> DIAMOND_FRAGMENT = ITEMS.register("diamond_fragment", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> JOB_CHOICE = ITEMS.register("job_choice", () -> new JobChoice(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> HONEYCOMB_CAST = ITEMS.register("honeycomb_cast", () -> new Item(new Item.Properties().stacksTo(1)));
+
+    //Ore Miner ~ Upgrades
+    public static final RegistryObject<Item> OVERWORLD_UPGRADE = ITEMS.register("overworld_upgrade", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> NETHER_UPGRADE = ITEMS.register("nether_upgrade", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> END_UPGRADE = ITEMS.register("end_upgrade", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> AETHER_UPGRADE = ITEMS.register("aether_upgrade", () -> new Item(new Item.Properties().stacksTo(1)));
+
+    //Smithing Upgrade
+    public static final RegistryObject<Item> STONE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("stone_upgrade_smithing_template", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> IRON_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("iron_upgrade_smithing_template", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("gold_upgrade_smithing_template", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DIAMOND_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("diamond_upgrade_smithing_template", () -> new Item(new Item.Properties()));
 }

@@ -1,0 +1,68 @@
+{
+  "type": "cesmptweaks:seed_maker",
+  "input": {
+    "item": "minecraft:grass"
+  },
+  "outputs": [
+    {
+      "item": "minecraft:wheat_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "minecraft:pumpkin_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "minecraft:melon_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "minecraft:beetroot_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "minecraft:torchflower_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "cesmptweaks:bamboo_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "cesmptweaks:cactus_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "cesmptweaks:carrot_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "cesmptweaks:potato_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "cesmptweaks:kelp_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "cesmptweaks:cocoa_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "cesmptweaks:brown_mushroom_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "cesmptweaks:red_mushroom_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "cesmptweaks:sugar_cane_seeds",
+      "chance": 0.5
+    },
+    {
+      "item": "cesmptweaks:sweet_berry_seeds",
+      "chance": 0.5
+    }
+  ]
+}

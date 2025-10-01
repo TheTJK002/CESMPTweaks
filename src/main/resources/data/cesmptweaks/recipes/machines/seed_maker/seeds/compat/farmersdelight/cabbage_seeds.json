@@ -1,0 +1,19 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "type": "cesmptweaks:seed_maker",
+  "input": {
+    "item": "farmersdelight:cabbage"
+  },
+  "inputCount": 3,
+  "outputs": [
+    {
+      "item": "farmersdelight:cabbage_seeds",
+      "count": 6
+    }
+  ]
+}

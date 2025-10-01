@@ -19,7 +19,6 @@
   "item.cesmptweaks.rice_seeds": "Rice Seeds",
 
   "item.cesmptweaks.animal_offer": "Animal Offer",
-  "item.cesmptweaks.diamond_fragment": "Diamond Fragment",
 
   "item.cesmptweaks.key": "Key",
   "item.cesmptweaks.nether_key": "Nether Key",
@@ -33,26 +32,12 @@
   "item.cesmptweaks.specialization_pasta_maker": "Specialization: §6Pasta Maker",
   "item.cesmptweaks.specialization_pastry_chef": "Specialization: §6Pastry Chef",
   "item.cesmptweaks.specialization_pizza_chef": "Specialization: §6Pizza Chef",
-  "item.cesmptweaks.specialization_builder": "Specialization: §6Builder",
-  "item.cesmptweaks.specialization_sculptor": "Specialization: §6Sculptor",
-  "item.cesmptweaks.specialization_decorator": "Specialization: §6Decorator",
-  "item.cesmptweaks.specialization_fisherman": "Specialization: §6Fisherman",
-  "item.cesmptweaks.specialization_wizard_warrior": "Specialization: §6Wizard Warrior",
-  "item.cesmptweaks.specialization_wizard_healer": "Specialization: §6Wizard Healer",
-  "item.cesmptweaks.specialization_obtaining_blocks": "Specialization: §6Obtaining Blocks",
 
   "item.cesmptweaks.specialization_itamae_active": "Specialization: §6Itamae §f(§aActive§f)",
   "item.cesmptweaks.specialization_sandwich_maker_active": "Specialization: §6Sandwich Maker §f(§aActive§f)",
   "item.cesmptweaks.specialization_pasta_maker_active": "Specialization: §6Pasta Maker §f(§aActive§f)",
   "item.cesmptweaks.specialization_pastry_chef_active": "Specialization: §6Pastry Chef §f(§aActive§f)",
   "item.cesmptweaks.specialization_pizza_chef_active": "Specialization: §6Pizza Chef §f(§aActive§f)",
-  "item.cesmptweaks.specialization_builder_active": "Specialization: §6Builder §f(§aActive§f)",
-  "item.cesmptweaks.specialization_sculptor_active": "Specialization: §6Sculptor §f(§aActive§f)",
-  "item.cesmptweaks.specialization_decorator_active": "Specialization: §6Decorator §f(§aActive§f)",
-  "item.cesmptweaks.specialization_fisherman_active": "Specialization: §6Fisherman §f(§aActive§f)",
-  "item.cesmptweaks.specialization_wizard_warrior_active": "Specialization: §6Wizard Warrior §f(§aActive§f)",
-  "item.cesmptweaks.specialization_wizard_healer_active": "Specialization: §6Wizard Healer §f(§aActive§f)",
-  "item.cesmptweaks.specialization_obtaining_blocks_active": "Specialization: §6Obtaining Blocks §f(§aActive§f)",
 
   "item.cesmptweaks.apple_juice": "Apple Juice",
   "item.cesmptweaks.beetroot_juice": "Beetroot Juice",
@@ -61,6 +46,11 @@
   "item.cesmptweaks.melon_juice": "Melon Juice",
   "item.cesmptweaks.pumpkin_juice": "Pumpkin Juice",
   "item.cesmptweaks.sweet_berry_juice": "Sweet Berry Juice",
+
+  "item.cesmptweaks.overworld_upgrade": "Overworld Upgrade",
+  "item.cesmptweaks.nether_upgrade": "Nether Upgrade",
+  "item.cesmptweaks.end_upgrade": "End Upgrade",
+  "item.cesmptweaks.aether_upgrade": "Aether Upgrade",
 
   "msg.cesmptweaks.no_milk": "This animal has already been milked!",
   "msg.cesmptweaks.no_place": "This block cannot be placed",
@@ -76,5 +66,11 @@
   "jobChoice.cesmptweaks.farmer": "Farmer",
   "jobChoice.cesmptweaks.cook": "Cook",
   "jobChoice.cesmptweaks.blacksmith": "Blacksmith",
-  "jobChoice.cesmptweaks.collector": "Collector"
+  "jobChoice.cesmptweaks.collector": "Collector",
+
+  "block.cesmptweaks.seed_maker": "Seed Maker",
+  "block.cesmptweaks.juicer": "Juicer",
+  "block.cesmptweaks.miner": "Miner",
+  "block.cesmptweaks.potion_cauldron": "Cauldron",
+  "tooltip.cesmptweaks.required_fire": "Requires fire below"
 }

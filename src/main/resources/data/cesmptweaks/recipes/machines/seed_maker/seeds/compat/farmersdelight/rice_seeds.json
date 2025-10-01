@@ -1,0 +1,19 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "type": "cesmptweaks:seed_maker",
+  "input": {
+    "item": "farmersdelight:rice_panicle"
+  },
+  "inputCount": 3,
+  "outputs": [
+    {
+      "item": "cesmptweaks:rice_seeds",
+      "count": 6
+    }
+  ]
+}
