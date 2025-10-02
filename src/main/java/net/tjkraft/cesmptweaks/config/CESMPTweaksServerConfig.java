@@ -11,6 +11,7 @@ public class CESMPTweaksServerConfig {
     public static final ForgeConfigSpec.DoubleValue SATURATION;
 
     public static final ForgeConfigSpec.IntValue TICKS_PER_HUNGER_LOSS;
+    public static final ForgeConfigSpec.IntValue RESPAWN_ORES;
 
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
@@ -39,6 +40,12 @@ public class CESMPTweaksServerConfig {
         TICKS_PER_HUNGER_LOSS = builder
                 .comment("Choose how much hunger should drop per tick (20 ticks = 1 second)")
                 .defineInRange("ticks_betweenHunger_loss", 9000, 0, 1728000);
+        builder.pop();
+
+        builder.push("Respawn Ores Setting");
+        RESPAWN_ORES = builder
+                .comment("Choose how often the minerals should respawn (20 ticks = 1 second)")
+                .defineInRange("respawn_ores", 12000, 0, 1728000);
         builder.pop();
 
         SERVER_CONFIG = builder.build();

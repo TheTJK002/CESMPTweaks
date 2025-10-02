@@ -13,7 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
-import net.tjkraft.cesmptweaks.compat.farmersdelight.CESMPTweaksFDCompat;
+import net.tjkraft.cesmptweaks.block.custom.compat.farmersdelight.CESMPTweaksFDCompat;
 
 public class CESMPTweaksCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CreateEconomySMPTweaks.MOD_ID);

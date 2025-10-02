@@ -28,7 +28,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.tjkraft.cesmptweaks.blockTile.custom.PotionCauldronBE;
@@ -106,26 +105,47 @@ public class PotionCauldronBlock extends BaseEntityBlock {
         }
 
         if (held.getItem() == Items.POTION) {
-            CompoundTag potionTag = held.getTag() == null ? new CompoundTag() : held.getTag().copy();
+            if (PotionUtils.getPotion(held) == Potions.WATER) {
+                FluidStack waterFluid = new FluidStack(Fluids.WATER, 250);
 
-            FluidStack potionFluid = new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation("create:potion")), 250, potionTag);
+                int canFill = cauldron.getInputTank().fill(waterFluid, IFluidHandler.FluidAction.SIMULATE);
+                if (canFill == 250) {
+                    cauldron.getInputTank().fill(waterFluid, IFluidHandler.FluidAction.EXECUTE);
 
-            int canFill = cauldron.getInputTank().fill(potionFluid, IFluidHandler.FluidAction.SIMULATE);
-            if (canFill == 250) {
-                cauldron.getInputTank().fill(potionFluid, IFluidHandler.FluidAction.EXECUTE);
-
-                if (!player.isCreative()) {
-                    held.shrink(1);
-                    ItemStack emptyBottle = new ItemStack(Items.GLASS_BOTTLE);
-                    if (!player.addItem(emptyBottle)) {
-                        player.drop(emptyBottle, false);
+                    if (!player.isCreative()) {
+                        held.shrink(1);
+                        ItemStack emptyBottle = new ItemStack(Items.GLASS_BOTTLE);
+                        if (!player.addItem(emptyBottle)) {
+                            player.drop(emptyBottle, false);
+                        }
                     }
-                }
 
-                cauldron.setChanged();
-                level.sendBlockUpdated(pos, state, state, 3);
-                return InteractionResult.CONSUME;
+                    cauldron.setChanged();
+                    level.sendBlockUpdated(pos, state, state, 3);
+                    return InteractionResult.CONSUME;
+                }
+            } else {
+                CompoundTag potionTag = held.getTag() == null ? new CompoundTag() : held.getTag().copy();
+                FluidStack potionFluid = new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation("create:potion")), 250, potionTag);
+
+                int canFill = cauldron.getInputTank().fill(potionFluid, IFluidHandler.FluidAction.SIMULATE);
+                if (canFill == 250) {
+                    cauldron.getInputTank().fill(potionFluid, IFluidHandler.FluidAction.EXECUTE);
+
+                    if (!player.isCreative()) {
+                        held.shrink(1);
+                        ItemStack emptyBottle = new ItemStack(Items.GLASS_BOTTLE);
+                        if (!player.addItem(emptyBottle)) {
+                            player.drop(emptyBottle, false);
+                        }
+                    }
+
+                    cauldron.setChanged();
+                    level.sendBlockUpdated(pos, state, state, 3);
+                    return InteractionResult.CONSUME;
+                }
             }
+
             return InteractionResult.PASS;
         }
 
@@ -149,21 +169,26 @@ public class PotionCauldronBlock extends BaseEntityBlock {
 
         if (held.is(Items.GLASS_BOTTLE)) {
             FluidStack source = cauldron.getOutputTank().getFluid();
-
             if (source.isEmpty()) {
                 source = cauldron.getInputTank().getFluid();
             }
 
             if (!source.isEmpty() && source.getAmount() >= 250) {
-                ItemStack potion = new ItemStack(Items.POTION);
-                if (source.hasTag()) {
-                    potion.setTag(source.getTag().copy());
+                ItemStack resultBottle;
+
+                if (source.getFluid().isSame(Fluids.WATER)) {
+                    resultBottle = PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER);
+                } else {
+                    resultBottle = new ItemStack(Items.POTION);
+                    if (source.hasTag()) {
+                        resultBottle.setTag(source.getTag().copy());
+                    }
                 }
 
                 if (!player.isCreative()) {
                     held.shrink(1);
-                    if (!player.addItem(potion)) {
-                        player.drop(potion, false);
+                    if (!player.addItem(resultBottle)) {
+                        player.drop(resultBottle, false);
                     }
                 }
 
@@ -175,7 +200,6 @@ public class PotionCauldronBlock extends BaseEntityBlock {
 
                 cauldron.setChanged();
                 level.sendBlockUpdated(pos, state, state, 3);
-
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
 

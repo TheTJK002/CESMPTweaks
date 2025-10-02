@@ -1,4 +1,4 @@
-package net.tjkraft.cesmptweaks.compat.farmersdelight.custom;
+package net.tjkraft.cesmptweaks.block.custom.compat.farmersdelight.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,7 +20,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.tjkraft.cesmptweaks.compat.farmersdelight.CESMPTweaksFDCompat;
+import net.tjkraft.cesmptweaks.block.custom.compat.farmersdelight.CESMPTweaksFDCompat;
 
 public class RiceCrop extends CropBlock implements SimpleWaterloggedBlock {
     public static final int MAX_AGE = 7;

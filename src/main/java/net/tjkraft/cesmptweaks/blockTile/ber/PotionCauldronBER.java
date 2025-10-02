@@ -1,4 +1,4 @@
-package net.tjkraft.cesmptweaks.block.custom.machines.ber;
+package net.tjkraft.cesmptweaks.blockTile.ber;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

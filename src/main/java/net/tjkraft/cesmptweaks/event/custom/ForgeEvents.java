@@ -36,6 +36,7 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
+import net.tjkraft.cesmptweaks.config.CESMPTweaksServerConfig;
 import net.tjkraft.cesmptweaks.event.custom.util.HungerTickHandler;
 import net.tjkraft.cesmptweaks.event.custom.util.RespawnSavedData;
 
@@ -177,7 +178,7 @@ public class ForgeEvents {
         BlockState state = event.getState();
 
         if (state.is(FORGE_ORES)) {
-            scheduleRespawn(level, pos, state, 12000);
+            scheduleRespawn(level, pos, state, CESMPTweaksServerConfig.RESPAWN_ORES.get());
         }
     }
 

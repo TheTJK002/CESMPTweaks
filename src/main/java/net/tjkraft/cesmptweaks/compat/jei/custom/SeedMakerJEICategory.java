@@ -14,9 +14,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
-import net.tjkraft.cesmptweaks.recipe.custom.JuicerRecipe;
 import net.tjkraft.cesmptweaks.recipe.custom.SeedMakerRecipe;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class SeedMakerJEICategory implements IRecipeCategory<SeedMakerRecipe> {
     public static final ResourceLocation UID = new ResourceLocation(CreateEconomySMPTweaks.MOD_ID, "seed_maker");
@@ -26,7 +29,7 @@ public class SeedMakerJEICategory implements IRecipeCategory<SeedMakerRecipe> {
     private final IDrawable icon;
 
     public SeedMakerJEICategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE,0,0, 108,114);
+        this.background = helper.createDrawable(TEXTURE, 0, 0, 108, 114);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(CESMPTweaksBlocks.SEED_MAKER.get()));
     }
 
@@ -52,16 +55,18 @@ public class SeedMakerJEICategory implements IRecipeCategory<SeedMakerRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder build, SeedMakerRecipe seedMakerRecipe, IFocusGroup iFocusGroup) {
-        for (ItemStack stack : seedMakerRecipe.getInput().getItems()) {
-            build.addSlot(RecipeIngredientRole.INPUT, 46, 1).addItemStack(new ItemStack(stack.getItem(), seedMakerRecipe.getInputCount()));
-        }
+        List<ItemStack> inputStacks = Arrays.stream(seedMakerRecipe.getInput().getItems())
+                .map(s -> new ItemStack(s.getItem(), seedMakerRecipe.getInputCount()))
+                .collect(Collectors.toList());
+        build.addSlot(RecipeIngredientRole.INPUT, 46, 1)
+                .addItemStacks(inputStacks);
 
         int xStart = 1, yStart = 43;
         int i = 0;
         for (SeedMakerRecipe.ChanceResult cr : seedMakerRecipe.getOutputs()) {
             int x = xStart + (i % 6) * 18;
             int y = yStart + (i / 6) * 18;
-            build.addSlot(RecipeIngredientRole.OUTPUT,x,y)
+            build.addSlot(RecipeIngredientRole.OUTPUT, x, y)
                     .addItemStack(cr.stack)
                     .addTooltipCallback(((iRecipeSlotView, tooltip) -> {
                         tooltip.add(Component.literal(String.format("Chance: %.0f%%", cr.chance * 100)).withStyle(ChatFormatting.GOLD));

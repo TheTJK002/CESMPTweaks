@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.CombinedInvWrapper;
@@ -118,18 +119,20 @@ public class JuicerBE extends BlockEntity implements MenuProvider {
         if (match.isPresent() && !juicerBE.sugarSlot.getStackInSlot(0).isEmpty() && !juicerBE.bottleSlot.getStackInSlot(0).isEmpty()) {
             JuicerRecipe recipe = match.get();
 
-            if (level.getServer() != null) {
-                AtomicReference<UUID> atomicOwner = new AtomicReference<>();
-                juicerBE.getCapability(BlockStageProvider.BLOCK_STAGE).ifPresent(blockStage -> {
-                    atomicOwner.set(blockStage.getOwner());
-                });
-                UUID blockOwner = atomicOwner.get();
-                Player player = AStagesUtil.getPlayerFromUUID(level.getServer(), blockOwner);
+            if (ModList.get().isLoaded("astages")) {
+                if (level.getServer() != null) {
+                    AtomicReference<UUID> atomicOwner = new AtomicReference<>();
+                    juicerBE.getCapability(BlockStageProvider.BLOCK_STAGE).ifPresent(blockStage -> {
+                        atomicOwner.set(blockStage.getOwner());
+                    });
+                    UUID blockOwner = atomicOwner.get();
+                    Player player = AStagesUtil.getPlayerFromUUID(level.getServer(), blockOwner);
 
-                if (player != null) {
-                    ABaseRecipeRestriction<? extends ARestriction<?, ?, ?>, ?, ?> restriction = ARestrictionManager.RECIPE_INSTANCE.getRestriction(player, new RecipeWrapper(recipe.getType(), recipe.getId()));
-                    if (restriction != null) {
-                        juicerBE.progress = 0;
+                    if (player != null) {
+                        ABaseRecipeRestriction<? extends ARestriction<?, ?, ?>, ?, ?> restriction = ARestrictionManager.RECIPE_INSTANCE.getRestriction(player, new RecipeWrapper(recipe.getType(), recipe.getId()));
+                        if (restriction != null) {
+                            juicerBE.progress = 0;
+                        }
                     }
                 }
             }
@@ -161,10 +164,16 @@ public class JuicerBE extends BlockEntity implements MenuProvider {
     }
 
     //Capability
-
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if(cap == ForgeCapabilities.ITEM_HANDLER) return combinedHandler.cast();
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
+            if (side == null) return combinedHandler.cast();
+            if (side == Direction.UP) {
+                return inputHandler.cast();
+            } else {
+                return outputHandler.cast();
+            }
+        }
         return super.getCapability(cap, side);
     }
 

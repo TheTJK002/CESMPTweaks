@@ -1,10 +1,15 @@
 package net.tjkraft.cesmptweaks.blockTile.custom;
 
+import com.alessandro.astages.capability.BlockStageProvider;
+import com.alessandro.astages.core.ARestrictionManager;
+import com.alessandro.astages.core.server.restriction.recipe.ABaseRecipeRestriction;
+import com.alessandro.astages.core.wrapper.RecipeWrapper;
+import com.alessandro.astages.store.server.ARestriction;
+import com.alessandro.astages.util.AStagesUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -18,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.CombinedInvWrapper;
@@ -30,6 +36,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class OreMinerBE extends BlockEntity implements MenuProvider {
     public final ContainerData data;
@@ -113,18 +121,32 @@ public class OreMinerBE extends BlockEntity implements MenuProvider {
             return;
         }
 
-        Optional<OreMinerRecipe> match = level.getRecipeManager()
-                .getAllRecipesFor(CESMPTweaksRecipes.ORE_MINER_TYPE.get()).stream()
-                .filter(r -> r.matches(new OreMinerContainer(pickaxe, upgrade), level))
-                .findFirst();
+        Optional<OreMinerRecipe> match = level.getRecipeManager().getAllRecipesFor(CESMPTweaksRecipes.ORE_MINER_TYPE.get()).stream().filter(r -> r.matches(new OreMinerContainer(pickaxe, upgrade), level)).findFirst();
 
         if (match.isPresent()) {
-            be.progress++;
+            OreMinerRecipe recipe = match.get();
 
+            if (ModList.get().isLoaded("astages")) {
+                if (level.getServer() != null) {
+                    AtomicReference<UUID> atomicOwner = new AtomicReference<>();
+                    be.getCapability(BlockStageProvider.BLOCK_STAGE).ifPresent(blockStage -> {
+                        atomicOwner.set(blockStage.getOwner());
+                    });
+                    UUID blockOwner = atomicOwner.get();
+                    Player player = AStagesUtil.getPlayerFromUUID(level.getServer(), blockOwner);
+
+                    if (player != null) {
+                        ABaseRecipeRestriction<? extends ARestriction<?, ?, ?>, ?, ?> restriction = ARestrictionManager.RECIPE_INSTANCE.getRestriction(player, new RecipeWrapper(recipe.getType(), recipe.getId()));
+                        if (restriction != null) {
+                            be.progress = 0;
+                        }
+                    }
+                }
+            }
+            be.progress++;
             if (be.progress >= be.maxProgress) {
                 be.progress = 0;
 
-                OreMinerRecipe recipe = match.get();
                 RandomSource rand = level.getRandom();
 
                 for (OreMinerRecipe.ChanceResult out : recipe.getOutputs()) {
@@ -172,10 +194,7 @@ public class OreMinerBE extends BlockEntity implements MenuProvider {
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         if (cap == ForgeCapabilities.ITEM_HANDLER) {
-            if (side == null) {
-                return combinedHandler.cast();
-            }
-
+            if (side == null) return combinedHandler.cast();
             if (side == Direction.UP) {
                 return inputAndUpgradeHandler.cast();
             } else {

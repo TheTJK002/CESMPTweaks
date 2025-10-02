@@ -14,7 +14,14 @@ public class OreMinerScreen extends AbstractContainerScreen<OreMinerGUI> {
 
     public OreMinerScreen(OreMinerGUI pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
-        this.imageWidth = 203; this.imageHeight = 245;
+        this.imageWidth = 203;
+        this.imageHeight = 245;
+        this.inventoryLabelY = 152;
+    }
+
+    private int getProgress(int pixels) {
+        if (menu.maxProgress() == 0) return 0;
+        return menu.progress() * pixels / menu.maxProgress();
     }
 
     @Override
@@ -26,6 +33,10 @@ public class OreMinerScreen extends AbstractContainerScreen<OreMinerGUI> {
         int y = (height - imageHeight) / 2;
 
         pGuiGraphics.blit(GUI, x, y, 0, 0, imageWidth, imageHeight);
+        int arrowSize = getProgress(22);
+        if (arrowSize > 0) {
+            pGuiGraphics.blit(GUI, leftPos + 80, topPos + 45, 206, 0, 15, arrowSize);
+        }
     }
 
     @Override

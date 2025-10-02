@@ -42,7 +42,7 @@ public class CESMPTweaksBlocks {
     //Machines
     public static final RegistryObject<Block> JUICER = registerBlock("juicer", () -> new JuicerBlock(BlockBehaviour.Properties.of().noOcclusion()));
     public static final RegistryObject<Block> SEED_MAKER = registerBlock("seed_maker", () -> new SeedMakerBlock(BlockBehaviour.Properties.of().noOcclusion()));
-    public static final RegistryObject<Block> ORE_MINER = registerBlock("miner", () -> new OreMinerBlock(BlockBehaviour.Properties.of().noOcclusion()));
+    public static final RegistryObject<Block> ORE_MINER = registerBlock("ore_miner", () -> new OreMinerBlock(BlockBehaviour.Properties.of().noOcclusion()));
     public static final RegistryObject<Block> POTION_CAULDRON = registerBlock("potion_cauldron", () -> new PotionCauldronBlock(BlockBehaviour.Properties.of().noOcclusion()));
 
     public static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

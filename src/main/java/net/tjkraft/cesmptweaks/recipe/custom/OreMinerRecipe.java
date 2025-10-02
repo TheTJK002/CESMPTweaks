@@ -3,7 +3,6 @@ package net.tjkraft.cesmptweaks.recipe.custom;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -130,8 +129,8 @@ public class OreMinerRecipe implements Recipe<OreMinerContainer> {
                         ForgeRegistries.ITEMS.getValue(new ResourceLocation(obj.get("item").getAsString()))
                 );
                 float chance = obj.has("chance") ? obj.get("chance").getAsFloat() : 1.0f;
-                int min = obj.has("min") ? obj.get("min").getAsInt() : 1;
-                int max = obj.has("max") ? obj.get("max").getAsInt() : 1;
+                int min = obj.has("minRolls") ? obj.get("minRolls").getAsInt() : 1;
+                int max = obj.has("maxRolls") ? obj.get("maxRolls").getAsInt() : 1;
                 outputs.add(new ChanceResult(stack, chance, min, max));
             }
 

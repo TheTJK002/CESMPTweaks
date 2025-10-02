@@ -1,10 +1,17 @@
 package net.tjkraft.cesmptweaks.blockTile.custom;
 
+import com.alessandro.astages.capability.BlockStageProvider;
+import com.alessandro.astages.core.ARestrictionManager;
+import com.alessandro.astages.core.server.restriction.recipe.ABaseRecipeRestriction;
+import com.alessandro.astages.core.wrapper.RecipeWrapper;
+import com.alessandro.astages.store.server.ARestriction;
+import com.alessandro.astages.util.AStagesUtil;
 import com.simibubi.create.foundation.fluid.CombinedTankWrapper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -16,6 +23,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.tjkraft.cesmptweaks.blockTile.CESMPTweaksBlockTiles;
@@ -25,6 +33,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class PotionCauldronBE extends BlockEntity {
 
@@ -96,26 +106,22 @@ public class PotionCauldronBE extends BlockEntity {
     public static void tick(Level level, BlockPos pos, BlockState state, PotionCauldronBE be) {
         if (level.isClientSide) return;
 
-        // 🔥 serve fuoco sotto
         if (!level.getBlockState(pos.below()).is(Blocks.FIRE)) {
             return;
         }
 
-        // Se non stiamo già craftando → cerca ricetta con inputTank
         if (be.activeRecipe == null) {
             ItemStack stack = be.input.getStackInSlot(0);
             FluidStack inFluid = be.inputTank.getFluid();
             FluidStack outFluid = be.outputTank.getFluid();
 
-            // Prima prova a usare inputTank + item
             Optional<PotionCauldronRecipe> recipeOpt = level.getRecipeManager().getAllRecipesFor(CESMPTweaksRecipes.POTION_CAULDRON_TYPE.get()).stream().filter(r -> r.getItemInput().test(stack)).filter(r -> !r.getFluidInput().isEmpty() && inFluid.containsFluid(r.getFluidInput())).filter(r -> {
                 if (be.outputTank.isEmpty()) return true;
                 return outFluid.isFluidEqual(r.getFluidOutput()) && outFluid.getAmount() + r.getFluidOutput().getAmount() <= be.outputTank.getCapacity();
             }).findFirst();
 
             if (recipeOpt.isEmpty() && !outFluid.isEmpty()) {
-                // Se non c’è una ricetta con inputTank, prova a usare l’outputTank come input
-                recipeOpt = level.getRecipeManager().getAllRecipesFor(CESMPTweaksRecipes.POTION_CAULDRON_TYPE.get()).stream().filter(r -> r.getItemInput().test(stack)).filter(r -> outFluid.containsFluid(r.getFluidInput())) // usa outputTank come input
+                recipeOpt = level.getRecipeManager().getAllRecipesFor(CESMPTweaksRecipes.POTION_CAULDRON_TYPE.get()).stream().filter(r -> r.getItemInput().test(stack)).filter(r -> outFluid.containsFluid(r.getFluidInput()))
                         .filter(r -> {
                             if (be.inputTank.isEmpty()) return true;
                             FluidStack in = be.inputTank.getFluid();
@@ -123,7 +129,6 @@ public class PotionCauldronBE extends BlockEntity {
                         }).findFirst();
 
                 if (recipeOpt.isPresent()) {
-                    // Sposta fluido dall’output all’input per continuare il ciclo
                     be.inputTank.fill(new FluidStack(outFluid.getFluid(), outFluid.getAmount(), outFluid.getTag()), IFluidHandler.FluidAction.EXECUTE);
                     be.outputTank.drain(outFluid.getAmount(), IFluidHandler.FluidAction.EXECUTE);
                 }
@@ -133,13 +138,32 @@ public class PotionCauldronBE extends BlockEntity {
                 be.activeRecipe = r;
                 be.progress = 0;
                 be.maxProgress = be.maxProgress;
-                stack.shrink(1);
             });
 
         } else {
-            // crafting in corso
-            be.progress++;
+            if (ModList.get().isLoaded("astages")) {
+                if (level.getServer() != null) {
+                    AtomicReference<UUID> atomicOwner = new AtomicReference<>();
+                    be.getCapability(BlockStageProvider.BLOCK_STAGE).ifPresent(blockStage -> {
+                        atomicOwner.set(blockStage.getOwner());
+                    });
+                    UUID blockOwner = atomicOwner.get();
+                    Player player = AStagesUtil.getPlayerFromUUID(level.getServer(), blockOwner);
 
+                    if (player != null) {
+                        ABaseRecipeRestriction<? extends ARestriction<?, ?, ?>, ?, ?> restriction = ARestrictionManager.RECIPE_INSTANCE.getRestriction(player, new RecipeWrapper(be.activeRecipe.getType(), be.activeRecipe.getId()));
+                        if (restriction != null) {
+                            be.progress = 0;
+                            return;
+                        }
+                    }
+                }
+            }
+            be.progress++;
+            if(be.progress == 1) {
+                ItemStack stack = be.input.getStackInSlot(0);
+                stack.shrink(1);
+            }
             if (be.progress % 20 == 0) {
                 int transferAmount = be.activeRecipe.getFluidOutput().getAmount() / (be.maxProgress / 20);
                 if (transferAmount <= 0) transferAmount = 1;

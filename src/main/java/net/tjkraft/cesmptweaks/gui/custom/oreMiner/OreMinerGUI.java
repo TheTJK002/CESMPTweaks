@@ -71,6 +71,14 @@ public class OreMinerGUI extends AbstractContainerMenu {
         addDataSlots(data);
     }
 
+    public int progress() {
+        return this.data.get(0);
+    }
+
+    public int maxProgress() {
+        return this.data.get(1);
+    }
+
     private static final int HOTBAR_SLOT_COUNT = 9;
     private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
     private static final int PLAYER_INVENTORY_COLUMN_COUNT = 9;

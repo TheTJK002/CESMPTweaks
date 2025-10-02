@@ -40,17 +40,25 @@ public class SeedMakerGUI extends AbstractContainerMenu {
         }
 
         //Output
-        for (int row = 0; row < 6; row++) {
-            for (int col = 0; col < 4; col++) {
-                this.addSlot(new SlotItemHandler(seedMakerBE.output, col + row * 4, 35 + col * 18, 70 + row * 18) {
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 6; col++) {
+                this.addSlot(new SlotItemHandler(seedMakerBE.output, col + row * 6, 35 + col * 18, 70 + row * 18) {
                     @Override
-                    public boolean mayPlace(@NotNull ItemStack stack) {
+                    public boolean mayPlace(ItemStack pStack) {
                         return false;
                     }
                 });
             }
         }
         addDataSlots(data);
+    }
+
+    public int progress() {
+        return this.data.get(0);
+    }
+
+    public int maxProgress() {
+        return this.data.get(1);
     }
 
     private static final int HOTBAR_SLOT_COUNT = 9;

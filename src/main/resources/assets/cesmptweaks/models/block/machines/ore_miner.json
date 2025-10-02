@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "cesmptweaks:block/ore_miner_front",
+    "side": "cesmptweaks:block/ore_miner_side",
+    "top": "#side",
+    "particle": "#front"
+  }
+}

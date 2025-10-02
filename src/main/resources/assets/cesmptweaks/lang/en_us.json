@@ -70,7 +70,7 @@
 
   "block.cesmptweaks.seed_maker": "Seed Maker",
   "block.cesmptweaks.juicer": "Juicer",
-  "block.cesmptweaks.miner": "Miner",
-  "block.cesmptweaks.potion_cauldron": "Cauldron",
+  "block.cesmptweaks.miner": "Ore Miner",
+  "block.cesmptweaks.potion_cauldron": "Potion Cauldron",
   "tooltip.cesmptweaks.required_fire": "Requires fire below"
 }

@@ -15,6 +15,12 @@ public class JuicerScreen extends AbstractContainerScreen<JuicerGUI> {
     public JuicerScreen(JuicerGUI pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
         this.imageWidth = 176; this.imageHeight = 173;
+        this.inventoryLabelY = 80;
+    }
+
+    private int getProgress(int pixels) {
+        if(menu.maxProgress() == 0) return 0;
+        return menu.progress() * pixels / menu.maxProgress();
     }
 
     @Override
@@ -26,6 +32,11 @@ public class JuicerScreen extends AbstractContainerScreen<JuicerGUI> {
         int y = (height - imageHeight) / 2;
 
         pGuiGraphics.blit(GUI, x, y, 0, 0, imageWidth, imageHeight);
+        int juicerWidth = getProgress(21);
+
+        if(juicerWidth > 0) {
+            pGuiGraphics.blit(GUI, leftPos + 77, topPos + 31, 176, 0, juicerWidth, 16);
+        }
     }
 
     @Override

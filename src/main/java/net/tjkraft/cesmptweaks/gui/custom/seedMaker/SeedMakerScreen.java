@@ -15,6 +15,12 @@ public class SeedMakerScreen extends AbstractContainerScreen<SeedMakerGUI> {
     public SeedMakerScreen(SeedMakerGUI pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
         this.imageWidth = 176; this.imageHeight = 242;
+        this.inventoryLabelY = 148;
+    }
+
+    private int getProgress(int pixels) {
+        if(menu.maxProgress() == 0) return 0;
+        return menu.progress() * pixels / menu.maxProgress();
     }
 
     @Override
@@ -26,6 +32,10 @@ public class SeedMakerScreen extends AbstractContainerScreen<SeedMakerGUI> {
         int y = (height - imageHeight) / 2;
 
         pGuiGraphics.blit(GUI, x, y, 0, 0, imageWidth, imageHeight);
+        int seedBagSize = getProgress(16);
+        if(seedBagSize > 0) {
+            pGuiGraphics.blit(GUI, leftPos + 80, topPos + 47 + (16 - seedBagSize), 176, (16 - seedBagSize), 15, seedBagSize);
+        }
     }
 
     @Override

@@ -1,4 +1,4 @@
-package net.tjkraft.cesmptweaks.compat.farmersdelight;
+package net.tjkraft.cesmptweaks.block.custom.compat.farmersdelight;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -10,8 +10,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
-import net.tjkraft.cesmptweaks.compat.farmersdelight.custom.OnionCrop;
-import net.tjkraft.cesmptweaks.compat.farmersdelight.custom.RiceCrop;
+import net.tjkraft.cesmptweaks.block.custom.compat.farmersdelight.custom.OnionCrop;
+import net.tjkraft.cesmptweaks.block.custom.compat.farmersdelight.custom.RiceCrop;
 import net.tjkraft.cesmptweaks.item.CESMPTweaksItems;
 
 import java.util.function.Supplier;

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "cesmptweaks:block/machines/ore_miner"
+    },
+    "facing=east": {
+      "model": "cesmptweaks:block/machines/ore_miner",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "cesmptweaks:block/machines/ore_miner",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "cesmptweaks:block/machines/ore_miner",
+      "y": 270
+    }
+  }
+}

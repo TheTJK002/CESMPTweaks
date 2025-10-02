@@ -28,6 +28,7 @@ import net.tjkraft.cesmptweaks.compat.jei.custom.OreMinerJEICategory;
 import net.tjkraft.cesmptweaks.compat.jei.custom.PotionCauldronJEICategory;
 import net.tjkraft.cesmptweaks.compat.jei.custom.SeedMakerJEICategory;
 import net.tjkraft.cesmptweaks.gui.custom.juicer.JuicerScreen;
+import net.tjkraft.cesmptweaks.gui.custom.oreMiner.OreMinerScreen;
 import net.tjkraft.cesmptweaks.gui.custom.seedMaker.SeedMakerScreen;
 import net.tjkraft.cesmptweaks.recipe.custom.JuicerRecipe;
 import net.tjkraft.cesmptweaks.recipe.custom.OreMinerRecipe;
@@ -74,6 +75,7 @@ public class CESMPTweaksJEIPlugin implements IModPlugin {
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
         registration.addRecipeClickArea(JuicerScreen.class, 77, 31, 21, 16, JuicerJEICategory.JUICER_RECIPE_TYPE);
         registration.addRecipeClickArea(SeedMakerScreen.class, 81, 42, 15, 16, SeedMakerJEICategory.SEED_MAKER_RECIPE_TYPE);
+        registration.addRecipeClickArea(OreMinerScreen.class, 80, 45, 15, 22, OreMinerJEICategory.ORE_MINER_RECIPE_TYPE);
     }
 
     // Compat AStages
