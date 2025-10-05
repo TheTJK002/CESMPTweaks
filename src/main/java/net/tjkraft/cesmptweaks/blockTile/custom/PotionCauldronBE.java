@@ -215,12 +215,14 @@ public class PotionCauldronBE extends BlockEntity {
         input.deserializeNBT(tag.getCompound("Inventory"));
         inputTank.readFromNBT(tag.getCompound("Input Fluid"));
         outputTank.readFromNBT(tag.getCompound("Output Fluid"));
+        progress = tag.getInt("Potion Cauldron Progress");
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         tag.put("Inventory", input.serializeNBT());
+        tag.putInt("Potion Cauldron Progress", progress);
         CompoundTag inTag = new CompoundTag();
         inputTank.writeToNBT(inTag);
         tag.put("Input Fluid", inTag);
@@ -230,16 +232,17 @@ public class PotionCauldronBE extends BlockEntity {
         tag.put("Output Fluid", outTag);
     }
 
+    //Sync
+    @Override
+    public void handleUpdateTag(CompoundTag tag) {
+        load(tag);
+    }
+
     @Override
     public CompoundTag getUpdateTag() {
         CompoundTag tag = new CompoundTag();
         saveAdditional(tag);
         return tag;
-    }
-
-    @Override
-    public void handleUpdateTag(CompoundTag tag) {
-        load(tag);
     }
 
     @Override

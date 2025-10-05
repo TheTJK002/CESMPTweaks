@@ -36,7 +36,7 @@ public class OreMinerJEICategory implements IRecipeCategory<OreMinerRecipe> {
 
     @Override
     public Component getTitle() {
-        return Component.translatable("block.cesmptweaks.miner");
+        return Component.translatable("block.cesmptweaks.ore_miner");
     }
 
     @Override

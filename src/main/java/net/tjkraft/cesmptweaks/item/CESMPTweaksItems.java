@@ -69,7 +69,6 @@ public class CESMPTweaksItems {
     //Items
     public static final RegistryObject<Item> ANIMAL_OFFER = ITEMS.register("animal_offer", () -> new AnimalOffer(new Item.Properties()));
     public static final RegistryObject<Item> JOB_CHOICE = ITEMS.register("job_choice", () -> new JobChoice(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> HONEYCOMB_CAST = ITEMS.register("honeycomb_cast", () -> new Item(new Item.Properties().stacksTo(1)));
 
     //Ore Miner ~ Upgrades
     public static final RegistryObject<Item> OVERWORLD_UPGRADE = ITEMS.register("overworld_upgrade", () -> new Item(new Item.Properties().stacksTo(1)));
@@ -79,7 +78,12 @@ public class CESMPTweaksItems {
 
     //Smithing Upgrade
     public static final RegistryObject<Item> STONE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("stone_upgrade_smithing_template", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CHAIN_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("chain_upgrade_smithing_template", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> IRON_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("iron_upgrade_smithing_template", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GOLD_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("gold_upgrade_smithing_template", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> DIAMOND_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("diamond_upgrade_smithing_template", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> COPPER_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("copper_upgrade_smithing_template", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ZINC_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("zinc_upgrade_smithing_template", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRASS_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("brass_upgrade_smithing_template", () -> new Item(new Item.Properties()));
 }

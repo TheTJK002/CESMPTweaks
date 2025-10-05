@@ -1,0 +1,10 @@
+{
+  "type": "cesmptweaks:alveary",
+  "input": {
+    "tag": "minecraft:tall_flowers"
+  },
+  "output": {
+    "fluid": "create:honey",
+    "amount": 100
+  }
+}

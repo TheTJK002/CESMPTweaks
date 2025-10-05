@@ -6,35 +6,35 @@
   "outputs": [
     {
       "item": "minecraft:wheat_seeds",
-      "chance": 0.5
+      "chance": 0.8
     },
     {
       "item": "minecraft:pumpkin_seeds",
-      "chance": 0.5
+      "chance": 0.3
     },
     {
       "item": "minecraft:melon_seeds",
-      "chance": 0.5
+      "chance": 0.3
     },
     {
       "item": "minecraft:beetroot_seeds",
-      "chance": 0.5
+      "chance": 0.7
     },
     {
       "item": "minecraft:torchflower_seeds",
-      "chance": 0.5
+      "chance": 0.01
     },
     {
       "item": "cesmptweaks:bamboo_seeds",
-      "chance": 0.5
+      "chance": 0.4
     },
     {
       "item": "cesmptweaks:cactus_seeds",
-      "chance": 0.5
+      "chance": 0.3
     },
     {
       "item": "cesmptweaks:carrot_seeds",
-      "chance": 0.5
+      "chance": 0.6
     },
     {
       "item": "cesmptweaks:potato_seeds",
@@ -42,27 +42,27 @@
     },
     {
       "item": "cesmptweaks:kelp_seeds",
-      "chance": 0.5
+      "chance": 0.3
     },
     {
       "item": "cesmptweaks:cocoa_seeds",
-      "chance": 0.5
+      "chance": 0.05
     },
     {
       "item": "cesmptweaks:brown_mushroom_seeds",
-      "chance": 0.5
+      "chance": 0.1
     },
     {
       "item": "cesmptweaks:red_mushroom_seeds",
-      "chance": 0.5
+      "chance": 0.1
     },
     {
       "item": "cesmptweaks:sugar_cane_seeds",
-      "chance": 0.5
+      "chance": 0.4
     },
     {
       "item": "cesmptweaks:sweet_berry_seeds",
-      "chance": 0.5
+      "chance": 0.3
     }
   ]
 }

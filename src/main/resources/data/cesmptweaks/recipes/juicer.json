@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "minecraft:stone_button"
+    },
+    "B": {
+      "tag": "forge:glass"
+    },
+    "C": {
+      "item": "minecraft:red_terracotta"
+    },
+    "D": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "pattern": [
+    " A ",
+    " B ",
+    "DC "
+  ],
+  "result": {
+    "item": "cesmptweaks:juicer"
+  }
+}

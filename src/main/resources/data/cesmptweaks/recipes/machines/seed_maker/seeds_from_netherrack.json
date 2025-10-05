@@ -6,7 +6,7 @@
   "outputs": [
     {
       "item": "cesmptweaks:nether_wart_seeds",
-      "chance": 0.5
+      "chance": 0.8
     },
     {
       "item": "cesmptweaks:crimson_fungus_seeds",
@@ -14,7 +14,7 @@
     },
     {
       "item": "cesmptweaks:warped_fungus_seeds",
-      "chance": 0.5
+      "chance": 0.4
     }
   ]
 }

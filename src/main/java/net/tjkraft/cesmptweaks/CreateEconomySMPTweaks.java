@@ -25,6 +25,7 @@ import net.tjkraft.cesmptweaks.block.custom.compat.farmersdelight.CESMPTweaksFDC
 import net.tjkraft.cesmptweaks.config.CESMPTweaksClientConfig;
 import net.tjkraft.cesmptweaks.config.CESMPTweaksServerConfig;
 import net.tjkraft.cesmptweaks.gui.custom.CESMPTweaksGUI;
+import net.tjkraft.cesmptweaks.gui.custom.alveary.AlvearyScreen;
 import net.tjkraft.cesmptweaks.gui.custom.juicer.JuicerScreen;
 import net.tjkraft.cesmptweaks.gui.custom.oreMiner.OreMinerScreen;
 import net.tjkraft.cesmptweaks.gui.custom.seedMaker.SeedMakerScreen;
@@ -99,6 +100,7 @@ public class CreateEconomySMPTweaks {
             MenuScreens.register(CESMPTweaksGUI.JUICER_GUI.get(), JuicerScreen::new);
             MenuScreens.register(CESMPTweaksGUI.SEED_MAKER_GUI.get(), SeedMakerScreen::new);
             MenuScreens.register(CESMPTweaksGUI.ORE_MINER_GUI.get(), OreMinerScreen::new);
+            MenuScreens.register(CESMPTweaksGUI.ALVEARY_GUI.get(), AlvearyScreen::new);
 
             //Block Entity Render
             BlockEntityRenderers.register(CESMPTweaksBlockTiles.POTION_CAULDRON_BE.get(), PotionCauldronBER::new);

@@ -8,6 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
+import net.tjkraft.cesmptweaks.gui.custom.alveary.AlvearyGUI;
 import net.tjkraft.cesmptweaks.gui.custom.juicer.JuicerGUI;
 import net.tjkraft.cesmptweaks.gui.custom.oreMiner.OreMinerGUI;
 import net.tjkraft.cesmptweaks.gui.custom.seedMaker.SeedMakerGUI;
@@ -18,6 +19,7 @@ public class CESMPTweaksGUI {
     public static final RegistryObject<MenuType<JuicerGUI>> JUICER_GUI = registerMenuType("juicer_gui", JuicerGUI::new);
     public static final RegistryObject<MenuType<SeedMakerGUI>> SEED_MAKER_GUI = registerMenuType("seed_maker_gui", SeedMakerGUI::new);
     public static final RegistryObject<MenuType<OreMinerGUI>> ORE_MINER_GUI = registerMenuType("ore_miner_gui", OreMinerGUI::new);
+    public static final RegistryObject<MenuType<AlvearyGUI>> ALVEARY_GUI = registerMenuType("alveary_gui", AlvearyGUI::new);
 
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

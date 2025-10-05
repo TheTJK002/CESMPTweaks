@@ -52,6 +52,15 @@
   "item.cesmptweaks.end_upgrade": "End Upgrade",
   "item.cesmptweaks.aether_upgrade": "Aether Upgrade",
 
+  "item.cesmptweaks.stone_upgrade_smithing_template": "Smithing Template",
+  "item.cesmptweaks.chain_upgrade_smithing_template": "Smithing Template",
+  "item.cesmptweaks.iron_upgrade_smithing_template": "Smithing Template",
+  "item.cesmptweaks.gold_upgrade_smithing_template": "Smithing Template",
+  "item.cesmptweaks.diamond_upgrade_smithing_template": "Smithing Template",
+  "item.cesmptweaks.copper_upgrade_smithing_template": "Smithing Template",
+  "item.cesmptweaks.zinc_upgrade_smithing_template": "Smithing Template",
+  "item.cesmptweaks.brass_upgrade_smithing_template": "Smithing Template",
+
   "msg.cesmptweaks.no_milk": "This animal has already been milked!",
   "msg.cesmptweaks.no_place": "This block cannot be placed",
   "msg.cesmptweaks.no_give_role": "You can't specialize in this because you don't have the basic job",
@@ -70,7 +79,11 @@
 
   "block.cesmptweaks.seed_maker": "Seed Maker",
   "block.cesmptweaks.juicer": "Juicer",
-  "block.cesmptweaks.miner": "Ore Miner",
+  "block.cesmptweaks.ore_miner": "Ore Miner",
   "block.cesmptweaks.potion_cauldron": "Potion Cauldron",
-  "tooltip.cesmptweaks.required_fire": "Requires fire below"
+  "tooltip.cesmptweaks.required_fire": "Requires fire below",
+  "block.cesmptweaks.alveary": "Alveary",
+
+  "item.minecraft.potion.effect.undying": "Undying",
+  "effect.cesmptweaks.undying": "Undying"
 }

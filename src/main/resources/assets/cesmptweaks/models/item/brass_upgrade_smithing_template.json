@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cesmptweaks:item/smithing_template/brass_upgrade_smithing_template"
+  }
+}

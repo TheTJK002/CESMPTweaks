@@ -36,6 +36,7 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.mobEffect.CESMPTweaksMobEffects;
+import vectorwing.farmersdelight.common.block.BuddingBushBlock;
 
 import java.util.Collections;
 import java.util.List;

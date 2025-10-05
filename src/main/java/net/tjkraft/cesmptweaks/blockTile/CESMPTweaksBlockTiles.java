@@ -15,4 +15,5 @@ public class CESMPTweaksBlockTiles {
     public static final RegistryObject<BlockEntityType<SeedMakerBE>> SEED_MAKER_BE = TILES.register("seed_maker_be", () -> BlockEntityType.Builder.of(SeedMakerBE::new, CESMPTweaksBlocks.SEED_MAKER.get()).build(null));
     public static final RegistryObject<BlockEntityType<OreMinerBE>> ORE_MINER_BE = TILES.register("miner_be", () -> BlockEntityType.Builder.of(OreMinerBE::new, CESMPTweaksBlocks.ORE_MINER.get()).build(null));
     public static final RegistryObject<BlockEntityType<PotionCauldronBE>> POTION_CAULDRON_BE = TILES.register("potion_cauldron_be", () -> BlockEntityType.Builder.of(PotionCauldronBE::new, CESMPTweaksBlocks.POTION_CAULDRON.get()).build(null));
+    public static final RegistryObject<BlockEntityType<AlvearyBE>> ALVEARY_BE = TILES.register("alveary_be", () -> BlockEntityType.Builder.of(AlvearyBE::new, CESMPTweaksBlocks.ALVEARY.get()).build(null));
 }

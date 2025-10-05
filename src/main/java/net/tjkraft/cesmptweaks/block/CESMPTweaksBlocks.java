@@ -10,10 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.block.custom.crop.*;
-import net.tjkraft.cesmptweaks.block.custom.machines.JuicerBlock;
-import net.tjkraft.cesmptweaks.block.custom.machines.OreMinerBlock;
-import net.tjkraft.cesmptweaks.block.custom.machines.PotionCauldronBlock;
-import net.tjkraft.cesmptweaks.block.custom.machines.SeedMakerBlock;
+import net.tjkraft.cesmptweaks.block.custom.machines.*;
 import net.tjkraft.cesmptweaks.item.CESMPTweaksItems;
 
 import java.util.function.Supplier;
@@ -44,6 +41,7 @@ public class CESMPTweaksBlocks {
     public static final RegistryObject<Block> SEED_MAKER = registerBlock("seed_maker", () -> new SeedMakerBlock(BlockBehaviour.Properties.of().noOcclusion()));
     public static final RegistryObject<Block> ORE_MINER = registerBlock("ore_miner", () -> new OreMinerBlock(BlockBehaviour.Properties.of().noOcclusion()));
     public static final RegistryObject<Block> POTION_CAULDRON = registerBlock("potion_cauldron", () -> new PotionCauldronBlock(BlockBehaviour.Properties.of().noOcclusion()));
+    public static final RegistryObject<Block> ALVEARY = registerBlock("alveary", () -> new AlvearyBlock(BlockBehaviour.Properties.of()));
 
     public static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

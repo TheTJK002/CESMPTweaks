@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "tag": "forge:ingots/iron"
+    },
+    "B": {
+      "item": "cesmptweaks:key"
+    },
+    "C": {
+      "tag": "forge:chests"
+    },
+    "D": {
+      "item": "minecraft:netherite_pickaxe"
+    },
+    "E": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "pattern": [
+    "AEA",
+    "BDB",
+    "ACA"
+  ],
+  "result": {
+    "item": "cesmptweaks:ore_miner"
+  }
+}

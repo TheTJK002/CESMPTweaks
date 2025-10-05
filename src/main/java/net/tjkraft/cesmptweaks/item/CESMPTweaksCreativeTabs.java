@@ -13,6 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
+import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
 import net.tjkraft.cesmptweaks.block.custom.compat.farmersdelight.CESMPTweaksFDCompat;
 
 public class CESMPTweaksCreativeTabs {
@@ -42,6 +43,30 @@ public class CESMPTweaksCreativeTabs {
                 }
                 //Items
                 pOutput.accept(CESMPTweaksItems.ANIMAL_OFFER.get());
+                pOutput.accept(CESMPTweaksItems.JOB_CHOICE.get());
+
+                //Machines
+                pOutput.accept(CESMPTweaksBlocks.JUICER.get());
+                pOutput.accept(CESMPTweaksBlocks.SEED_MAKER.get());
+                pOutput.accept(CESMPTweaksBlocks.POTION_CAULDRON.get());
+                pOutput.accept(CESMPTweaksBlocks.ORE_MINER.get());
+                pOutput.accept(CESMPTweaksBlocks.ALVEARY.get());
+
+                //Ore Miner Upgrades
+                pOutput.accept(CESMPTweaksItems.OVERWORLD_UPGRADE.get());
+                pOutput.accept(CESMPTweaksItems.NETHER_UPGRADE.get());
+                pOutput.accept(CESMPTweaksItems.END_UPGRADE.get());
+                pOutput.accept(CESMPTweaksItems.AETHER_UPGRADE.get());
+
+                //Smithing Upgrade
+                pOutput.accept(CESMPTweaksItems.STONE_UPGRADE_SMITHING_TEMPLATE.get());
+                pOutput.accept(CESMPTweaksItems.CHAIN_UPGRADE_SMITHING_TEMPLATE.get());
+                pOutput.accept(CESMPTweaksItems.COPPER_UPGRADE_SMITHING_TEMPLATE.get());
+                pOutput.accept(CESMPTweaksItems.ZINC_UPGRADE_SMITHING_TEMPLATE.get());
+                pOutput.accept(CESMPTweaksItems.IRON_UPGRADE_SMITHING_TEMPLATE.get());
+                pOutput.accept(CESMPTweaksItems.GOLD_UPGRADE_SMITHING_TEMPLATE.get());
+                pOutput.accept(CESMPTweaksItems.BRASS_UPGRADE_SMITHING_TEMPLATE.get());
+                pOutput.accept(CESMPTweaksItems.DIAMOND_UPGRADE_SMITHING_TEMPLATE.get());
 
                 //Juices
                 pOutput.accept(CESMPTweaksItems.APPLE_JUICE.get());
@@ -58,9 +83,6 @@ public class CESMPTweaksCreativeTabs {
                 pOutput.accept(CESMPTweaksItems.END_KEY.get());
                 pOutput.accept(CESMPTweaksItems.AETHER_KEY.get());
                 pOutput.accept(CESMPTweaksItems.TWILIGHT_KEY.get());
-
-                //Job
-                pOutput.accept(CESMPTweaksItems.JOB_CHOICE.get());
 
                 //Specializations - Inactive
                 //Cook

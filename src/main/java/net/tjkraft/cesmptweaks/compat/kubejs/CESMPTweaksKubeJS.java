@@ -4,10 +4,7 @@ import dev.latvian.mods.kubejs.KubeJSPlugin;
 import dev.latvian.mods.kubejs.recipe.schema.RegisterRecipeSchemasEvent;
 import net.minecraft.resources.ResourceLocation;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
-import net.tjkraft.cesmptweaks.compat.kubejs.custom.JuicerJS;
-import net.tjkraft.cesmptweaks.compat.kubejs.custom.OreMinerJS;
-import net.tjkraft.cesmptweaks.compat.kubejs.custom.PotionCauldronJS;
-import net.tjkraft.cesmptweaks.compat.kubejs.custom.SeedMakerJS;
+import net.tjkraft.cesmptweaks.compat.kubejs.custom.*;
 
 public class CESMPTweaksKubeJS extends KubeJSPlugin {
 
@@ -17,5 +14,6 @@ public class CESMPTweaksKubeJS extends KubeJSPlugin {
         event.register(new ResourceLocation(CreateEconomySMPTweaks.MOD_ID, "juicer"), JuicerJS.SCHEMA);
         event.register(new ResourceLocation(CreateEconomySMPTweaks.MOD_ID, "potion_cauldron"), PotionCauldronJS.SCHEMA);
         event.register(new ResourceLocation(CreateEconomySMPTweaks.MOD_ID, "ore_miner"), OreMinerJS.SCHEMA);
+        event.register(new ResourceLocation(CreateEconomySMPTweaks.MOD_ID, "alveary"), AlvearyJS.SCHEMA);
     }
 }

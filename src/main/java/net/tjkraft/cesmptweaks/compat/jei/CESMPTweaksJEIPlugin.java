@@ -23,17 +23,12 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.common.MinecraftForge;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
-import net.tjkraft.cesmptweaks.compat.jei.custom.JuicerJEICategory;
-import net.tjkraft.cesmptweaks.compat.jei.custom.OreMinerJEICategory;
-import net.tjkraft.cesmptweaks.compat.jei.custom.PotionCauldronJEICategory;
-import net.tjkraft.cesmptweaks.compat.jei.custom.SeedMakerJEICategory;
+import net.tjkraft.cesmptweaks.compat.jei.custom.*;
+import net.tjkraft.cesmptweaks.gui.custom.alveary.AlvearyScreen;
 import net.tjkraft.cesmptweaks.gui.custom.juicer.JuicerScreen;
 import net.tjkraft.cesmptweaks.gui.custom.oreMiner.OreMinerScreen;
 import net.tjkraft.cesmptweaks.gui.custom.seedMaker.SeedMakerScreen;
-import net.tjkraft.cesmptweaks.recipe.custom.JuicerRecipe;
-import net.tjkraft.cesmptweaks.recipe.custom.OreMinerRecipe;
-import net.tjkraft.cesmptweaks.recipe.custom.PotionCauldronRecipe;
-import net.tjkraft.cesmptweaks.recipe.custom.SeedMakerRecipe;
+import net.tjkraft.cesmptweaks.recipe.custom.*;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -53,6 +48,7 @@ public class CESMPTweaksJEIPlugin implements IModPlugin {
         registration.addRecipeCategories(new SeedMakerJEICategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new PotionCauldronJEICategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new OreMinerJEICategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new AlvearyJEICategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -62,6 +58,7 @@ public class CESMPTweaksJEIPlugin implements IModPlugin {
         registration.addRecipes(SeedMakerJEICategory.SEED_MAKER_RECIPE_TYPE, recipeManager.getAllRecipesFor(SeedMakerRecipe.Type.INSTANCE));
         registration.addRecipes(PotionCauldronJEICategory.POTION_CAULDRON_RECIPE_TYPE, recipeManager.getAllRecipesFor(PotionCauldronRecipe.Type.INSTANCE));
         registration.addRecipes(OreMinerJEICategory.ORE_MINER_RECIPE_TYPE, recipeManager.getAllRecipesFor(OreMinerRecipe.Type.INSTANCE));
+        registration.addRecipes(AlvearyJEICategory.ALVEARY_RECIPE_TYPE, recipeManager.getAllRecipesFor(AlvearyRecipe.Type.INSTANCE));
     }
 
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
@@ -69,6 +66,7 @@ public class CESMPTweaksJEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(CESMPTweaksBlocks.SEED_MAKER.get()), SeedMakerJEICategory.SEED_MAKER_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(CESMPTweaksBlocks.POTION_CAULDRON.get()), PotionCauldronJEICategory.POTION_CAULDRON_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(CESMPTweaksBlocks.ORE_MINER.get()), OreMinerJEICategory.ORE_MINER_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(CESMPTweaksBlocks.ALVEARY.get()), AlvearyJEICategory.ALVEARY_RECIPE_TYPE);
     }
 
     @Override
@@ -76,6 +74,7 @@ public class CESMPTweaksJEIPlugin implements IModPlugin {
         registration.addRecipeClickArea(JuicerScreen.class, 77, 31, 21, 16, JuicerJEICategory.JUICER_RECIPE_TYPE);
         registration.addRecipeClickArea(SeedMakerScreen.class, 81, 42, 15, 16, SeedMakerJEICategory.SEED_MAKER_RECIPE_TYPE);
         registration.addRecipeClickArea(OreMinerScreen.class, 80, 45, 15, 22, OreMinerJEICategory.ORE_MINER_RECIPE_TYPE);
+        registration.addRecipeClickArea(AlvearyScreen.class, 86, 45, 5, 7, AlvearyJEICategory.ALVEARY_RECIPE_TYPE);
     }
 
     // Compat AStages
@@ -102,6 +101,7 @@ public class CESMPTweaksJEIPlugin implements IModPlugin {
             updateRecipes(SeedMakerRecipe.Type.INSTANCE, JEIRecipeTypes.SEED_MAKER_TYPE);
             updateRecipes(PotionCauldronRecipe.Type.INSTANCE, JEIRecipeTypes.POTION_CAULDRON_TYPE);
             updateRecipes(OreMinerRecipe.Type.INSTANCE, JEIRecipeTypes.ORE_MINER_TYPE);
+            updateRecipes(AlvearyRecipe.Type.INSTANCE, JEIRecipeTypes.ALVEARY_TYPE);
 
             CreateEconomySMPTweaks.LOGGER.info("Recipe update completed in {} ms!", System.currentTimeMillis() - time);
         }
@@ -133,6 +133,7 @@ public class CESMPTweaksJEIPlugin implements IModPlugin {
             restrictAllRecipesForMod(JEIRecipeTypes.SEED_MAKER_TYPE, mod.getModId(), mod.getStage());
             restrictAllRecipesForMod(JEIRecipeTypes.POTION_CAULDRON_TYPE, mod.getModId(), mod.getStage());
             restrictAllRecipesForMod(JEIRecipeTypes.ORE_MINER_TYPE, mod.getModId(), mod.getStage());
+            restrictAllRecipesForMod(JEIRecipeTypes.ALVEARY_TYPE, mod.getModId(), mod.getStage());
         }
     }
 

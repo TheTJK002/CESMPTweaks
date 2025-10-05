@@ -242,7 +242,7 @@ public class OreMinerBE extends BlockEntity implements MenuProvider {
     //Menu
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.cesmptweaks.miner");
+        return Component.translatable("block.cesmptweaks.ore_miner");
     }
 
     @Override
