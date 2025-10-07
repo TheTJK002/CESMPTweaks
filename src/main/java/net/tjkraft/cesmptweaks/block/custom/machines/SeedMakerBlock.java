@@ -36,7 +36,7 @@ public class SeedMakerBlock extends BaseEntityBlock {
         super(pProperties);
     }
 
-    public static VoxelShape makeShape(){
+    public static VoxelShape makeShape() {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.join(shape, Shapes.box(0.125, 0, 0.125, 0.875, 0.875, 0.875), BooleanOp.OR);
         shape = Shapes.join(shape, Shapes.box(0.25, 0.8125, 0.25, 0.75, 1.125, 0.75), BooleanOp.OR);
@@ -77,6 +77,22 @@ public class SeedMakerBlock extends BaseEntityBlock {
             }
         }
         return InteractionResult.sidedSuccess(pLevel.isClientSide());
+    }
+
+    @Override
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+        if (pState.getBlock() != pNewState.getBlock()) {
+            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+            if (blockEntity instanceof SeedMakerBE sgbe) {
+                for (int i = 0; i < sgbe.input.getSlots(); i++) {
+                    popResource(pLevel, pPos, sgbe.input.getStackInSlot(i));
+                }
+                for (int i = 0; i < sgbe.output.getSlots(); i++) {
+                    popResource(pLevel, pPos, sgbe.output.getStackInSlot(i));
+                }
+            }
+        }
+        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
     }
 
     @Override

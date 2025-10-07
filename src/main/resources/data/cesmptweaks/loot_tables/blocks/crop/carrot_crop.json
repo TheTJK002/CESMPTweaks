@@ -10,7 +10,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:sweet_berry_crop",
+          "block": "cesmptweaks:carrot_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "0"
@@ -20,7 +20,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cesmptweaks:sweet_berry_seeds"
+          "name": "cesmptweaks:carrot_seeds"
         }
       ],
       "rolls": 1.0
@@ -29,7 +29,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:sweet_berry_crop",
+          "block": "cesmptweaks:carrot_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "3"
@@ -50,11 +50,11 @@
               }
             }
           ],
-          "name": "minecraft:sweet_berries"
+          "name": "minecraft:carrot"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cesmptweaks:blocks/sweet_berry_crop"
+  "random_sequence": "cesmptweaks:blocks/crop/carrot_crop"
 }

@@ -10,7 +10,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:brown_mushroom_crop",
+          "block": "cesmptweaks:sweet_berry_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "0"
@@ -20,7 +20,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cesmptweaks:brown_mushroom_seeds"
+          "name": "cesmptweaks:sweet_berry_seeds"
         }
       ],
       "rolls": 1.0
@@ -29,10 +29,10 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:brown_mushroom_crop",
+          "block": "cesmptweaks:sweet_berry_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "2"
+            "age": "3"
           }
         }
       ],
@@ -50,11 +50,11 @@
               }
             }
           ],
-          "name": "minecraft:brown_mushroom"
+          "name": "minecraft:sweet_berries"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cesmptweaks:blocks/brown_mushroom_crop"
+  "random_sequence": "cesmptweaks:blocks/crop/sweet_berry_crop"
 }

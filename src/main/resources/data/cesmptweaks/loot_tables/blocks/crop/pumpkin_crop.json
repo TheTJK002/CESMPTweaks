@@ -10,7 +10,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:warped_fungus_crop",
+          "block": "cesmptweaks:pumpkin_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "0"
@@ -20,7 +20,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cesmptweaks:warped_fungus_seeds"
+          "name": "minecraft:pumpkin_seeds"
         }
       ],
       "rolls": 1.0
@@ -29,10 +29,10 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:warped_fungus_crop",
+          "block": "cesmptweaks:pumpkin_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "2"
+            "age": "4"
           }
         }
       ],
@@ -50,11 +50,11 @@
               }
             }
           ],
-          "name": "minecraft:warped_fungus"
+          "name": "minecraft:pumpkin"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cesmptweaks:blocks/warped_fungus_crop"
+  "random_sequence": "cesmptweaks:blocks/crop/pumpkin_crop"
 }

@@ -38,7 +38,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class PotionCauldronBE extends BlockEntity {
 
-    private final ItemStackHandler input = new ItemStackHandler(1) {
+    public final ItemStackHandler input = new ItemStackHandler(1) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -48,7 +48,7 @@ public class PotionCauldronBE extends BlockEntity {
         }
     };
 
-    private final FluidTank inputTank = new FluidTank(1000) {
+    public final FluidTank inputTank = new FluidTank(1000) {
         @Override
         protected void onContentsChanged() {
             setChanged();

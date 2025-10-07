@@ -11,6 +11,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -71,7 +73,7 @@ public class AlvearyBE extends BlockEntity implements MenuProvider {
 
     public final ContainerData data;
     int progress = 0;
-    int maxProgress = 60 * 20 * 1;
+    int maxProgress = 20; //60 * 20 * 1;
 
     public AlvearyBE(BlockPos pPos, BlockState pBlockState) {
         super(CESMPTweaksBlockTiles.ALVEARY_BE.get(), pPos, pBlockState);
@@ -131,6 +133,7 @@ public class AlvearyBE extends BlockEntity implements MenuProvider {
             }
             alvearyBE.progress++;
             if (alvearyBE.progress >= alvearyBE.maxProgress) {
+                pLevel.playSound(null, pPos, SoundEvents.BEEHIVE_DRIP, SoundSource.BLOCKS, 1.0f, 1.0f);
                 alvearyBE.progress = 0;
                 stack.shrink(1);
                 alvearyBE.tank.fill(new FluidStack(out.getFluid(), out.getAmount()), IFluidHandler.FluidAction.EXECUTE);

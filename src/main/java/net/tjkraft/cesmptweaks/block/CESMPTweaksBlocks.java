@@ -37,11 +37,11 @@ public class CESMPTweaksBlocks {
     public static final RegistryObject<Block> KELP_CROP = registerBlock("kelp_crop", () -> new KelpCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
 
     //Machines
-    public static final RegistryObject<Block> JUICER = registerBlock("juicer", () -> new JuicerBlock(BlockBehaviour.Properties.of().noOcclusion()));
-    public static final RegistryObject<Block> SEED_MAKER = registerBlock("seed_maker", () -> new SeedMakerBlock(BlockBehaviour.Properties.of().noOcclusion()));
-    public static final RegistryObject<Block> ORE_MINER = registerBlock("ore_miner", () -> new OreMinerBlock(BlockBehaviour.Properties.of().noOcclusion()));
-    public static final RegistryObject<Block> POTION_CAULDRON = registerBlock("potion_cauldron", () -> new PotionCauldronBlock(BlockBehaviour.Properties.of().noOcclusion()));
-    public static final RegistryObject<Block> ALVEARY = registerBlock("alveary", () -> new AlvearyBlock(BlockBehaviour.Properties.of()));
+    public static final RegistryObject<Block> JUICER = registerBlock("juicer", () -> new JuicerBlock(BlockBehaviour.Properties.of().noOcclusion().requiresCorrectToolForDrops().strength(0.8f, 1.3f)));
+    public static final RegistryObject<Block> SEED_MAKER = registerBlock("seed_maker", () -> new SeedMakerBlock(BlockBehaviour.Properties.of().noOcclusion().requiresCorrectToolForDrops().strength(0.8f, 1.3f)));
+    public static final RegistryObject<Block> ORE_MINER = registerBlock("ore_miner", () -> new OreMinerBlock(BlockBehaviour.Properties.of().noOcclusion().requiresCorrectToolForDrops().strength(0.8f, 1.3f)));
+    public static final RegistryObject<Block> POTION_CAULDRON = registerBlock("potion_cauldron", () -> new PotionCauldronBlock(BlockBehaviour.Properties.of().noOcclusion().requiresCorrectToolForDrops().strength(0.8f, 1.3f)));
+    public static final RegistryObject<Block> ALVEARY = registerBlock("alveary", () -> new AlvearyBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(0.8f, 1.3f).randomTicks()));
 
     public static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

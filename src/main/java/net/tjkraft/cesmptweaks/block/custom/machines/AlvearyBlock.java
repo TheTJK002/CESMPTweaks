@@ -1,11 +1,12 @@
 package net.tjkraft.cesmptweaks.block.custom.machines;
 
-import com.simibubi.create.AllFluids;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -90,6 +91,33 @@ public class AlvearyBlock extends BaseEntityBlock {
             }
         }
         return InteractionResult.sidedSuccess(pLevel.isClientSide());
+    }
+
+    @Override
+    public boolean isRandomlyTicking(BlockState pState) {
+        return true;
+    }
+
+    @Override
+    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        if (pRandom.nextInt(3) == 0) {
+            pLevel.playSound(null, pPos, SoundEvents.BEEHIVE_WORK, SoundSource.BLOCKS, 1.0f, 1.0f);
+        }
+
+        super.randomTick(pState, pLevel, pPos, pRandom);
+    }
+
+    @Override
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+        if (pState.getBlock() != pNewState.getBlock()) {
+            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+            if (blockEntity instanceof AlvearyBE sgbe) {
+                for (int i = 0; i < sgbe.input.getSlots(); i++) {
+                    popResource(pLevel, pPos, sgbe.input.getStackInSlot(i));
+                }
+            }
+        }
+        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
     }
 
     @Override

@@ -70,6 +70,28 @@ public class JuicerBlock extends BaseEntityBlock {
     }
 
     @Override
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+        if (pState.getBlock() != pNewState.getBlock()) {
+            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+            if (blockEntity instanceof JuicerBE sgbe) {
+                for (int i = 0; i < sgbe.input.getSlots(); i++) {
+                    popResource(pLevel, pPos, sgbe.input.getStackInSlot(i));
+                }
+                for (int i = 0; i < sgbe.sugarSlot.getSlots(); i++) {
+                    popResource(pLevel, pPos, sgbe.sugarSlot.getStackInSlot(i));
+                }
+                for (int i = 0; i < sgbe.bottleSlot.getSlots(); i++) {
+                    popResource(pLevel, pPos, sgbe.bottleSlot.getStackInSlot(i));
+                }
+                for (int i = 0; i < sgbe.output.getSlots(); i++) {
+                    popResource(pLevel, pPos, sgbe.output.getStackInSlot(i));
+                }
+            }
+        }
+        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+    }
+
+    @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
         return new JuicerBE(pPos, pState);
     }

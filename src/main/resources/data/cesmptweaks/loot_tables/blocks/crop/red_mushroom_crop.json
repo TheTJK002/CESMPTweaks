@@ -10,7 +10,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:kelp_crop",
+          "block": "cesmptweaks:red_mushroom_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "0"
@@ -20,7 +20,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cesmptweaks:kelp_seeds"
+          "name": "cesmptweaks:red_mushroom_seeds"
         }
       ],
       "rolls": 1.0
@@ -29,10 +29,10 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:kelp_crop",
+          "block": "cesmptweaks:red_mushroom_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "7"
+            "age": "2"
           }
         }
       ],
@@ -50,11 +50,11 @@
               }
             }
           ],
-          "name": "minecraft:kelp"
+          "name": "minecraft:red_mushroom"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cesmptweaks:blocks/kelp_crop"
+  "random_sequence": "cesmptweaks:blocks/crop/red_mushroom_crop"
 }

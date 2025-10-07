@@ -10,7 +10,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:melon_crop",
+          "block": "cesmptweaks:onion_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "0"
@@ -20,7 +20,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:melon_seeds"
+          "name": "cesmptweaks:onion_seeds"
         }
       ],
       "rolls": 1.0
@@ -29,10 +29,10 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:melon_crop",
+          "block": "cesmptweaks:onion_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "4"
+            "age": "3"
           }
         }
       ],
@@ -50,11 +50,11 @@
               }
             }
           ],
-          "name": "minecraft:melon"
+          "name": "farmersdelight:onion"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cesmptweaks:blocks/melon_crop"
+  "random_sequence": "cesmptweaks:blocks/crop/onion_crop"
 }

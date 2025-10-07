@@ -10,7 +10,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:rice_crop",
+          "block": "cesmptweaks:sugar_cane_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "0"
@@ -20,7 +20,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cesmptweaks:rice_seeds"
+          "name": "cesmptweaks:sugar_cane_seeds"
         }
       ],
       "rolls": 1.0
@@ -29,7 +29,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:rice_crop",
+          "block": "cesmptweaks:sugar_cane_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "7"
@@ -50,11 +50,11 @@
               }
             }
           ],
-          "name": "farmersdelight:rice_panicle"
+          "name": "minecraft:sugar_cane"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cesmptweaks:blocks/rice_crop"
+  "random_sequence": "cesmptweaks:blocks/crop/sugar_cane_crop"
 }

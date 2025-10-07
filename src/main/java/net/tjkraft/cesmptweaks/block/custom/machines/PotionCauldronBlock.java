@@ -231,6 +231,19 @@ public class PotionCauldronBlock extends BaseEntityBlock {
     }
 
     @Override
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+        if (pState.getBlock() != pNewState.getBlock()) {
+            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+            if (blockEntity instanceof PotionCauldronBE sgbe) {
+                for (int i = 0; i < sgbe.input.getSlots(); i++) {
+                    popResource(pLevel, pPos, sgbe.input.getStackInSlot(i));
+                }
+            }
+        }
+        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+    }
+
+    @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
         return new PotionCauldronBE(pPos, pState);
     }
