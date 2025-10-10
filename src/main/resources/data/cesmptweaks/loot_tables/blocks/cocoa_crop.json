@@ -10,7 +10,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:crimson_fungus_crop",
+          "block": "cesmptweaks:cocoa_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "0"
@@ -20,7 +20,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cesmptweaks:crimson_fungus_seeds"
+          "name": "cesmptweaks:cocoa_seeds"
         }
       ],
       "rolls": 1.0
@@ -29,7 +29,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:crimson_fungus_crop",
+          "block": "cesmptweaks:cocoa_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "2"
@@ -50,11 +50,11 @@
               }
             }
           ],
-          "name": "minecraft:crimson_fungus"
+          "name": "minecraft:cocoa_beans"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cesmptweaks:blocks/crop/crimson_fungus_crop"
+  "random_sequence": "cesmptweaks:blocks/cocoa_crop"
 }

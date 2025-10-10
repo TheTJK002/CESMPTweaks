@@ -10,7 +10,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:nether_wart_crop",
+          "block": "cesmptweaks:crimson_fungus_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "0"
@@ -20,7 +20,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cesmptweaks:nether_wart_seeds"
+          "name": "cesmptweaks:crimson_fungus_seeds"
         }
       ],
       "rolls": 1.0
@@ -29,10 +29,10 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:nether_wart_crop",
+          "block": "cesmptweaks:crimson_fungus_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "3"
+            "age": "2"
           }
         }
       ],
@@ -50,11 +50,11 @@
               }
             }
           ],
-          "name": "minecraft:nether_wart"
+          "name": "minecraft:crimson_fungus"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cesmptweaks:blocks/crop/nether_wart_crop"
+  "random_sequence": "cesmptweaks:blocks/crimson_fungus_crop"
 }

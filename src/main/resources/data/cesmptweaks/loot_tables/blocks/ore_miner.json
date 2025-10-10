@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cesmptweaks:potion_cauldron"
+          "name": "cesmptweaks:ore_miner"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cesmptweaks:blocks/machines/potion_cauldron"
+  "random_sequence": "cesmptweaks:blocks/ore_miner"
 }

@@ -10,7 +10,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:cocoa_crop",
+          "block": "cesmptweaks:bamboo_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "0"
@@ -20,7 +20,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cesmptweaks:cocoa_seeds"
+          "name": "cesmptweaks:bamboo_seeds"
         }
       ],
       "rolls": 1.0
@@ -29,10 +29,10 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:cocoa_crop",
+          "block": "cesmptweaks:bamboo_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "2"
+            "age": "7"
           }
         }
       ],
@@ -50,11 +50,11 @@
               }
             }
           ],
-          "name": "minecraft:cocoa_beans"
+          "name": "minecraft:bamboo"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cesmptweaks:blocks/crop/cocoa_crop"
+  "random_sequence": "cesmptweaks:blocks/bamboo_crop"
 }

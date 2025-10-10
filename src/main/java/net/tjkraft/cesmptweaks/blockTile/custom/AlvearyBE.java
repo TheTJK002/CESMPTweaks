@@ -73,7 +73,7 @@ public class AlvearyBE extends BlockEntity implements MenuProvider {
 
     public final ContainerData data;
     int progress = 0;
-    int maxProgress = 20; //60 * 20 * 1;
+    int maxProgress = 60 * 20 * 1;
 
     public AlvearyBE(BlockPos pPos, BlockState pBlockState) {
         super(CESMPTweaksBlockTiles.ALVEARY_BE.get(), pPos, pBlockState);

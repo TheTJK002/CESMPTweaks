@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cesmptweaks:seed_maker"
+          "name": "cesmptweaks:alveary"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cesmptweaks:blocks/machines/seed_maker"
+  "random_sequence": "cesmptweaks:blocks/alveary"
 }

@@ -10,7 +10,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:rice_crop",
+          "block": "cesmptweaks:pumpkin_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "0"
@@ -20,7 +20,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cesmptweaks:rice_seeds"
+          "name": "minecraft:pumpkin_seeds"
         }
       ],
       "rolls": 1.0
@@ -29,10 +29,10 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cesmptweaks:rice_crop",
+          "block": "cesmptweaks:pumpkin_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
-            "age": "7"
+            "age": "4"
           }
         }
       ],
@@ -50,11 +50,11 @@
               }
             }
           ],
-          "name": "farmersdelight:rice_panicle"
+          "name": "minecraft:pumpkin"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cesmptweaks:blocks/crop/rice_crop"
+  "random_sequence": "cesmptweaks:blocks/pumpkin_crop"
 }
