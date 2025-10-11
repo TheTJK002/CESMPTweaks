@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "tag": "forge:ingots/zinc"
+    },
+    {
+      "tag": "forge:storage_blocks/zinc"
+    }
+  ],
+  "result": {
+    "item": "cesmptweaks:zinc_upgrade_smithing_template"
+  }
+}

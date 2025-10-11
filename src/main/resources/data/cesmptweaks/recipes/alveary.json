@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "minecraft:honeycomb"
+    },
+    "B": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "AAA",
+    "BBB"
+  ],
+  "result": {
+    "item": "cesmptweaks:alveary"
+  }
+}

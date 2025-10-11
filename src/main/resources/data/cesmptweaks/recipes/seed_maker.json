@@ -8,13 +8,13 @@
       "item": "minecraft:brick"
     },
     "C": {
-      "item": "minecraft:piston"
+      "item": "minecraft:furnace"
     },
     "D": {
       "tag": "minecraft:planks"
     },
     "E": {
-      "tag": "balm:wooden_chests"
+      "tag": "forge:chests/wooden"
     }
   },
   "pattern": [

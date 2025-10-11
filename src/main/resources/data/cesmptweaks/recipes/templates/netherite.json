@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "tag": "forge:ingots/netherite"
+    },
+    {
+      "tag": "forge:storage_blocks/netherite"
+    }
+  ],
+  "result": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

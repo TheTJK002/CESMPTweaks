@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "tag": "forge:ingots/brass"
+    },
+    {
+      "tag": "forge:storage_blocks/brass"
+    }
+  ],
+  "result": {
+    "item": "cesmptweaks:brass_upgrade_smithing_template"
+  }
+}

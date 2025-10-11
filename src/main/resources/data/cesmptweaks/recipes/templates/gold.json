@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "tag": "forge:ingots/gold"
+    },
+    {
+      "tag": "forge:storage_blocks/gold"
+    }
+  ],
+  "result": {
+    "item": "cesmptweaks:gold_upgrade_smithing_template"
+  }
+}

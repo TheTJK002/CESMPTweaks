@@ -85,5 +85,41 @@
   "block.cesmptweaks.alveary": "Alveary",
 
   "item.minecraft.potion.effect.undying": "Potion of Undying",
-  "effect.cesmptweaks.undying": "Undying"
+  "effect.cesmptweaks.undying": "Undying",
+
+  "cesmptweaks.smithing_template.applies_to": "Applies to:",
+  "cesmptweaks.smithing_template.ingredients": "Ingredients:",
+
+  "cesmptweaks.smithing_template.wooden_equipment": "Wooden Equipment",
+
+  "cesmptweaks.smithing_template.stone": "Stone Upgrade",
+  "cesmptweaks.smithing_template.stone_equipment": "Stone Equipment / Chain Equipment",
+  "cesmptweaks.smithing_template.stone_ingredients": "Cobblestone",
+
+  "cesmptweaks.smithing_template.chain": "Chain Upgrade",
+  "cesmptweaks.smithing_template.chain_ingredients": "Chain",
+
+  "cesmptweaks.smithing_template.copper": "Copper Upgrade",
+  "cesmptweaks.smithing_template.copper_equipment": "Copper Equipment",
+  "cesmptweaks.smithing_template.copper_ingredients": "Copper Ingot",
+
+  "cesmptweaks.smithing_template.zinc": "Zinc Upgrade",
+  "cesmptweaks.smithing_template.zinc_equipment": "Zinc Equipment",
+  "cesmptweaks.smithing_template.zinc_ingredients": "Zinc Ingot",
+
+  "cesmptweaks.smithing_template.iron": "Iron Upgrade",
+  "cesmptweaks.smithing_template.iron_equipment": "Iron Equipment",
+  "cesmptweaks.smithing_template.iron_ingredients": "Iron Ingot",
+
+  "cesmptweaks.smithing_template.gold": "Gold Upgrade",
+  "cesmptweaks.smithing_template.golden_equipment": "Gold Equipment",
+  "cesmptweaks.smithing_template.gold_ingredients": "Gold Ingot / Gold Block",
+
+  "cesmptweaks.smithing_template.brass": "Brass Upgrade",
+  "cesmptweaks.smithing_template.brass_equipment": "Brass Equipment",
+  "cesmptweaks.smithing_template.brass_ingredients": "Brass Ingot",
+
+  "cesmptweaks.smithing_template.diamond": "Diamond Upgrade",
+  "cesmptweaks.smithing_template.leather_equipment": "Leather Equipment",
+  "cesmptweaks.smithing_template.diamond_ingredients": "Diamond"
 }

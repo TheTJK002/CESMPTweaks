@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "tag": "forge:gems/diamond"
+    },
+    {
+      "tag": "forge:storage_blocks/diamond"
+    }
+  ],
+  "result": {
+    "item": "cesmptweaks:diamond_upgrade_smithing_template"
+  }
+}

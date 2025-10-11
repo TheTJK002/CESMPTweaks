@@ -8,10 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
-import net.tjkraft.cesmptweaks.item.custom.AnimalOffer;
-import net.tjkraft.cesmptweaks.item.custom.JobChoice;
-import net.tjkraft.cesmptweaks.item.custom.SpecializationActiveItem;
-import net.tjkraft.cesmptweaks.item.custom.SpecializationItem;
+import net.tjkraft.cesmptweaks.item.custom.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -77,13 +74,13 @@ public class CESMPTweaksItems {
     public static final RegistryObject<Item> AETHER_UPGRADE = ITEMS.register("aether_upgrade", () -> new Item(new Item.Properties().stacksTo(1)));
 
     //Smithing Upgrade
-    public static final RegistryObject<Item> STONE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("stone_upgrade_smithing_template", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CHAIN_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("chain_upgrade_smithing_template", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> IRON_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("iron_upgrade_smithing_template", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> GOLD_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("gold_upgrade_smithing_template", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> DIAMOND_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("diamond_upgrade_smithing_template", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> STONE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("stone_upgrade_smithing_template", () -> new SmithTemplate(new Item.Properties()));
+    public static final RegistryObject<Item> CHAIN_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("chain_upgrade_smithing_template", () -> new SmithTemplate(new Item.Properties()));
+    public static final RegistryObject<Item> IRON_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("iron_upgrade_smithing_template", () -> new SmithTemplate(new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("gold_upgrade_smithing_template", () -> new SmithTemplate(new Item.Properties()));
+    public static final RegistryObject<Item> DIAMOND_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("diamond_upgrade_smithing_template", () -> new SmithTemplate(new Item.Properties()));
 
-    public static final RegistryObject<Item> COPPER_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("copper_upgrade_smithing_template", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> ZINC_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("zinc_upgrade_smithing_template", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> BRASS_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("brass_upgrade_smithing_template", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("copper_upgrade_smithing_template", () -> new SmithTemplate(new Item.Properties()));
+    public static final RegistryObject<Item> ZINC_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("zinc_upgrade_smithing_template", () -> new SmithTemplate(new Item.Properties()));
+    public static final RegistryObject<Item> BRASS_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("brass_upgrade_smithing_template", () -> new SmithTemplate(new Item.Properties()));
 }
