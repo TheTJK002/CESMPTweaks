@@ -13,6 +13,8 @@ public class CESMPTweaksServerConfig {
     public static final ForgeConfigSpec.IntValue TICKS_PER_HUNGER_LOSS;
     public static final ForgeConfigSpec.IntValue RESPAWN_ORES;
 
+    public static final ForgeConfigSpec.IntValue CHAT_RANGE;
+
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
 
@@ -46,6 +48,12 @@ public class CESMPTweaksServerConfig {
         RESPAWN_ORES = builder
                 .comment("Choose how often the minerals should respawn (20 ticks = 1 second)")
                 .defineInRange("respawn_ores", 12000, 0, 1728000);
+        builder.pop();
+
+        builder.push("Chat Setting");
+        CHAT_RANGE = builder
+                .comment("Choose the chat radius of the players who can read it")
+                .defineInRange("chat_range", 64, 1, Integer.MAX_VALUE);
         builder.pop();
 
         SERVER_CONFIG = builder.build();

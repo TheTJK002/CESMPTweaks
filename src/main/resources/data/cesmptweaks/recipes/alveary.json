@@ -2,15 +2,18 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "A": {
-      "item": "minecraft:honeycomb"
+      "tag": "minecraft:wooden_slabs"
     },
     "B": {
       "tag": "minecraft:planks"
+    },
+    "C": {
+      "tag": "minecraft:flowers"
     }
   },
   "pattern": [
-    "BBB",
     "AAA",
+    "CCC",
     "BBB"
   ],
   "result": {

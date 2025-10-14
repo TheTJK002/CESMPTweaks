@@ -85,6 +85,9 @@
   "block.cesmptweaks.alveary": "Alveary",
 
   "item.minecraft.potion.effect.undying": "Potion of Undying",
+  "item.minecraft.splash_potion.effect.undying": "Splash Potion of Undying",
+  "item.minecraft.lingering_potion.effect.undying": "Lingering Potion of Undying",
+  "item.minecraft.tipped_arrow.effect.undying": "Arrow of Undying",
   "effect.cesmptweaks.undying": "Undying",
 
   "cesmptweaks.smithing_template.applies_to": "Applies to:",

@@ -49,10 +49,10 @@ public class CESMPTweaksItems {
 
     //Key
     public static final RegistryObject<Item> KEY = ITEMS.register("key", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> NETHER_KEY = ITEMS.register("nether_key", () -> new Item(new Item.Properties().stacksTo(4)));
-    public static final RegistryObject<Item> END_KEY = ITEMS.register("end_key", () -> new Item(new Item.Properties().stacksTo(4)));
-    public static final RegistryObject<Item> AETHER_KEY = ITEMS.register("aether_key", () -> new Item(new Item.Properties().stacksTo(4)));
-    public static final RegistryObject<Item> TWILIGHT_KEY = ITEMS.register("twilight_key", () -> new Item(new Item.Properties().stacksTo(4)));
+    public static final RegistryObject<Item> NETHER_KEY = ITEMS.register("nether_key", () -> new KeyItem(new Item.Properties().stacksTo(4)));
+    public static final RegistryObject<Item> END_KEY = ITEMS.register("end_key", () -> new KeyItem(new Item.Properties().stacksTo(4)));
+    public static final RegistryObject<Item> AETHER_KEY = ITEMS.register("aether_key", () -> new KeyItem(new Item.Properties().stacksTo(4)));
+    public static final RegistryObject<Item> TWILIGHT_KEY = ITEMS.register("twilight_key", () -> new KeyItem(new Item.Properties().stacksTo(4)));
 
     //Juices
     public static final RegistryObject<Item> APPLE_JUICE = ITEMS.register("apple_juice", () -> new Item(new Item.Properties().food(Foods.APPLE)));

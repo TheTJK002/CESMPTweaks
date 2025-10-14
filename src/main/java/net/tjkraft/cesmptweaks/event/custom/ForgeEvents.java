@@ -7,10 +7,10 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Player;
@@ -18,18 +18,20 @@ import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.client.event.RenderNameTagEvent;
+import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -156,9 +158,9 @@ public class ForgeEvents {
         BlockState state = event.getLevel().getBlockState(pos);
         ItemStack stack = event.getItemStack();
 
-        if(ModList.get().isLoaded("astages")) {
-            if(!AStagesUtil.hasStage(event.getEntity(), "wizard")) {
-                if(state.is(Blocks.CAULDRON) && stack.getItem() == Items.POTION && stack.hasTag()) {
+        if (ModList.get().isLoaded("astages")) {
+            if (!AStagesUtil.hasStage(event.getEntity(), "wizard")) {
+                if (state.is(Blocks.CAULDRON) && stack.getItem() == Items.POTION && stack.hasTag()) {
                     event.setCanceled(true);
                 }
             }
@@ -214,5 +216,34 @@ public class ForgeEvents {
     }
 
     public record RespawnData(BlockPos pos, BlockState state, long respawnTime) {
+    }
+
+    //Chat Range
+    @SubscribeEvent
+    public static void onChat(ServerChatEvent event) {
+        ServerPlayer sender = event.getPlayer();
+        String message = event.getMessage().getString();
+        BlockPos senderPos = sender.blockPosition();
+
+        event.setCanceled(true);
+
+        Component formatted = Component.literal("<" + sender.getName().getString() + "> " + message);
+
+        for (ServerPlayer player : sender.server.getPlayerList().getPlayers()) {
+            if (player.level() == sender.level()) {
+                double distanceSq = player.blockPosition().distSqr(senderPos);
+                if (distanceSq <= (CESMPTweaksServerConfig.CHAT_RANGE.get() * CESMPTweaksServerConfig.CHAT_RANGE.get())) {
+                    player.sendSystemMessage(formatted);
+                }
+            }
+        }
+    }
+
+    //Hide Player Name
+    @SubscribeEvent
+    public static void hideNames(RenderNameTagEvent event) {
+        if (event.getEntity() instanceof Player) {
+            event.setResult(Event.Result.DENY);
+        }
     }
 }
