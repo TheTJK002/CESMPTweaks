@@ -28,7 +28,6 @@ public class CESMPTweaksFDCompat {
     public static final RegistryObject<Block> ONION_CROP = registerBlock("onion_crop", () -> new OnionCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
     public static final RegistryObject<Block> RICE_CROP = registerBlock("rice_crop", () -> new RiceCrop(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
 
-
     public static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS_FD.register(name, block);
         registerBlockItem(name, toReturn);

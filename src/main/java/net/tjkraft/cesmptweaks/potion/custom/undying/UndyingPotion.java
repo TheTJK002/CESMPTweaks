@@ -1,4 +1,4 @@
-package net.tjkraft.cesmptweaks.potion.custom;
+package net.tjkraft.cesmptweaks.potion.custom.undying;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;

@@ -38,6 +38,7 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.tjkraft.cesmptweaks.CreateEconomySMPTweaks;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
+import net.tjkraft.cesmptweaks.config.CESMPTweaksClientConfig;
 import net.tjkraft.cesmptweaks.config.CESMPTweaksServerConfig;
 import net.tjkraft.cesmptweaks.event.custom.util.HungerTickHandler;
 import net.tjkraft.cesmptweaks.event.custom.util.RespawnSavedData;
@@ -127,7 +128,9 @@ public class ForgeEvents {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void noEXP(EntityJoinLevelEvent event) {
-        if (event.getEntity() instanceof ExperienceOrb) event.setCanceled(true);
+        if(CESMPTweaksClientConfig.ENABLE_EXP.get()) {
+            if (event.getEntity() instanceof ExperienceOrb) event.setCanceled(true);
+        }
     }
 
     @SubscribeEvent

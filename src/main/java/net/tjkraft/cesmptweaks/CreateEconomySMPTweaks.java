@@ -1,10 +1,14 @@
 package net.tjkraft.cesmptweaks;
 
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.api.stress.BlockStressValues;
+import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.simibubi.create.infrastructure.config.CStress;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
@@ -19,9 +23,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.tjkraft.cesmptweaks.block.CESMPTweaksBlocks;
-import net.tjkraft.cesmptweaks.blockTile.ber.PotionCauldronBER;
-import net.tjkraft.cesmptweaks.blockTile.CESMPTweaksBlockTiles;
 import net.tjkraft.cesmptweaks.block.custom.compat.farmersdelight.CESMPTweaksFDCompat;
+import net.tjkraft.cesmptweaks.blockTile.CESMPTweaksBlockTiles;
+import net.tjkraft.cesmptweaks.blockTile.ber.PotionCauldronBER;
 import net.tjkraft.cesmptweaks.config.CESMPTweaksClientConfig;
 import net.tjkraft.cesmptweaks.config.CESMPTweaksServerConfig;
 import net.tjkraft.cesmptweaks.gui.custom.CESMPTweaksGUI;
@@ -33,9 +37,9 @@ import net.tjkraft.cesmptweaks.item.CESMPTweaksCreativeTabs;
 import net.tjkraft.cesmptweaks.item.CESMPTweaksItems;
 import net.tjkraft.cesmptweaks.mobEffect.CESMPTweaksMobEffects;
 import net.tjkraft.cesmptweaks.network.CESMPTweaksNetwork;
-import net.tjkraft.cesmptweaks.potion.custom.LongUndyingPotion;
-import net.tjkraft.cesmptweaks.potion.custom.UndyingPotion;
 import net.tjkraft.cesmptweaks.potion.CESMPTweaksPotions;
+import net.tjkraft.cesmptweaks.potion.custom.undying.LongUndyingPotion;
+import net.tjkraft.cesmptweaks.potion.custom.undying.UndyingPotion;
 import net.tjkraft.cesmptweaks.recipe.CESMPTweaksRecipes;
 import org.slf4j.Logger;
 
@@ -44,8 +48,12 @@ public class CreateEconomySMPTweaks {
     public static final String MOD_ID = "cesmptweaks";
     public static final Logger LOGGER = LogUtils.getLogger();
 
+    public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
+
     public CreateEconomySMPTweaks() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        REGISTRATE.registerEventListeners(modEventBus);
 
         CESMPTweaksCreativeTabs.CREATIVE_MODE_TAB.register(FMLJavaModLoadingContext.get().getModEventBus());
 
@@ -76,6 +84,9 @@ public class CreateEconomySMPTweaks {
             BrewingRecipeRegistry.addRecipe(new UndyingPotion(null, null, null));
             BrewingRecipeRegistry.addRecipe(new LongUndyingPotion(null, null, null));
         });
+        //event.enqueueWork(() -> {
+        //    BlockStressValues.IMPACTS.register(CESMPTweaksBlocks.ENCASED_FAN.get(), () -> 8.0);
+        //});
     }
 
     @SubscribeEvent
